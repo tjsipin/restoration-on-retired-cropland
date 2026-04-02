@@ -1,0 +1,5 @@
+setwd('/home/tjsipin/will_tj')
+source('src_lowFilter_v5_50km/temp/02_mc_bg.R')
+source('src_lowFilter_v5_50km/R_monthly_comprehensive/03_buildModels.R')
+source('src_lowFilter_v5_50km/R_monthly_comprehensive/04_predictions.R')
+source('src_lowFilter_v5_50km/R_monthly_comprehensive/05_plotting.R')

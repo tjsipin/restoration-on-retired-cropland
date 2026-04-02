@@ -1,0 +1,287 @@
+"","id","taxon","observer","source","date","county","location_quality","latitude","longitude","location_description","accuracy_square_meters","plant","phenology","phenology_code"
+"1","gp11101","Lasthenia gracilis","Ron Vanderhoff",NA,2019-02-07,"San Diego","high",33.42297,-117.57509,"Christianitos Rd, E end, S side, San Clemente",100,"Lasthenia gracilis","Flowering","F"
+"2","gp13054","Lasthenia gracilis","Ron Vanderhoff",NA,2019-03-10,"Riverside","high",33.78962,-117.34109,"Santa Rosa Mine Rd., E Gavilan",100,"Lasthenia gracilis","Flowering","F"
+"3","gp13110","Lasthenia gracilis","Ron Vanderhoff",NA,2019-03-14,"Orange","high",33.82129,-117.64449,"Black Star Canyon, .5 mi W Main Divide Rd., Santa Ana Mts.",100,"Lasthenia gracilis","Flowering","F"
+"4","gp13133","Lasthenia gracilis","Ron Vanderhoff",NA,2019-03-16,"Orange","high",33.6344,-117.84819,"UCI Ecological Preserve, Irvine",100,"Lasthenia gracilis","Flowering","F"
+"5","gp13342","Lasthenia gracilis","Ron Vanderhoff",NA,2019-03-23,"Orange","high",33.63602,-117.84543,"UCI Ecological Preserve, Irvine",100,"Lasthenia gracilis","Flowering","F"
+"6","gp14015","Lasthenia gracilis","Ron Vanderhoff",NA,2019-04-04,"San Diego","high",33.41822,-117.57898,"Christianitos Rd., approx .7 mi NE San Mateo Campground",100,"Lasthenia gracilis","Flowering","F"
+"7","gp20108","Lasthenia gracilis","Don M. Davis",NA,2019-03-31,"Los Angeles","high",34.77384,-117.77414,"Creosote bush scrub near Phacelia Wildlife Sanctuary. Growing with Larrea tridentata, Muilla coronata, Erodium cicutarium, Cryptantha sp., and Gilia sp..",314,"Lasthenia gracilis",NA,NA
+"8","gp20621","Lasthenia gracilis","Ron Vanderhoff",NA,2020-03-01,"Riverside","high",33.59783,-117.34426,"Vic Elsinore Peak, Santa Ana Mts.",100,"Lasthenia gracilis","Flowering","F"
+"9","in:10231052","Lasthenia gracilis","twr61","iNaturalist",2018-03-08,"Butte","high",39.589257,-121.548402,"Butte County, CA, USA",314,"Lasthenia gracilis",NA,NA
+"10","in:10239347","Lasthenia gracilis","twr61","iNaturalist",2018-03-08,"Butte","high",39.578097,-121.558383,"Butte County, CA, USA",314,"Lasthenia gracilis",NA,NA
+"11","in:109317348","Lasthenia gracilis","markm_","iNaturalist",2022-03-23,"Orange","high",33.791283,-117.745135,"Orange, CA",11689,"Lasthenia gracilis",NA,NA
+"12","in:11175197","Lasthenia gracilis","Pinnacles National Park","iNaturalist",2018-04-13,"San Benito","high",36.458967,-121.146575,"Pinnacles National Park, Paicines, CA, US",78,"Lasthenia gracilis",NA,NA
+"13","in:11177451","Lasthenia gracilis","Pinnacles National Park","iNaturalist",2018-04-13,"San Benito","high",36.472313,-121.146392,"Pinnacles National Park, Paicines, CA, US",78,"Lasthenia gracilis",NA,NA
+"14","in:112879162","Lasthenia gracilis","okbirdman","iNaturalist",2022-04-22,"Kern","high",35.372375,-117.993966,NA,28,"Lasthenia gracilis",NA,NA
+"15","in:11384893","Lasthenia gracilis","Terry Hunefeld","iNaturalist",2018-04-23,"San Diego","high",33.224438,-116.461357,"San Diego County, US-CA, US",78,"Lasthenia gracilis",NA,NA
+"16","in:12150195","Lasthenia gracilis","helenk","iNaturalist",2018-05-04,"Sonoma","high",38.428488,-122.627937,"Trione-Annadel State Park, Santa Rosa, CA, US",78,"Lasthenia gracilis",NA,NA
+"17","in:149243817","Lasthenia gracilis","accidentalstars","iNaturalist",2023-02-20,"Orange","high",33.79165,-117.750533,"Santiago Hills, Orange, CA",50,"Lasthenia gracilis",NA,NA
+"18","in:150244119","Lasthenia gracilis","liuelliot2187","iNaturalist",2023-03-04,"San Diego","high",32.865372,-117.19905,"Nobel Dr, San Diego, CA",50,"Lasthenia gracilis",NA,NA
+"19","in:151511241","Lasthenia gracilis","ddefreese","iNaturalist",2023-03-17,"Contra Costa","high",37.843392,-121.653868,"Brentwood",50,"Lasthenia gracilis",NA,NA
+"20","in:153775191","Lasthenia gracilis","william_hoyer","iNaturalist",2023-04-06,"Ventura","high",33.247525,-119.47608,"San Nicolas Naval Facility, CA",201,"Lasthenia gracilis",NA,NA
+"21","in:154274311","Lasthenia gracilis","bbell","iNaturalist",2023-04-09,"Orange","high",33.50173,-117.647583,"La Novia Ave, San Juan Capistrano, CA",50,"Lasthenia gracilis",NA,NA
+"22","in:155198048","Lasthenia gracilis","eddie-p13","iNaturalist",2023-04-16,"Orange","high",33.686873,-117.636842,NA,254,"Lasthenia gracilis",NA,NA
+"23","in:155238787","Lasthenia gracilis","cinditran","iNaturalist",2023-04-16,"Orange","high",33.674495,-117.647688,"Whiting Ranch Wilderness Park, Lake Forest, CA",50,"Lasthenia gracilis",NA,NA
+"24","in:155283459","Lasthenia gracilis","vreinkymov","iNaturalist",2023-04-16,"Orange","high",33.674171,-117.647545,NA,201,"Lasthenia gracilis",NA,NA
+"25","in:155339865","Lasthenia gracilis","anizohrabyan","iNaturalist",2023-04-16,"Orange","high",33.674355,-117.647933,"Whiting Ranch Wilderness Park, Lake Forest, CA",50,"Lasthenia gracilis",NA,NA
+"26","in:155372834","Lasthenia gracilis","kroque98","iNaturalist",2023-04-16,"Orange","high",33.686867,-117.636907,NA,201,"Lasthenia gracilis",NA,NA
+"27","in:200601809","Lasthenia gracilis","jordanii","iNaturalist",2024-02-25,"Butte","high",39.769512,-121.76912,"Bidwell Park, Chico, CA",452,"Lasthenia gracilis",NA,NA
+"28","in:201078931","Lasthenia gracilis","mhrains","iNaturalist",2024-03-02,"San Diego","high",33.078461,-116.421167,"Anza-Borrego Desert State Park, Julian, CA, US",50,"Lasthenia gracilis",NA,NA
+"29","in:203044456","Lasthenia gracilis","aparrot1","iNaturalist",2024-03-18,"Monterey","high",36.602312,-121.684372,"Toro County Park, Salinas, CA",50,"Lasthenia gracilis",NA,NA
+"30","in:203305831","Lasthenia gracilis","jrcowles","iNaturalist",2024-03-20,"Orange","high",33.802857,-117.794976,"Orange",113,"Lasthenia gracilis",NA,NA
+"31","in:203430170","Lasthenia gracilis","weverkaj","iNaturalist",2024-03-17,"San Bernardino","high",35.221112,-117.450462,"Boron, CA, US",153,"Lasthenia gracilis",NA,NA
+"32","in:203821304","Lasthenia gracilis","jrcowles","iNaturalist",2024-03-24,"Riverside","high",33.598249,-117.343945,"Lake Elsinore",113,"Lasthenia gracilis",NA,NA
+"33","in:204689997","Lasthenia gracilis","smfang","iNaturalist",2024-03-29,"San Diego","high",32.996912,-116.745567,"Cleveland National Forest, Ramona, CA, US",50,"Lasthenia gracilis",NA,NA
+"34","in:206878563","Lasthenia gracilis","meljean","iNaturalist",2024-04-10,"Los Angeles","high",33.400683,-118.47635,"Santa Catalina Island, Avalon, CA",50,"Lasthenia gracilis",NA,NA
+"35","in:206878709","Lasthenia gracilis","meljean","iNaturalist",2024-04-10,"Los Angeles","high",33.401572,-118.476028,"Santa Catalina Island, Avalon, CA",50,"Lasthenia gracilis",NA,NA
+"36","in:206883489","Lasthenia gracilis","meljean","iNaturalist",2024-04-08,"Los Angeles","high",33.42337,-118.470933,"Santa Catalina Island, Avalon, CA",50,"Lasthenia gracilis",NA,NA
+"37","in:20775037","Lasthenia gracilis","Christian Schwarz","iNaturalist",2019-02-25,"Los Angeles","high",33.24488,-119.466087,"Naval Outlying Field San Nicolas Island, , CA, US",452,"Lasthenia gracilis",NA,NA
+"38","in:207777076","Lasthenia gracilis","Morgan G.","iNaturalist",2024-04-13,"San Bernardino","high",34.149292,-116.457122,"Skyline Ranch Rd, Yucca Valley, CA, US",28,"Lasthenia gracilis",NA,NA
+"39","in:20823299","Lasthenia gracilis","Adam Searcy","iNaturalist",2019-02-26,"Los Angeles","high",33.268683,-119.523803,"San Nicolas Naval Facility, , CA, US",78,"Lasthenia gracilis",NA,NA
+"40","in:20865667","Lasthenia gracilis","sue_meiman","iNaturalist",2019-03-01,"Los Angeles","medium",32.968979,-118.569268,"Los Angeles County, CA, USA",29559,"Lasthenia gracilis",NA,NA
+"41","in:20933001","Lasthenia gracilis","Millie Basden","iNaturalist",2019-03-03,"San Diego","high",32.840432,-117.074032,"Rim Trail, Mission Trails Regional Park, San Diego, CA",706,"Lasthenia gracilis",NA,NA
+"42","in:20991871","Lasthenia gracilis","tmsan01","iNaturalist",2019-03-05,"Orange","high",33.709378,-118.057922,"Bolsa Chica Ecological Reserve, Huntington Beach, CA, US",78,"Lasthenia gracilis",NA,NA
+"43","in:21004475","Lasthenia gracilis","Stephen Hodges","iNaturalist",2019-03-02,"San Diego","high",32.614045,-116.183912,"Jacumba Hot Springs, CA 91934, USA",50,"Lasthenia gracilis",NA,NA
+"44","in:213053784","Lasthenia gracilis","Tom Chester","iNaturalist",2024-04-29,"Riverside","high",33.638,-116.60269,"Riverside County, CA, USA",78,"Lasthenia gracilis",NA,NA
+"45","in:213078043","Lasthenia gracilis","Howard Friedman","iNaturalist",2024-04-28,"Santa Clara","high",37.223596,-121.707946,"Coyote, CA, USA",50,"Lasthenia gracilis",NA,NA
+"46","in:21319170","Lasthenia gracilis","jd_sd_fieldobvs","iNaturalist",2019-03-15,"Imperial","medium",32.628736,-116.091373,"Ocotillo, CA 92259, USA",16741,"Lasthenia gracilis",NA,NA
+"47","in:21399723","Lasthenia gracilis","smfang","iNaturalist",2019-03-19,"San Diego","high",33.177637,-117.300987,"Marron Rd, Carlsbad, CA, US",113,"Lasthenia gracilis",NA,NA
+"48","in:21470944","Lasthenia gracilis","Adam Searcy","iNaturalist",2019-03-21,"Santa Barbara","high",33.47332,-119.039589,"Channel Islands National Park, , CA, US",78,"Lasthenia gracilis",NA,NA
+"49","in:21545623","Lasthenia gracilis","Natalie Downe","iNaturalist",2019-03-21,"San Diego","high",33.126781,-116.42385,"Anza-Borrego Desert State Park, Julian, CA, US",78,"Lasthenia gracilis",NA,NA
+"50","in:21760921","Lasthenia gracilis","dkincmbria","iNaturalist",2019-03-29,"San Luis Obispo","high",35.246517,-120.691156,NA,78,"Lasthenia gracilis",NA,NA
+"51","in:21815718","Lasthenia gracilis","sea-kangaroo","iNaturalist",2019-03-19,"San Diego","high",33.1491,-116.34882,"Anza-Borrego Desert State Park, California",314,"Lasthenia gracilis",NA,NA
+"52","in:21852885","Lasthenia gracilis","pocketmouse","iNaturalist",2019-03-30,"San Luis Obispo","high",35.275638,-119.816392,"Carrizo Plain National Monument, Santa Margarita, CA, US",78,"Lasthenia gracilis",NA,NA
+"53","in:220131136","Lasthenia gracilis","susannaofwren","iNaturalist",2024-05-04,"Los Angeles","high",34.488587,-118.316887,"Pacific Crest National Scenic Trail, Santa Clarita, CA, US",50,"Lasthenia gracilis",NA,NA
+"54","in:22306795","Lasthenia gracilis","marzduffy","iNaturalist",2019-04-09,"San Diego","high",32.644775,-116.69387,"Jamul, Jamul, CA, US",1809,"Lasthenia gracilis",NA,NA
+"55","in:22394067","Lasthenia gracilis","jimpark67","iNaturalist",2019-04-01,"Imperial","high",32.67253,-116.097908,"92251, Imperial, CA, US",78,"Lasthenia gracilis",NA,NA
+"56","in:22420901","Lasthenia gracilis","Terry Hunefeld","iNaturalist",2019-04-11,"San Diego","high",33.110675,-116.502854,"25909",78,"Lasthenia gracilis",NA,NA
+"57","in:22482937","Lasthenia gracilis","parisrebl","iNaturalist",2019-04-13,"Los Angeles","high",33.357276,-118.35564,"Los Angeles County, US-CA, US",78,"Lasthenia gracilis",NA,NA
+"58","in:22572116","Lasthenia gracilis","Don Rideout","iNaturalist",2019-04-15,"San Diego","high",33.234356,-116.598703,"San Diego County, CA, USA",78,"Lasthenia gracilis",NA,NA
+"59","in:22684968","Lasthenia gracilis","ronvanderhoff","iNaturalist",2019-04-18,"Orange","high",33.741517,-117.652012,NA,706,"Lasthenia gracilis",NA,NA
+"60","in:24419887","Lasthenia gracilis","Anna Arft","iNaturalist",2019-04-29,"San Diego","high",33.009702,-116.559187,"Cuyamaca Rancho State Park, Descanso, CA, US",78,"Lasthenia gracilis",NA,NA
+"61","in:24422389","Lasthenia gracilis","smfang","iNaturalist",2019-04-26,"San Diego","high",33.086717,-117.209992,"Denning Dr, Encinitas, CA, US",113,"Lasthenia gracilis",NA,NA
+"62","in:24633017","Lasthenia gracilis","dkincmbria","iNaturalist",2019-05-04,"San Benito","high",36.494636,-121.2072,NA,2827,"Lasthenia gracilis",NA,NA
+"63","in:24641136","Lasthenia gracilis","catchang","iNaturalist",2019-05-04,"San Benito","high",36.470303,-121.187012,"Pinnacles National Park, Paicines, CA, US",201,"Lasthenia gracilis",NA,NA
+"64","in:246588979","Lasthenia gracilis","shoals","iNaturalist",2024-03-04,"Ventura","high",34.261628,-118.805153,"Mount McCoy Trail, Simi Valley, CA",50,"Lasthenia gracilis",NA,NA
+"65","in:259490034","Lasthenia gracilis","jordanii","iNaturalist",2025-01-24,"Butte","high",39.7771,-121.737633,"Bidwell Park, Chico, CA",615,"Lasthenia gracilis",NA,NA
+"66","in:267016581","Lasthenia gracilis","Taye Bright","iNaturalist",2025-03-25,"Madera","high",37.367237,-119.688355,"Ahwahnee, CA, US",50,"Lasthenia gracilis",NA,NA
+"67","in:270818098","Lasthenia gracilis","kevin mason","iNaturalist",2025-04-15,"Ventura","high",34.319867,-118.950128,"Waters Rd, Moorpark, CA, US",78,"Lasthenia gracilis",NA,NA
+"68","in:273128916","Lasthenia gracilis","lupine_luminous","iNaturalist",2025-04-20,"Santa Barbara","high",34.035458,-120.046631,"Channel Islands National Park, CA, US",50,"Lasthenia gracilis",NA,NA
+"69","in:27727722","Lasthenia gracilis","Adam Searcy","iNaturalist",2019-06-25,"Los Angeles","high",32.880962,-118.487083,"San Clemente Island Underwater Range, , CA, US",78,"Lasthenia gracilis",NA,NA
+"70","in:278478786","Lasthenia gracilis","Melanie Davis","iNaturalist",2025-04-26,"Los Angeles","high",32.848355,-118.399863,"Los Angeles County, US-CA, US",113,"Lasthenia gracilis",NA,NA
+"71","in:280862433","Lasthenia gracilis","Tom Chester","iNaturalist",2025-05-09,"San Diego","high",32.89606,-116.46994,"San Diego County, CA, USA",78,"Lasthenia gracilis",NA,NA
+"72","in:39421118","Lasthenia gracilis","jerrythornton","iNaturalist",2020-03-01,"Orange","high",33.790792,-117.692192,"Fremont Canyon, Orange County, CA, USA",201,"Lasthenia gracilis",NA,NA
+"73","in:40613583","Lasthenia gracilis","Don Rideout","iNaturalist",2020-03-23,"San Diego","high",33.220908,-116.705364,"San Diego County, CA, USA",1963,"Lasthenia gracilis",NA,NA
+"74","in:41051239","Lasthenia gracilis","Aaron Echols","iNaturalist",2020-03-29,"San Bernardino","high",34.4846,-117.137864,"Japatul Rd, Apple Valley, CA, US",804,"Lasthenia gracilis",NA,NA
+"75","in:41408775","Lasthenia gracilis","Douglas","iNaturalist",2020-04-04,"Riverside","high",33.993645,-117.326855,"Box Springs Mountain Reserve, Riverside, CA, US",314,"Lasthenia gracilis",NA,NA
+"76","in:42290573","Lasthenia gracilis","Dan Fitzgerald (Fitz)","iNaturalist",2020-04-15,"Santa Clara","medium",37.360638,-121.482727,"Santa Clara County, California",7853,"Lasthenia gracilis",NA,NA
+"77","in:5196665","Lasthenia gracilis","Adam Searcy","iNaturalist",2017-02-23,"San Diego","high",32.777464,-116.306528,"McCain Valley Nat'l Co-op Land & Wildlife Mngmt Area, San Diego County, US-CA, US",78,"Lasthenia gracilis",NA,NA
+"78","in:5277034","Lasthenia gracilis","annikadrenidae","iNaturalist",2017-03-10,"San Diego","high",32.672177,-117.244792,"Cabrillo National Monument, San Diego, CA, US",3631,"Lasthenia gracilis",NA,NA
+"79","in:53811173","Lasthenia gracilis","Ron Vanderhoff","iNaturalist",2016-02-28,"Orange","high",33.547087,-117.554514,NA,3019,"Lasthenia gracilis",NA,NA
+"80","in:5509855","Lasthenia gracilis","rlolliffyang","iNaturalist",2017-03-30,"San Diego","high",33.298069,-117.462805,"Marine Corps Base Camp Pendleton, Camp Pendleton, CA, US",314,"Lasthenia gracilis",NA,NA
+"81","in:5510572","Lasthenia gracilis","rlolliffyang","iNaturalist",2017-03-30,"Orange","high",33.636009,-117.845391,"University of California",78,"Lasthenia gracilis",NA,NA
+"82","in:5571916","Lasthenia gracilis","hdriscoll","iNaturalist",2017-04-04,"Los Angeles","high",34.77923,-117.773618,"Phacelia Wildlife Sanctuary, Los Angeles County, US-CA, US",28,"Lasthenia gracilis",NA,NA
+"83","in:5604097","Lasthenia gracilis","hdriscoll","iNaturalist",2017-04-07,"Los Angeles","high",34.761424,-118.086067,"48058-48198 25th Street East Lancaster, CA 93535",254,"Lasthenia gracilis",NA,NA
+"84","in:71492179","Lasthenia gracilis","jared_huxley","iNaturalist",2021-03-15,"Riverside","medium",33.934703,-117.334938,"Canyon Crest Dr, Riverside, CA, US",25446,"Lasthenia gracilis",NA,NA
+"85","in:71671553","Lasthenia gracilis","cynestor","iNaturalist",2021-03-20,"Ventura","medium",34.424731,-119.067399,"Santa Paula",28352,"Lasthenia gracilis",NA,NA
+"86","in:72693523","Lasthenia gracilis","Christine Irwin","iNaturalist",2021-04-01,"Orange","high",33.843463,-117.73243,"S Summer Breeze Ln, Anaheim, CA",78,"Lasthenia gracilis",NA,NA
+"87","in:73080220","Lasthenia gracilis","Aaron Echols","iNaturalist",2021-04-03,"Santa Barbara","high",34.930192,-119.726325,"Aliso Canyon Rd, New Cuyama, CA, US",3631,"Lasthenia gracilis",NA,NA
+"88","in:77200898","Lasthenia gracilis","emilychebul /<br> Emily Chebul","iNaturalist",2021-05-02,"Orange","high",33.703094,-117.648553,"Limestone-Whiting Wilderness Park, Orange",78,"Lasthenia gracilis",NA,NA
+"89","io122667","Lasthenia gracilis","Ron Vanderhoff",NA,2024-03-27,"Orange","high",33.637922,-117.75457,"100 NW junction Lake Forest Drive and Romano Rd., (500m E Lag. Cyn. Rd., Irvine",50,"Lasthenia gracilis","Flowering","F"
+"90","io126653","Lasthenia gracilis","Ron Vanderhoff",NA,2024-04-28,"Orange","high",33.654663,-117.451392,"+/- 150m N of NE terminus of Blue Jay Campground, Santa Ana Mts.",50,"Lasthenia gracilis","Flowering","F"
+"91","io127461","Lasthenia gracilis","Ron Vanderhoff",NA,2024-05-05,"Riverside","high",33.625337,-117.303658,"Elsinore vernal pools, 500m NNW junction Corydon Rd. and Palomar St., Elsinore 	io127430	Marsilea vestita Hairy waterclover IRVC1648	 +3  Ron Vanderhoff	2024-05-05	Riverside	Elsinore vernal pools, 500m NNW junction Corydon Rd. and Palomar St., Elsinore 	i",50,"Lasthenia gracilis","Flowering","F"
+"92","io128681","Lasthenia gracilis","Mel Letterman","Irvine Ranch Conservancy",2024-05-13,"Orange","high",33.769213,-117.750192,"Loma Ridge (OC)",50,"Lasthenia gracilis","Flowering","F"
+"93","io149647","Lasthenia gracilis","Cynthia Powell",NA,2025-03-22,"Contra Costa","high",37.8369,-121.68719,NA,78,"Lasthenia gracilis",NA,NA
+"94","io151686","Lasthenia gracilis","Mike Russler",NA,2025-04-16,"Monterey","high",35.902363,-120.962988,NA,50,"Lasthenia gracilis",NA,NA
+"95","io26714","Lasthenia gracilis","Angelique Herman",NA,2020-04-04,"San Luis Obispo","high",35.10745,-120.5549,NA,201,"Lasthenia gracilis",NA,NA
+"96","io27299","Lasthenia gracilis","Liz Block",NA,2020-04-15,"Kern","high",35.02741,-118.17749,NA,113,"Lasthenia gracilis",NA,NA
+"97","io61187","Lasthenia gracilis","Mike Russler",NA,2022-02-18,"San Benito","high",36.593093,-120.755266,"Jackass Grade Panoche Road",50,"Lasthenia gracilis",NA,NA
+"98","io61188","Lasthenia gracilis","Mike Russler",NA,2022-02-18,"San Benito","high",36.592451,-120.754849,"Jackass Grade Panoche Road",50,"Lasthenia gracilis",NA,NA
+"99","io61763","Lasthenia gracilis","Mike Russler",NA,2022-02-28,"Fresno","high",36.158761,-120.250129,"Present throughout Ecological Reserve Phelps Street Access",50,"Lasthenia gracilis",NA,NA
+"100","io61764","Lasthenia gracilis","Mike Russler",NA,2022-02-28,"Fresno","high",36.16054,-120.247047,"Present throughout Ecological Reserve Phelps Street Access",50,"Lasthenia gracilis",NA,NA
+"101","io61765","Lasthenia gracilis","Mike Russler",NA,2022-02-28,"Fresno","high",36.160567,-120.246633,"Present throughout Ecological Reserve Phelps Street Access",50,"Lasthenia gracilis",NA,NA
+"102","io61766","Lasthenia gracilis","Mike Russler",NA,2022-02-28,"Fresno","high",36.16026,-120.244908,"Present throughout Ecological Reserve Phelps Street Access",50,"Lasthenia gracilis",NA,NA
+"103","io61767","Lasthenia gracilis","Mike Russler",NA,2022-02-28,"Fresno","high",36.161086,-120.246903,"Present throughout Ecological Reserve Phelps Street Access",50,"Lasthenia gracilis",NA,NA
+"104","io62286","Lasthenia gracilis","Cynthia Powell",NA,2022-03-14,"Contra Costa","high",37.86142,-121.70286,NA,78,"Lasthenia gracilis",NA,NA
+"105","io62456","Lasthenia gracilis","Ron Vanderhoff",NA,2022-03-17,"Riverside","high",33.59852,-117.344422,"300-500 m S Elsinore Peak, Santa Ana Mts.",50,"Lasthenia gracilis","Flowering","F"
+"106","io62462","Lasthenia gracilis","Ron Vanderhoff",NA,2022-03-17,"Riverside","high",33.597908,-117.344182,"300-500 m S Elsinore Peak, Santa Ana Mts.",50,"Lasthenia gracilis","Flowering","F"
+"107","io63967","Lasthenia gracilis","Ron Vanderhoff",NA,2022-04-07,"San Bernardino","high",33.94155,-117.764205,"Telephone Pole Rd. 1.5-1.6 road km SE SR142, Chino hills",50,"Lasthenia gracilis","Flowering","F"
+"108","io79938","Lasthenia gracilis","Ron Vanderhoff",NA,2022-12-18,"Orange","high",33.656945,-117.711667,"Alton Parkway at Toledo Way, Lake Forest",50,"Lasthenia gracilis","Flowering","F"
+"109","io82356","Lasthenia gracilis","Ron Vanderhoff",NA,2023-02-16,"Orange","high",33.674497,-117.64712,"Raptor Rd., 300-450 m W of Glenn Ranch Rd. parking lot, Whiting Ranch Park",50,"Lasthenia gracilis","Flowering","F"
+"110","io83621","Lasthenia gracilis","Jacob Smith",NA,2023-03-16,"Fresno","high",36.073853,-120.122353,"Abundant of flat areas of the East Dome of Kettleman Hills, Fresno County, California.",50,"Lasthenia gracilis",NA,NA
+"111","io85632","Lasthenia gracilis","Ron Vanderhoff",NA,2023-04-13,"Orange","high",33.680762,-117.645387,"Serrano Road, midway between junctions of Live Oak and Serrano Cow Trails, Whiting Ranch Wilderness Park",50,"Lasthenia gracilis","Flowering","F"
+"112","io85643","Lasthenia gracilis","Ron Vanderhoff",NA,2023-04-13,"Orange","high",33.686897,-117.636775,"Concourse Rd., 50m SE of junction of Edison Rd., Whiting Ranch Wilderness Park",50,"Lasthenia gracilis","Flowering","F"
+"113","io85648","Lasthenia gracilis","Ron Vanderhoff",NA,2023-04-13,"Orange","high",33.691667,-117.64,"Edison Rd., ca .8 trail km N of junction of Concourse Rd., Whiting Ranch Wilderness Park",50,"Lasthenia gracilis","Flowering","F"
+"114","io85788","Lasthenia gracilis","Ron Vanderhoff",NA,2023-04-15,"Orange","high",33.634113,-117.845963,"UCI Ecological Preserve, Irvine",50,"Lasthenia gracilis","Flowering","F"
+"115","io88321","Lasthenia gracilis","Ron Vanderhoff",NA,2023-05-07,"Orange","high",33.541462,-117.549505,"San Juan Trail, 300-400m N Ortega Flats Campground, Ronald W, Caspers Wilderness Park",50,"Lasthenia gracilis","Flowering","F"
+"116","io89528","Lasthenia gracilis","Ron Vanderhoff",NA,2023-05-14,"Orange","high",33.674438,-117.647563,"10-50m NE of intersection of Raptor Rd. and Live Oak Trail, Whiting Ranch Park",50,"Lasthenia gracilis","Fruiting","R"
+"117","mg106639","Lasthenia gracilis","David popp",NA,2020-02-28,"Tehama","high",39.912883,-121.959275,NA,161,"Lasthenia gracilis","Flowering","F"
+"118","mg106643","Lasthenia gracilis","David popp",NA,2020-02-28,"Butte","high",39.877682,-121.994324,NA,111,"Lasthenia gracilis","Flowering","F"
+"119","mg106646","Lasthenia gracilis","David popp",NA,2020-02-28,"Butte","medium",39.709502,-121.720966,NA,39008,"Lasthenia gracilis","Flowering","F"
+"120","mg106687","Lasthenia gracilis","David popp",NA,2020-03-01,"Butte","high",39.701499,-121.687225,NA,138,"Lasthenia gracilis","Flowering","F"
+"121","mg107950","Lasthenia gracilis","R.A. Chasey",NA,2020-03-15,"Napa","high",38.609314,-122.558104,NA,360,"Lasthenia gracilis",NA,NA
+"122","mg108643","Lasthenia gracilis","Lynn Overtree",NA,2020-04-08,"Santa Cruz","high",37.071022,-121.999392,"City of Scotts Valley's Glenwood Open Space Preserve. On thin soiled ridgeline",47,"Lasthenia gracilis","Flowering","F"
+"123","mg109733","Lasthenia gracilis","David popp",NA,2020-04-25,"Butte","high",39.723868,-121.691882,NA,87,"Lasthenia gracilis","Flowering","F"
+"124","mg109812","Lasthenia gracilis","R.A. Chasey",NA,2020-04-25,"Mendocino","high",38.899732,-123.123426,NA,181,"Lasthenia gracilis",NA,NA
+"125","mg126519","Lasthenia gracilis","David popp",NA,2021-02-21,"Butte","high",39.641588,-121.640828,NA,87,"Lasthenia gracilis","Flowering","F"
+"126","mg127581","Lasthenia gracilis","David popp",NA,2021-03-10,"Butte","high",39.726221,-121.773459,NA,602,"Lasthenia gracilis","Flowering","F"
+"127","mg127732","Lasthenia gracilis","David popp",NA,2021-03-11,"Butte","high",39.598808,-121.544317,NA,9776,"Lasthenia gracilis","Flowering","F"
+"128","mg128161","Lasthenia gracilis","David popp",NA,2021-03-17,"Butte","high",39.823173,-121.71237,NA,175,"Lasthenia gracilis",NA,NA
+"129","mg128176","Lasthenia gracilis","David popp",NA,2021-03-17,"Butte","high",39.781962,-121.72878,NA,540,"Lasthenia gracilis","Flowering","F"
+"130","mg128519","Lasthenia gracilis","David popp",NA,2021-03-21,"Butte","high",39.597489,-121.651702,NA,133,"Lasthenia gracilis","Flowering","F"
+"131","mg129330","Lasthenia gracilis","David popp",NA,2021-03-26,"Tehama","high",40.237294,-122.159312,NA,136,"Lasthenia gracilis","Flowering","F"
+"132","mg129906","Lasthenia gracilis","David popp",NA,2021-03-31,"Butte","high",39.806098,-121.714043,"#fire",90,"Lasthenia gracilis","Flowering","F"
+"133","mg129916","Lasthenia gracilis","David popp",NA,2021-03-31,"Butte","high",39.753983,-121.739886,"#fire",129,"Lasthenia gracilis","Flowering","F"
+"134","mg130573","Lasthenia gracilis","David popp",NA,2021-04-07,"Butte","high",39.580348,-121.555611,NA,58,"Lasthenia gracilis","Flowering","F"
+"135","mg132336","Lasthenia gracilis","David popp",NA,2021-04-22,"Butte","high",39.793955,-121.841861,NA,57,"Lasthenia gracilis","Flowering","F"
+"136","mg157976","Lasthenia gracilis","David popp",NA,2022-03-20,"Butte","high",39.581131,-121.550559,NA,57,"Lasthenia gracilis","Flowering","F"
+"137","mg193650","Lasthenia gracilis","David popp",NA,2023-03-05,"Butte","high",39.79381,-121.842584,NA,50,"Lasthenia gracilis","Flowering","F"
+"138","mg194210","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-08,"Fresno","high",36.054202,-120.135008,NA,247,"Lasthenia gracilis",NA,NA
+"139","mg194278","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-08,"Fresno","high",36.076825,-120.135091,NA,119,"Lasthenia gracilis",NA,NA
+"140","mg195233","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.079002,-120.1578,NA,371,"Lasthenia gracilis",NA,NA
+"141","mg195234","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.07941,-120.157758,NA,454,"Lasthenia gracilis",NA,NA
+"142","mg195239","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.079525,-120.158168,NA,1010,"Lasthenia gracilis",NA,NA
+"143","mg195255","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.0702,-120.127154,NA,321,"Lasthenia gracilis",NA,NA
+"144","mg195256","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.070183,-120.126992,NA,155,"Lasthenia gracilis",NA,NA
+"145","mg195323","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.073818,-120.126624,NA,201,"Lasthenia gracilis",NA,NA
+"146","mg195324","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.073536,-120.126474,NA,291,"Lasthenia gracilis",NA,NA
+"147","mg195495","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.073738,-120.122409,NA,47,"Lasthenia gracilis",NA,NA
+"148","mg195504","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.073683,-120.121704,NA,373,"Lasthenia gracilis",NA,NA
+"149","mg196006","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-17,"Fresno","high",36.065547,-120.126316,NA,47,"Lasthenia gracilis",NA,NA
+"150","mg196017","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-17,"Fresno","high",36.065701,-120.124994,NA,78,"Lasthenia gracilis",NA,NA
+"151","mg196055","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-17,"Kings","high",36.046897,-120.128658,NA,47,"Lasthenia gracilis",NA,NA
+"152","mg196600","Lasthenia gracilis","David popp",NA,2023-03-25,"Butte","high",39.883548,-121.995827,NA,317,"Lasthenia gracilis","Flowering","F"
+"153","mg196621","Lasthenia gracilis","David popp",NA,2023-03-25,"Tehama","high",39.891183,-122.0243,NA,103,"Lasthenia gracilis","Flowering","F"
+"154","mg196837","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.051838,-120.139219,NA,189,"Lasthenia gracilis",NA,NA
+"155","mg196879","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.053286,-120.13945,NA,145,"Lasthenia gracilis",NA,NA
+"156","mg196893","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.065559,-120.138635,NA,815,"Lasthenia gracilis",NA,NA
+"157","mg196930","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.065886,-120.135861,NA,172,"Lasthenia gracilis",NA,NA
+"158","mg196953","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.065889,-120.135466,NA,230,"Lasthenia gracilis",NA,NA
+"159","mg196973","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.066013,-120.134439,NA,47,"Lasthenia gracilis",NA,NA
+"160","mg196993","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.066967,-120.136923,NA,286,"Lasthenia gracilis",NA,NA
+"161","mg196996","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.066122,-120.139083,NA,98,"Lasthenia gracilis",NA,NA
+"162","mg197000","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.066803,-120.139103,NA,152,"Lasthenia gracilis",NA,NA
+"163","mg197094","Lasthenia gracilis","Ryan O'Dell",NA,2023-03-24,"Kings","high",36.051435,-120.078379,NA,135,"Lasthenia gracilis",NA,NA
+"164","mg197859","Lasthenia gracilis","R.A. Chasey",NA,2023-03-31,"Contra Costa","high",37.861295,-121.702814,NA,63,"Lasthenia gracilis",NA,NA
+"165","mg197953","Lasthenia gracilis","David popp",NA,2023-04-01,"Tehama","high",40.158206,-122.110301,NA,618,"Lasthenia gracilis","Flowering","F"
+"166","mg198704","Lasthenia gracilis","David popp",NA,2023-04-06,"Butte","high",39.709405,-121.536657,NA,179,"Lasthenia gracilis","Flowering","F"
+"167","mg199883","Lasthenia gracilis","R.A. Chasey",NA,2023-04-14,"Stanislaus","high",37.439423,-121.341093,NA,214,"Lasthenia gracilis",NA,NA
+"168","mg201341","Lasthenia gracilis","David popp",NA,2023-04-26,"Butte","high",39.735638,-121.78167,NA,144,"Lasthenia gracilis","Flowering","F"
+"169","mg201872","Lasthenia gracilis","David popp",NA,2023-05-01,"Butte","high",39.80539,-121.860012,NA,2383,"Lasthenia gracilis","Flowering","F"
+"170","mg201886","Lasthenia gracilis","David popp",NA,2023-05-01,"Butte","high",39.805416,-121.859561,NA,76,"Lasthenia gracilis","Flowering","F"
+"171","mg201990","Lasthenia gracilis","David popp",NA,2023-05-02,"Butte","high",39.849651,-121.94771,NA,1778,"Lasthenia gracilis","Flowering","F"
+"172","mg232450","Lasthenia gracilis","David popp",NA,2024-02-28,"Butte","high",39.595815,-121.64834,NA,47,"Lasthenia gracilis","Flowering","F"
+"173","mg234127","Lasthenia gracilis","David popp",NA,2024-03-14,"Butte","high",39.771184,-121.734514,NA,263,"Lasthenia gracilis","Fruiting","R"
+"174","mg234254","Lasthenia gracilis","David popp",NA,2024-03-15,"Butte","high",39.707926,-121.729512,NA,67,"Lasthenia gracilis","Fruiting","R"
+"175","mg234352","Lasthenia gracilis","David popp",NA,2024-03-16,"Butte","high",39.771505,-121.783337,NA,126,"Lasthenia gracilis","Flowering","F"
+"176","mg234522","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073641,-120.126592,NA,61,"Lasthenia gracilis",NA,NA
+"177","mg234523","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073459,-120.126408,NA,54,"Lasthenia gracilis",NA,NA
+"178","mg234528","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073045,-120.126105,NA,54,"Lasthenia gracilis",NA,NA
+"179","mg234530","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.072896,-120.12591,NA,39,"Lasthenia gracilis",NA,NA
+"180","mg234647","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.074507,-120.126548,NA,47,"Lasthenia gracilis",NA,NA
+"181","mg234648","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.074579,-120.126617,NA,58,"Lasthenia gracilis",NA,NA
+"182","mg234649","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.074601,-120.126593,NA,32,"Lasthenia gracilis",NA,NA
+"183","mg234650","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.074608,-120.126567,NA,29,"Lasthenia gracilis",NA,NA
+"184","mg234651","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.074624,-120.126548,NA,129,"Lasthenia gracilis",NA,NA
+"185","mg234688","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073753,-120.122378,NA,189,"Lasthenia gracilis",NA,NA
+"186","mg234690","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073713,-120.12235,NA,67,"Lasthenia gracilis",NA,NA
+"187","mg234694","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073646,-120.121787,NA,53,"Lasthenia gracilis",NA,NA
+"188","mg234696","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-14,"Fresno","high",36.073388,-120.121773,NA,67,"Lasthenia gracilis",NA,NA
+"189","mg234788","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-15,"Fresno","high",36.076584,-120.155392,NA,161,"Lasthenia gracilis",NA,NA
+"190","mg234790","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-15,"Fresno","high",36.069849,-120.160077,NA,613,"Lasthenia gracilis",NA,NA
+"191","mg235049","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-15,"Kings","high",36.041268,-120.127585,NA,49,"Lasthenia gracilis",NA,NA
+"192","mg235050","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-15,"Kings","high",36.04114,-120.127791,NA,47,"Lasthenia gracilis",NA,NA
+"193","mg235052","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-15,"Kings","high",36.041146,-120.127803,NA,30,"Lasthenia gracilis",NA,NA
+"194","mg235290","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-16,"Fresno","high",36.074622,-120.130661,NA,50,"Lasthenia gracilis",NA,NA
+"195","mg235317","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-16,"Fresno","high",36.077174,-120.13358,NA,47,"Lasthenia gracilis",NA,NA
+"196","mg235372","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-16,"Fresno","high",36.215344,-120.319565,NA,45,"Lasthenia gracilis",NA,NA
+"197","mg235373","Lasthenia gracilis","Ryan O'Dell",NA,2024-03-16,"Fresno","high",36.215344,-120.319565,NA,45,"Lasthenia gracilis",NA,NA
+"198","mg236225","Lasthenia gracilis","David popp",NA,2024-03-26,"Tehama","high",40.284944,-122.115904,NA,49,"Lasthenia gracilis","Fruiting","R"
+"199","mg236230","Lasthenia gracilis","David popp",NA,2024-03-26,"Tehama","high",40.267331,-122.131393,NA,72,"Lasthenia gracilis","Flowering","F"
+"200","mg236281","Lasthenia gracilis","David popp",NA,2024-03-26,"Tehama","high",40.277869,-122.136241,NA,252,"Lasthenia gracilis","Flowering","F"
+"201","mg236666","Lasthenia gracilis","David popp",NA,2024-03-31,"Butte","high",39.552452,-121.623942,NA,78,"Lasthenia gracilis","Flowering","F"
+"202","mg236670","Lasthenia gracilis","David popp",NA,2024-03-31,"Butte","high",39.553109,-121.624211,NA,44,"Lasthenia gracilis","Flowering","F"
+"203","mg236682","Lasthenia gracilis","David popp",NA,2024-03-31,"Butte","high",39.594738,-121.642809,NA,39,"Lasthenia gracilis","Flowering","F"
+"204","mg237616","Lasthenia gracilis","David popp",NA,2024-04-08,"Butte","high",39.721225,-121.703512,NA,60,"Lasthenia gracilis","Flowering","F"
+"205","mg238769","Lasthenia gracilis","Randy Huey","All Wildflower Seekers",2024-04-19,"San Mateo","high",37.400261,-122.211258,NA,74,"Lasthenia gracilis",NA,NA
+"206","mg239141","Lasthenia gracilis","David popp",NA,2024-04-22,"Butte","high",39.710298,-121.574879,NA,143,"Lasthenia gracilis","Flowering","F"
+"207","mg239747","Lasthenia gracilis","David popp",NA,2024-04-25,"Butte","high",39.75054,-121.748187,NA,131,"Lasthenia gracilis","Fruiting","R"
+"208","mg239885","Lasthenia gracilis","David popp",NA,2024-04-27,"Tehama","high",40.159593,-122.108492,NA,44,"Lasthenia gracilis","Flowering","F"
+"209","mg240054","Lasthenia gracilis","David popp",NA,2024-04-28,"Tehama","high",39.90156,-121.982301,NA,46,"Lasthenia gracilis","Flowering","F"
+"210","mg266568","Lasthenia gracilis","David popp",NA,2025-02-10,"Butte","high",39.729966,-121.681317,NA,45,"Lasthenia gracilis","Flowering","F"
+"211","mg266734","Lasthenia gracilis","David popp",NA,2025-02-15,"Butte","high",39.751603,-121.749143,NA,594,"Lasthenia gracilis","Flowering","F"
+"212","mg266840","Lasthenia gracilis","David popp",NA,2025-02-19,"Butte","high",39.722476,-121.702905,NA,45,"Lasthenia gracilis","Flowering","F"
+"213","mg266958","Lasthenia gracilis","David popp",NA,2025-02-22,"Butte","high",39.778165,-121.749737,NA,188,"Lasthenia gracilis","Flowering","F"
+"214","mg267233","Lasthenia gracilis","David popp",NA,2025-02-26,"Tehama","high",39.906041,-122.002748,NA,46,"Lasthenia gracilis","Flowering","F"
+"215","mg267483","Lasthenia gracilis","David popp",NA,2025-02-27,"Tehama","high",39.895893,-122.023692,NA,56,"Lasthenia gracilis","Flowering","F"
+"216","mg267609","Lasthenia gracilis","David popp",NA,2025-03-03,"Butte","high",39.726231,-121.683233,NA,239,"Lasthenia gracilis","Flowering","F"
+"217","mg267686","Lasthenia gracilis","David popp",NA,2025-03-05,"Butte","high",39.723618,-121.690921,NA,45,"Lasthenia gracilis","Flowering","F"
+"218","mg267748","Lasthenia gracilis","David popp",NA,2025-03-06,"Butte","high",39.725118,-121.683149,NA,45,"Lasthenia gracilis","Flowering","F"
+"219","mg267877","Lasthenia gracilis","David popp",NA,2025-03-09,"Butte","high",39.810834,-121.835593,NA,45,"Lasthenia gracilis","Flowering","F"
+"220","mg268103","Lasthenia gracilis","David popp",NA,2025-03-11,"Butte","high",39.815539,-121.835337,NA,45,"Lasthenia gracilis","Flowering","F"
+"221","mg268518","Lasthenia gracilis","David popp",NA,2025-03-19,"Butte","high",39.776537,-121.735237,NA,45,"Lasthenia gracilis","Flowering","F"
+"222","mg268543","Lasthenia gracilis","David popp",NA,2025-03-19,"Butte","high",39.777208,-121.737269,NA,45,"Lasthenia gracilis","Flowering","F"
+"223","mg269262","Lasthenia gracilis","David popp",NA,2025-03-30,"Butte","high",39.592743,-121.636491,NA,568,"Lasthenia gracilis","Flowering","F"
+"224","mg269785","Lasthenia gracilis","David popp",NA,2025-04-06,"Butte","high",39.581194,-121.549356,NA,45,"Lasthenia gracilis",NA,NA
+"225","mg270762","Lasthenia gracilis","Danna Ojeda","Irvine Ranch Conservancy",2025-04-14,"Orange","high",33.634282,-117.764621,"Open Space Preserve South-Shady Canyon (COI): 5 sq ft",966,"Lasthenia gracilis","Fruiting","R"
+"226","mg271969","Lasthenia gracilis","David popp",NA,2025-04-23,"Tehama","high",39.91312,-121.968241,NA,68,"Lasthenia gracilis","Flowering","F"
+"227","mg274835","Lasthenia gracilis","David popp",NA,2025-05-04,"Butte","high",39.677495,-121.562122,NA,44,"Lasthenia gracilis","Flowering","F"
+"228","mg275285","Lasthenia gracilis","Anna Burns",NA,2025-05-06,"Lake","high",38.946352,-122.818976,"Westbound shoulder of Hwy 175 in vernally moist, exposed areas.",45,"Lasthenia gracilis",NA,NA
+"229","mg36865","Lasthenia gracilis","R.A. Chasey",NA,2017-03-12,"San Benito","high",36.576076,-120.726628,NA,254,"Lasthenia gracilis",NA,NA
+"230","mg38534","Lasthenia gracilis","Heath Bartosh",NA,2017-03-25,"Contra Costa","high",37.890776,-121.736719,NA,65,"Lasthenia gracilis",NA,NA
+"231","mg40441","Lasthenia gracilis","Lynn Overtree",NA,2017-04-19,"Santa Cruz","high",37.068921,-122.00087,"City of Scotts Valley's Glenwood Open Space Preserve",28,"Lasthenia gracilis","Fruiting","R"
+"232","mg40443","Lasthenia gracilis","Lynn Overtree",NA,2017-04-19,"Santa Cruz","high",37.069168,-122.001749,"City of Scotts Valley's Glenwood Open Space Preserve",1963,"Lasthenia gracilis","Flowering","F"
+"233","mg40452","Lasthenia gracilis","Lynn Overtree",NA,2017-04-19,"Santa Cruz","medium",37.071021,-121.999034,"City of Scotts Valley's Glenwood Open Space Preserve",30790,"Lasthenia gracilis","Fruiting","R"
+"234","mg41378","Lasthenia gracilis","Lynn Overtree",NA,2017-04-27,"Santa Cruz","high",37.069128,-122.008397,"Scotts Valley High School Preserve",50,"Lasthenia gracilis","Fruiting","R"
+"235","mg61760","Lasthenia gracilis","Lynn Overtree",NA,2018-04-26,"Santa Cruz","high",37.06697,-122.00861,"City of Scotts Valley's Glenwood Open Space Preserve",314,"Lasthenia gracilis","Fruiting","R"
+"236","mg80174","Lasthenia gracilis","R.A. Chasey",NA,2019-03-23,"Fresno","high",36.622614,-120.663921,NA,90,"Lasthenia gracilis",NA,NA
+"237","mg80996","Lasthenia gracilis","R.A. Chasey",NA,2019-03-30,"San Luis Obispo","high",35.0617,-119.673907,NA,176,"Lasthenia gracilis",NA,NA
+"238","mg81156","Lasthenia gracilis","Saul Soto",NA,2019-04-04,"Orange","high",33.636084,-117.845557,"UCI Ecological Preserve, top of ridge near Locke Court entrance, small clearing, flat, rocky and gravelly",610,"Lasthenia gracilis","Fruiting","R"
+"239","mg81778","Lasthenia gracilis","R.A. Chasey",NA,2019-04-12,"Alameda","high",37.719481,-121.740864,NA,176,"Lasthenia gracilis",NA,NA
+"240","mu1471","Lasthenia gracilis","Ron Vanderhoff",NA,2020-04-11,"Orange","high",33.8766,-117.734,"Santa Ana River at Big Bend area, E of Yorba Linda",100,"Lasthenia gracilis","Flowering","F"
+"241","mu1614","Lasthenia gracilis","Ron Vanderhoff","Holy Fire",2020-04-16,"Orange","high",33.6596,-117.4271,"@fire, Holy Fire, Main Divide N, 2.2-2.6 mi. NW Hwy 74, Santa Ana Mts.",100,"Lasthenia gracilis","Flowering","F"
+"242","mu1997","Lasthenia gracilis","Ron Vanderhoff","Holy Fire",2020-04-26,"Orange","high",33.6681,-117.4373,"@fire, Holy Fire, Upper Leach Canyon, Santa Ana Mts.",100,"Lasthenia gracilis","Flowering","F"
+"243","mu2424","Lasthenia gracilis","Ron Vanderhoff",NA,2020-05-03,"Riverside","high",33.8827,-117.6523,"Santa Ana River, South side, W of Prado spillway",100,"Lasthenia gracilis","Flowering","F"
+"244","mu30413","Lasthenia gracilis","Alaine Arslan",NA,2023-04-06,"Butte","high",39.7857,-121.7395,"Yahi Trail, Chico CA, USA",7854,"Lasthenia gracilis",NA,NA
+"245","mu34953","Lasthenia gracilis","Charles Russell",NA,2023-03-24,"Tuolumne","high",37.9329,-120.457,"WGMV+55 Jamestown, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"246","mu40091","Lasthenia gracilis","Ron Vanderhoff",NA,2024-03-22,"Orange","high",33.6578,-117.7835,"Juanita Moe Trail & Bikeway, Irvine Open Space. Sand Canyon Rd., 300 m NW I405",50,"Lasthenia gracilis","Flowering","F"
+"247","mu40974","Lasthenia gracilis","Kyle Suchy",NA,2024-04-12,"San Luis Obispo","high",35.4012,-120.2805,"CP29+FR Wilson Corner, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"248","mu40978","Lasthenia gracilis","Kyle Suchy",NA,2024-04-12,"San Luis Obispo","high",35.4768,-120.3295,"7420 Camatti St, Shandon, CA 93461, USA",7854,"Lasthenia gracilis",NA,NA
+"249","mu41142","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2466,-120.6916,NA,7854,"Lasthenia gracilis",NA,NA
+"250","mu41146","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2465,-120.6911,NA,7854,"Lasthenia gracilis",NA,NA
+"251","mu41158","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2467,-120.691,NA,7854,"Lasthenia gracilis",NA,NA
+"252","mu41161","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2468,-120.6905,NA,7854,"Lasthenia gracilis",NA,NA
+"253","mu41163","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2466,-120.6915,"68W5+J9 San Luis Obispo, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"254","mu41190","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2472,-120.6899,"68W6+V2 San Luis Obispo, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"255","mu41192","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2472,-120.6899,"68W6+V2 San Luis Obispo, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"256","mu41193","Lasthenia gracilis","Kyle Suchy",NA,2024-04-17,"San Luis Obispo","high",35.2472,-120.6899,"68W6+V2 San Luis Obispo, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"257","mu42765","Lasthenia gracilis","Kyle Suchy",NA,2024-05-12,"San Luis Obispo","high",35.2689,-120.6842,"7898+H8 San Luis Obispo, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"258","mu467","Lasthenia gracilis","Ron Vanderhoff","Holy Fire",2020-03-22,"Orange","high",33.6635,-117.4321,"@fire, Holy Fire, Main Divide Rd., +- 2.75 Rd. Mi. from Hwy 74, Santa Ana Mts.",100,"Lasthenia gracilis","Flowering","F"
+"259","mu50131","Lasthenia gracilis","Alaine Arslan",NA,2025-02-20,"Butte","high",39.5915,-121.5895,"Beatson Trail, North Table Mountain Ecological Reserve Oroville, CA, USA",7854,"Lasthenia gracilis",NA,NA
+"260","mu518","Lasthenia gracilis","Ron Vanderhoff",NA,2020-03-23,"Orange","high",33.656918,-117.781056,"W of Sand Cqnyon Rd. And I405, Quail Hill area, Irvine",100,"Lasthenia gracilis","Flowering","F"
+"261","oe1623","Lasthenia gracilis","Mike Loomis",NA,2010-04-17,"Los Angeles","high",34.704152,-118.327002,"nw corner of the intersection of 110th St. W and W Ave. I",1000,"Lasthenia gracilis","Flowering","F"
+"262","oe1875","Lasthenia gracilis","Mike Loomis",NA,2010-04-03,"San Luis Obispo","high",35.422249,-120.549293,"Hwy.58, .25 miles west of Hwy 229",1000,"Lasthenia gracilis","Flowering","F"
+"263","oe1882","Lasthenia gracilis","Mike Loomis",NA,2010-04-23,"Los Angeles","high",34.672023,-118.427445,"Elizabeth Lake Rd., .25 miles east of post office",50,"Lasthenia gracilis","Flowering","F"
+"264","oe2797","Lasthenia gracilis","Mike Loomis",NA,2010-04-03,"San Luis Obispo","high",35.450007,-120.477962,"Hwy. 58 at Shooting Star Rd.",1000,"Lasthenia gracilis","Flowering","F"
+"265","oe3523","Lasthenia gracilis","Gary McDonald",NA,2012-04-29,"San Benito","high",36.667967,-121.0317,"1.6 mi. N. of Antelope Fire Control Station, Willow Springs, San Benito Co., CA;36.66796°N, 121.03177°W",314,"Lasthenia gracilis","Flowering","F"
+"266","oe3531","Lasthenia gracilis","Gary McDonald",NA,2012-04-29,"San Benito","high",36.66999,-121.02158,"1.8 mi. N. of Antelope Fire Control Station, Willow Springs, San Benito Co., CA; 36.66999°N, 121.02158°W",314,"Lasthenia gracilis","Flowering","F"
+"267","oe4727","Lasthenia gracilis","Gary McDonald",NA,2013-03-18,"San Benito","high",36.66648,-121.03579,"1.6 mi. N. of Antelope Fire Control Station, Willow Springs, San Benito Co., CA",79,"Lasthenia gracilis","Flowering","F"
+"268","po11327","Lasthenia gracilis","Steven M Norris",NA,2016-03-10,"Ventura","high",34.161606,-119.037103,"North face of hill to south of University Glen, CSUCI campus, down from crest line",28,"Lasthenia gracilis",NA,NA
+"269","po11621","Lasthenia gracilis","Steven M Norris",NA,2016-03-19,"Ventura","high",34.168725,-119.038515,"Near crest line of hill to west of University Glen, CSUCI campus, to south of metal water towers",28,"Lasthenia gracilis",NA,NA
+"270","po124891","Lasthenia gracilis","John Rawlings, Sara Timby, Ken Hickman","Woodside serpentine",2019-03-31,"San Mateo","high",37.442842,-122.254766,"Woodside serpentine between Jane Dr. and HWY280 right of way; Kite Hill",707,"Lasthenia gracilis",NA,NA
+"271","po126202","Lasthenia gracilis","Steven M Norris",NA,2019-04-04,"Ventura","high",34.174956,-119.031843,"CSUCI campus, University Park, north face of hill to south east of model airplane park, about half way up slope",201,"Lasthenia gracilis",NA,NA
+"272","po1545","Lasthenia gracilis","Steven M Norris",NA,2015-03-10,"Ventura","high",34.162679,-119.034001,"Hillside opposite SE corner (across Channel Islands Drive) of University Glen on the CSUCI campus",79,"Lasthenia gracilis",NA,NA
+"273","po155203","Lasthenia gracilis","John Rawlings, Sara Timby",NA,2020-04-15,"San Mateo","high",37.463803,-122.274932,"Hillcrest Way along eastern border of Edgewood Park and Preserve",707,"Lasthenia gracilis",NA,NA
+"274","po155264","Lasthenia gracilis","Steven M Norris",NA,2020-04-08,"Ventura","high",34.168952,-119.03842,"CSUCI campus, along service road to west of University Glen, north east of CSUCI campus, south of twin steel water tanks.",154,"Lasthenia gracilis","Flowering","F"
+"275","po164073","Lasthenia gracilis","Deborah Dozier",NA,2005-04-29,"Riverside","high",33.640077,-117.091922,NA,7854,"Lasthenia gracilis",NA,NA
+"276","po227964","Lasthenia gracilis","John Rawlings","JRBPTrail9",2022-03-20,"San Mateo","high",37.404,-122.2242,"Jasper Ridge Biological Preserve; SW Road F and NW of Trail 9",314,"Lasthenia gracilis","Flowering","F"
+"277","po23710","Lasthenia gracilis","Steven M Norris",NA,2016-03-13,"Ventura","high",34.162981,-119.050122,"Round mountain, near base towards north east margin",28,"Lasthenia gracilis",NA,NA
+"278","po24520","Lasthenia gracilis","Steven M Norris",NA,2016-04-02,"Ventura","high",34.179476,-119.030149,"North slope, near crest line of hill along northern side of University Park, CSUCI campus, north of the old Dairy ruins",79,"Lasthenia gracilis",NA,NA
+"279","po245489","Lasthenia gracilis","John Rawlings, Sara Timby","JRBPTrail9",2023-03-11,"San Mateo","high",37.404316,-122.223297,"Jasper Ridge Biological Preserve; Road F @ Trail 9",314,"Lasthenia gracilis","Flowering","F"
+"280","po247425","Lasthenia gracilis","Richard Spjut","World Botanical Associates",2019-03-28,"Kern","high",35.703232,-117.875852,"Short Canyon west of Hwy 395",79,"Lasthenia gracilis","Flowering","F"
+"281","po247426","Lasthenia gracilis","Richard Spjut","World Botanical Associates",2023-04-26,"Kern","high",35.700735,-117.876402,"Western Mojave Desert: Short Canyon, west of Hwy 395",314,"Lasthenia gracilis","Flowering","F"
+"282","po24747","Lasthenia gracilis","Steven M Norris",NA,2016-04-09,"Ventura","high",34.178991,-119.023122,"At north east corner of University Park, to east of old dairy ruins, CSUCI campus",50,"Lasthenia gracilis",NA,NA
+"283","po248761","Lasthenia gracilis","Julia Markey",NA,2023-02-17,"Orange","high",33.840924,-117.738904,NA,10,"Lasthenia gracilis",NA,NA
+"284","po8535","Lasthenia gracilis","Steven M Norris",NA,2015-02-20,"Ventura","high",34.161095,-119.048337,"North facing slope of hill to west of Aliso Hall, CSUCI campus, to the north east of the helipad",13,"Lasthenia gracilis","Flowering","F"
+"285","po8599","Lasthenia gracilis","Steven M Norris",NA,2015-02-16,"Ventura","high",34.175537,-119.03436,"Camarillo Park, CSUCI campus, near base of hill directly opposite of model airplane field",13,"Lasthenia gracilis","Flowering","F"
+"286","po90168","Lasthenia gracilis","Gary McDonald",NA,2018-05-01,"San Benito","high",36.66645,-121.03576,"1.7mi NNW Antelope Fire Control Station, Willow Springs, San Benito Co., CA",79,"Lasthenia gracilis","Flowering","F"

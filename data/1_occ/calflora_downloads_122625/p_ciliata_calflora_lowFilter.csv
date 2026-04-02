@@ -1,0 +1,130 @@
+"","id","taxon","observer","source","date","county","location_quality","latitude","longitude","location_description","accuracy_square_meters","plant","phenology","phenology_code"
+"1","gp13565","Phacelia ciliata","Richard Spjut",NA,2019-03-25,"San Luis Obispo","high",35.03296,-119.48579,"San Joaquin Valley: Carrizo Plain, track east off Elkhorn Plain Road (Simmler Soda Lake Rd)",3,"Phacelia ciliata",NA,NA
+"2","in:107638102","Phacelia ciliata","plantsarecool","iNaturalist",2021-03-28,"Fresno","high",36.732552,-120.351547,NA,11689,"Phacelia ciliata",NA,NA
+"3","in:108354696","Phacelia ciliata","silversea_starsong","iNaturalist",2022-03-09,"Orange","high",33.495815,-117.639095,"San Juan Capistrano, CA",530,"Phacelia ciliata",NA,NA
+"4","in:108455382","Phacelia ciliata","silversea_starsong","iNaturalist",2022-03-09,"Orange","high",33.494732,-117.639112,"San Juan Capistrano, CA",201,"Phacelia ciliata",NA,NA
+"5","in:108522282","Phacelia ciliata","ronvanderhoff","iNaturalist",2022-03-12,"Orange","high",33.641074,-117.843625,"Irvine, CA",50,"Phacelia ciliata",NA,NA
+"6","in:150255314","Phacelia ciliata","annienzelll","iNaturalist",2023-03-03,"Monterey","high",36.200305,-120.795547,"CA-198, King City, CA",50,"Phacelia ciliata",NA,NA
+"7","in:154030851","Phacelia ciliata","rogerstephens","iNaturalist",2023-04-08,"San Luis Obispo","high",35.181347,-119.843812,"Carrizo Plain National Monument, Santa Margarita, CA",78,"Phacelia ciliata",NA,NA
+"8","in:155246979","Phacelia ciliata","thesunisbig","iNaturalist",2023-04-15,"San Luis Obispo","high",35.182172,-119.844605,"Carrizo Plain National Monument, Santa Margarita, CA",78,"Phacelia ciliata",NA,NA
+"9","in:156095270","Phacelia ciliata","sporadicgrowth","iNaturalist",2023-04-22,"San Luis Obispo","high",35.225153,-119.947025,"SANTA MARGAR",201,"Phacelia ciliata",NA,NA
+"10","in:201698267","Phacelia ciliata","Eric Cleveland","iNaturalist",2024-02-28,"Los Angeles","high",34.174272,-118.003266,"Monrovia, CA, USA",706,"Phacelia ciliata",NA,NA
+"11","in:202900466","Phacelia ciliata","jordanii","iNaturalist",2024-03-16,"San Luis Obispo","high",35.092033,-119.73002,"Carrizo Plain National Monument, Santa Margarita, CA",113,"Phacelia ciliata",NA,NA
+"12","in:207695575","Phacelia ciliata","Gabriel Sumayan Garcia (they/them)","iNaturalist",2024-04-02,"San Luis Obispo","high",35.411433,-120.09433,"Bitterwater Valley Rd, Santa Margarita, CA, US",50,"Phacelia ciliata",NA,NA
+"13","in:20898890","Phacelia ciliata","Amelia Ryan","iNaturalist",2019-03-02,"San Benito","high",36.676138,-120.865158,"San Benito County, US-CA, US",78,"Phacelia ciliata",NA,NA
+"14","in:21374523","Phacelia ciliata","paulexcoff","iNaturalist",2019-03-15,"San Luis Obispo","high",35.14613,-119.773378,"Carrizo Plain National Monument, Santa Margarita, CA, US",78,"Phacelia ciliata",NA,NA
+"15","in:214135399","Phacelia ciliata","Bryce Silver-Bates","iNaturalist",2024-05-06,"Ventura","high",34.871385,-119.31039,"Los Padres National Forest, Maricopa, CA, US",3,"Phacelia ciliata",NA,NA
+"16","in:21866525","Phacelia ciliata","david99","iNaturalist",2019-03-31,"Riverside","high",33.888508,-117.098258,"92555, Moreno Valley, CA",113,"Phacelia ciliata",NA,NA
+"17","in:22173669","Phacelia ciliata","michelle_","iNaturalist",2019-04-06,"San Luis Obispo","high",34.990472,-119.483025,"Carrizo Plain National Monument, Santa Margarita, CA, US",78,"Phacelia ciliata",NA,NA
+"18","in:22304499","Phacelia ciliata","dkincmbria","iNaturalist",2019-04-06,"San Luis Obispo","high",35.308164,-119.943542,NA,78,"Phacelia ciliata",NA,NA
+"19","in:233180654","Phacelia ciliata","gerbmantz","iNaturalist",2023-04-28,"San Luis Obispo","high",35.099639,-119.829742,NA,153,"Phacelia ciliata",NA,NA
+"20","in:24233090","Phacelia ciliata","carolmaxwell60","iNaturalist",2019-04-13,"San Luis Obispo","high",35.206547,-119.85482,"Carrizo Plain National Monument, Santa Margarita, CA, US",314,"Phacelia ciliata",NA,NA
+"21","in:258608127","Phacelia ciliata","schimnowskiz","iNaturalist",2025-01-14,"Kern","high",35.435738,-119.573353,"Buttonwillow, CA, US",78,"Phacelia ciliata",NA,NA
+"22","in:261685794","Phacelia ciliata","schimnowskiz","iNaturalist",2025-02-10,"Tulare","high",35.931024,-119.404148,"Pixley, CA, US",113,"Phacelia ciliata",NA,NA
+"23","in:262783111","Phacelia ciliata","Nancy Bruce","iNaturalist",2025-02-20,"Tulare","high",35.951183,-119.053536,"CA-65, Terra Bella, CA, US",50,"Phacelia ciliata",NA,NA
+"24","in:263241609","Phacelia ciliata","Nancy Bruce","iNaturalist",2025-02-25,"Tulare","high",36.484028,-119.239258,"Visalia, CA, US",50,"Phacelia ciliata",NA,NA
+"25","in:263324749","Phacelia ciliata","vonterschj","iNaturalist",2025-02-27,"Kern","high",35.452597,-119.510995,"Buttonwillow, CA, US",2642,"Phacelia ciliata",NA,NA
+"26","in:263330918","Phacelia ciliata","vonterschj","iNaturalist",2025-02-27,"Tulare","high",36.089567,-119.493722,"Tipton, CA, US",28,"Phacelia ciliata",NA,NA
+"27","in:267797822","Phacelia ciliata","ronvanderhoff","iNaturalist",2025-03-30,"Los Angeles","high",34.777138,-118.672172,"Lancaster, CA",50,"Phacelia ciliata",NA,NA
+"28","in:274959278","Phacelia ciliata","Kyle Elshoff","iNaturalist",2025-04-19,"Kern","high",34.923613,-119.412437,"Hudson Ranch Rd, Maricopa, CA, US",28,"Phacelia ciliata",NA,NA
+"29","in:39071450","Phacelia ciliata","Ken-ichi Ueda","iNaturalist",2020-02-22,"Contra Costa","high",37.977402,-121.853449,"Antioch, CA 94509, USA",78,"Phacelia ciliata",NA,NA
+"30","in:39288955","Phacelia ciliata","skarams","iNaturalist",2020-02-27,"Orange","high",33.656644,-117.808771,"Turtle Rock, Irvine, CA",28,"Phacelia ciliata",NA,NA
+"31","in:39390178","Phacelia ciliata","Lauren Glevanik","iNaturalist",2020-02-29,"Yolo","high",38.524307,-121.788323,"Yolo County, CA, USA",706,"Phacelia ciliata",NA,NA
+"32","in:5380855","Phacelia ciliata","craether","iNaturalist",2017-03-14,"Orange","high",33.696548,-117.689774,"Portola Springs, Irvine, CA",3019,"Phacelia ciliata",NA,NA
+"33","in:72050933","Phacelia ciliata","recrowe","iNaturalist",2021-03-25,"Orange","high",33.641078,-117.843505,"UCI Ecological Preserve",50,"Phacelia ciliata",NA,NA
+"34","in:72588032","Phacelia ciliata","ekoberle","iNaturalist",2021-03-30,"Orange","high",33.641083,-117.843322,"University of California, Irvine, Irvine, CA",78,"Phacelia ciliata",NA,NA
+"35","in:73340704","Phacelia ciliata","spifferella /<br> Becky Escalante","iNaturalist",2021-04-08,"San Diego","high",32.715103,-116.706108,"Cleveland National Forest, Jamul, CA",78,"Phacelia ciliata",NA,NA
+"36","in:74016213","Phacelia ciliata","Becky Escalante","iNaturalist",2021-04-14,"San Diego","high",32.715905,-116.707213,"Cleveland National Forest, Jamul, CA, US",78,"Phacelia ciliata",NA,NA
+"37","in:74234527","Phacelia ciliata","spifferella /<br> Becky Escalante","iNaturalist",2021-04-15,"San Diego","high",32.715689,-116.708386,"Cleveland National Forest, Jamul, CA",1809,"Phacelia ciliata",NA,NA
+"38","io11170","Phacelia ciliata","Liz Block",NA,2019-04-23,"Kern","high",35.142317,-118.447184,NA,113,"Phacelia ciliata",NA,NA
+"39","io60926","Phacelia ciliata","Catherine Chang","East Bay Chapter CNPS Unusual Plants",2022-02-20,"Contra Costa","high",37.972963,-121.837088,NA,50,"Phacelia ciliata",NA,NA
+"40","io61712","Phacelia ciliata","Mike Russler",NA,2022-02-28,"Fresno","high",36.039679,-120.181952,"Hwy 33 south of S. Sutter Ave.",50,"Phacelia ciliata",NA,NA
+"41","io61713","Phacelia ciliata","Mike Russler",NA,2022-02-28,"Fresno","high",36.040198,-120.181962,"Hwy 33 south of S. Sutter Ave.",50,"Phacelia ciliata",NA,NA
+"42","io61727","Phacelia ciliata","Mike Russler",NA,2022-02-28,"Fresno","high",36.039947,-120.182095,"Hwy 33 south of S. Sutter Ave.",50,"Phacelia ciliata",NA,NA
+"43","io63237","Phacelia ciliata","Liz Block",NA,2022-03-30,"Kern","high",35.120512,-118.409503,NA,452,"Phacelia ciliata",NA,NA
+"44","mg189586","Phacelia ciliata","Ryan O'Dell",NA,2023-02-10,"Fresno","high",36.053777,-120.379819,NA,47,"Phacelia ciliata",NA,NA
+"45","mg189587","Phacelia ciliata","Ryan O'Dell",NA,2023-02-10,"Fresno","high",36.053653,-120.379423,NA,205,"Phacelia ciliata",NA,NA
+"46","mg190543","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.068934,-120.159518,NA,2270,"Phacelia ciliata",NA,NA
+"47","mg190544","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.068988,-120.159584,NA,47,"Phacelia ciliata",NA,NA
+"48","mg190545","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.069181,-120.159861,NA,101,"Phacelia ciliata",NA,NA
+"49","mg190546","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.069188,-120.159912,NA,59,"Phacelia ciliata",NA,NA
+"50","mg190547","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.069288,-120.159975,NA,336,"Phacelia ciliata",NA,NA
+"51","mg190548","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.069367,-120.160054,NA,54,"Phacelia ciliata",NA,NA
+"52","mg190549","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.068201,-120.1588,NA,47,"Phacelia ciliata",NA,NA
+"53","mg190550","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.068337,-120.158825,NA,96,"Phacelia ciliata",NA,NA
+"54","mg190551","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.068331,-120.158956,NA,731,"Phacelia ciliata",NA,NA
+"55","mg190552","Phacelia ciliata","Ryan O'Dell",NA,2023-02-16,"Fresno","high",36.068525,-120.15912,NA,1998,"Phacelia ciliata",NA,NA
+"56","mg191042","Phacelia ciliata","Ryan O'Dell",NA,2023-02-17,"Fresno","high",36.050956,-120.154109,NA,750,"Phacelia ciliata",NA,NA
+"57","mg191324","Phacelia ciliata","Ryan O'Dell",NA,2023-02-19,"Fresno","high",36.449628,-120.511596,NA,56,"Phacelia ciliata",NA,NA
+"58","mg191325","Phacelia ciliata","Ryan O'Dell",NA,2023-02-19,"Fresno","high",36.449706,-120.511223,NA,167,"Phacelia ciliata",NA,NA
+"59","mg198897","Phacelia ciliata","R.A. Chasey",NA,2023-04-09,"Contra Costa","high",37.956238,-121.874798,NA,55,"Phacelia ciliata",NA,NA
+"60","mg200629","Phacelia ciliata","Ryan O'Dell",NA,2023-04-18,"San Benito","high",36.302181,-120.703513,NA,103,"Phacelia ciliata",NA,NA
+"61","mg200863","Phacelia ciliata","Ryan O'Dell",NA,2023-04-20,"San Benito","high",36.477835,-120.758419,NA,47,"Phacelia ciliata",NA,NA
+"62","mg204845","Phacelia ciliata","Ryan O'Dell",NA,2023-05-18,"Fresno","high",36.297544,-120.678728,NA,48,"Phacelia ciliata",NA,NA
+"63","mg233436","Phacelia ciliata","Ryan O'Dell",NA,2024-03-07,"Fresno","high",36.209641,-120.286099,NA,156,"Phacelia ciliata",NA,NA
+"64","mg233437","Phacelia ciliata","Ryan O'Dell",NA,2024-03-07,"Fresno","high",36.209642,-120.28587,NA,71,"Phacelia ciliata",NA,NA
+"65","mg269530","Phacelia ciliata","Ryan O'Dell",NA,2025-04-02,"Fresno","high",36.006799,-120.279763,NA,45,"Phacelia ciliata",NA,NA
+"66","mg54166","Phacelia ciliata","Cynthia Powell",NA,2017-10-25,"Riverside","high",33.841781,-116.560423,NA,530,"Phacelia ciliata",NA,NA
+"67","mu40997","Phacelia ciliata","Kyle Suchy",NA,2024-04-12,"San Luis Obispo","high",35.3077,-119.9575,"Belmont Trail, Santa Margarita, CA 93453, USA",7854,"Phacelia ciliata",NA,NA
+"68","mu41033","Phacelia ciliata","Kyle Suchy",NA,2024-04-12,"San Luis Obispo","high",35.2214,-119.9501,"857262CX+HX",7854,"Phacelia ciliata",NA,NA
+"69","po10244","Phacelia ciliata","Anita Gould",NA,2003-04-15,"Kern","high",34.819088,-118.643803,"Antelope Valley, 290th St. W & West Ave. A",7854,"Phacelia ciliata",NA,NA
+"70","po10914","Phacelia ciliata","Chris Leslie",NA,2015-03-14,"San Luis Obispo","high",35.007986,-119.515559,"San Luis Obispo County: Carrizo Plain National Monument",10000,"Phacelia ciliata",NA,NA
+"71","po34191","Phacelia ciliata","James Bailey",NA,2017-03-24,"Orange","high",33.585345,-117.81796,"Exposed areas on side of trail, Muddy Canyon Trail, Orange County, CA.",5,"Phacelia ciliata",NA,NA
+"72","wb1194-2597","Phacelia ciliata","Brian and Eileen Keelan",NA,2010-03-26,"San Luis Obispo","high",35.36611,-120.05592,"Rte 58 3.9 mi W of Soda L Rd -- ca 5 mi NW of California Valley",1200,"Phacelia ciliata",NA,NA
+"73","wb1194-2598","Phacelia ciliata","Brian and Eileen Keelan",NA,2012-04-07,"San Luis Obispo","high",35.17035,-119.84501,"Mi 0.8, Selby Cpgd Rd -- Carrizo Plain NM",1200,"Phacelia ciliata",NA,NA
+"74","wb1194-2599","Phacelia ciliata","Brian and Eileen Keelan",NA,2013-03-23,"San Luis Obispo","high",35.0193,-119.60162,"Mi 4.2, Padrone Canyon Rd -- Carrizo Plain NM",1200,"Phacelia ciliata",NA,NA
+"75","in:149502688","Phacelia ciliata var. ciliata","plantsarecool","iNaturalist",2023-02-22,"Fresno","high",36.0461,-120.138583,"Coalinga, CA",50,"Phacelia ciliata var. ciliata",NA,NA
+"76","io121326","Phacelia ciliata var. ciliata","Mike Russler",NA,2024-03-07,"Fresno","high",36.732533,-120.35087,NA,50,"Phacelia ciliata var. ciliata",NA,NA
+"77","io121327","Phacelia ciliata var. ciliata","Mike Russler",NA,2024-03-07,"Fresno","high",36.732528,-120.350853,NA,50,"Phacelia ciliata var. ciliata",NA,NA
+"78","io121328","Phacelia ciliata var. ciliata","Mike Russler",NA,2024-03-07,"Fresno","high",36.733333,-120.3509,NA,50,"Phacelia ciliata var. ciliata",NA,NA
+"79","io121329","Phacelia ciliata var. ciliata","Mike Russler",NA,2024-03-07,"Fresno","high",36.733333,-120.3509,NA,50,"Phacelia ciliata var. ciliata",NA,NA
+"80","io61848","Phacelia ciliata var. ciliata","Mike Russler",NA,2022-02-18,"San Benito","high",36.459479,-120.711841,"New Idria Road Grisewold Hills",50,"Phacelia ciliata var. ciliata",NA,NA
+"81","mg129509","Phacelia ciliata var. ciliata","Jacob Smith",NA,2021-03-28,"Fresno","high",36.732524,-120.351794,"Plants on north side of Hwy180 to east of Panoche Road turnoff and west of White's Bridge over the Fresno Slough, southwest of Mendota in vertic soils in SnJV grassland, Fresno County, California, USA",675,"Phacelia ciliata var. ciliata",NA,NA
+"82","mg190041","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080883,-120.334088,NA,214,"Phacelia ciliata var. ciliata",NA,NA
+"83","mg190045","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080414,-120.331651,NA,143,"Phacelia ciliata var. ciliata",NA,NA
+"84","mg190048","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080579,-120.330941,NA,47,"Phacelia ciliata var. ciliata",NA,NA
+"85","mg190050","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080873,-120.329579,NA,78,"Phacelia ciliata var. ciliata",NA,NA
+"86","mg190051","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080789,-120.329537,NA,134,"Phacelia ciliata var. ciliata",NA,NA
+"87","mg190052","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080677,-120.329275,NA,45,"Phacelia ciliata var. ciliata",NA,NA
+"88","mg190053","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080666,-120.32922,NA,47,"Phacelia ciliata var. ciliata",NA,NA
+"89","mg190054","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.080667,-120.329203,NA,50,"Phacelia ciliata var. ciliata",NA,NA
+"90","mg190057","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.081543,-120.329132,NA,111,"Phacelia ciliata var. ciliata",NA,NA
+"91","mg190059","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.081784,-120.329062,NA,45,"Phacelia ciliata var. ciliata",NA,NA
+"92","mg190062","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.081492,-120.32854,NA,69,"Phacelia ciliata var. ciliata",NA,NA
+"93","mg190063","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.081377,-120.328344,NA,47,"Phacelia ciliata var. ciliata",NA,NA
+"94","mg190098","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.082445,-120.330284,NA,64,"Phacelia ciliata var. ciliata",NA,NA
+"95","mg190099","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.083098,-120.331383,NA,61,"Phacelia ciliata var. ciliata",NA,NA
+"96","mg190100","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-15,"Fresno","high",36.083108,-120.331543,NA,895,"Phacelia ciliata var. ciliata",NA,NA
+"97","mg191043","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-17,"Fresno","high",36.050763,-120.15408,NA,88,"Phacelia ciliata var. ciliata",NA,NA
+"98","mg191312","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-19,"Fresno","high",36.44791,-120.511633,NA,206,"Phacelia ciliata var. ciliata",NA,NA
+"99","mg191316","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-19,"Fresno","high",36.448179,-120.511838,NA,56,"Phacelia ciliata var. ciliata",NA,NA
+"100","mg191317","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-19,"Fresno","high",36.448187,-120.511801,NA,57,"Phacelia ciliata var. ciliata",NA,NA
+"101","mg191318","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-19,"Fresno","high",36.448291,-120.511641,NA,86,"Phacelia ciliata var. ciliata",NA,NA
+"102","mg191877","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-22,"Kings","high",36.032577,-120.13275,NA,281,"Phacelia ciliata var. ciliata",NA,NA
+"103","mg191880","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-22,"Kings","high",36.031277,-120.129646,NA,105,"Phacelia ciliata var. ciliata",NA,NA
+"104","mg191932","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Fresno","high",36.04749,-120.150208,NA,379,"Phacelia ciliata var. ciliata",NA,NA
+"105","mg191937","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Fresno","high",36.046324,-120.151793,NA,55,"Phacelia ciliata var. ciliata",NA,NA
+"106","mg191939","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Fresno","high",36.044619,-120.149254,NA,62,"Phacelia ciliata var. ciliata",NA,NA
+"107","mg191941","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Fresno","high",36.044638,-120.148092,NA,1953,"Phacelia ciliata var. ciliata",NA,NA
+"108","mg191942","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Fresno","high",36.045116,-120.147823,NA,66,"Phacelia ciliata var. ciliata",NA,NA
+"109","mg191962","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Fresno","high",36.044471,-120.142656,NA,129,"Phacelia ciliata var. ciliata",NA,NA
+"110","mg192111","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Kings","high",36.040103,-120.142565,NA,47,"Phacelia ciliata var. ciliata",NA,NA
+"111","mg192112","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Kings","high",36.040058,-120.142775,NA,116,"Phacelia ciliata var. ciliata",NA,NA
+"112","mg192115","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Kings","high",36.039259,-120.143513,NA,53,"Phacelia ciliata var. ciliata",NA,NA
+"113","mg192127","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Kings","high",36.038208,-120.130911,NA,896,"Phacelia ciliata var. ciliata",NA,NA
+"114","mg192191","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Kings","high",36.030041,-120.120167,NA,234,"Phacelia ciliata var. ciliata",NA,NA
+"115","mg192206","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-02-23,"Kings","high",36.019183,-120.118962,NA,47,"Phacelia ciliata var. ciliata",NA,NA
+"116","mg194147","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-08,"Fresno","high",36.027206,-120.317204,NA,54,"Phacelia ciliata var. ciliata",NA,NA
+"117","mg194148","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-08,"Fresno","high",36.024736,-120.317983,NA,116,"Phacelia ciliata var. ciliata",NA,NA
+"118","mg194349","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-08,"Fresno","high",36.072838,-120.131112,NA,50,"Phacelia ciliata var. ciliata",NA,NA
+"119","mg194677","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-09,"Fresno","high",36.071152,-120.135001,NA,45,"Phacelia ciliata var. ciliata",NA,NA
+"120","mg194678","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-09,"Fresno","high",36.071153,-120.135081,NA,47,"Phacelia ciliata var. ciliata",NA,NA
+"121","mg195795","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-16,"Fresno","high",36.067253,-120.114734,NA,112,"Phacelia ciliata var. ciliata",NA,NA
+"122","mg196653","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-23,"San Benito","high",36.586412,-120.744458,NA,104,"Phacelia ciliata var. ciliata",NA,NA
+"123","mg196810","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-24,"Fresno","high",36.054118,-120.145063,NA,95,"Phacelia ciliata var. ciliata",NA,NA
+"124","mg197251","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-25,"Kings","high",36.046919,-120.131887,NA,166,"Phacelia ciliata var. ciliata",NA,NA
+"125","mg197565","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-03-27,"Fresno","high",36.53606,-120.573206,NA,86,"Phacelia ciliata var. ciliata",NA,NA
+"126","mg200409","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-04-16,"San Luis Obispo","high",35.231745,-119.728815,NA,57,"Phacelia ciliata var. ciliata",NA,NA
+"127","mg209854","Phacelia ciliata var. ciliata","Ryan O'Dell",NA,2023-06-14,"San Benito","high",36.326672,-120.719296,NA,168,"Phacelia ciliata var. ciliata",NA,NA
+"128","mu30333","Phacelia ciliata var. ciliata","Alaine Arslan",NA,2023-04-03,"San Luis Obispo","high",35.2387,-119.739,"Carrizo Plains, CA, USA",7854,"Phacelia ciliata var. ciliata",NA,NA
+"129","po121447","Phacelia ciliata var. ciliata","Mary Merriman",NA,2019-02-24,"Tulare","high",35.851,-119.487,"Atwell Island/Ton Tache mitigation project on entrance road",7854,"Phacelia ciliata var. ciliata",NA,NA

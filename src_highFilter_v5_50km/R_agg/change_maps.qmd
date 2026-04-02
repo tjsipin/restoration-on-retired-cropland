@@ -1,0 +1,482 @@
+---
+title: "Figure 2B. Change Maps Comparing Differences between Historic & Future SDM"
+author: "Madi Calbert"
+date: last-updated
+output: html_document
+---
+
+# Comprehensive Model (Nick's Model)
+
+This model is a SDM for the 7 species across all 12 months. 
+
+We have historic and future binary .tif files where 0 = absent and 1 = presence for each species for all 12 months. 
+
+So when looking at change across historic to future scenarios. We will consider: 
+- Loss: 1 → 0
+- Gain: 0 → 1
+- Stable presence: 1 → 1
+- No detection: 0 → 0
+
+```{r}
+#Load packages
+library(terra)       # raster handling
+library(tidyterra)   # geom_spatraster for ggplot
+library(ggplot2)     # mapping
+library(here)        # paths, since you're already using it
+library(tigris) 
+library(sf)
+library(dplyr)
+```
+
+Let's try for one species first, a_menziesii
+
+```{r}
+spp <- "a_menziesii"
+months <- tolower(month.abb)   # "jan","feb",...,"dec"
+```
+
+Load in the historic .tif files
+```{r}
+# base folders for this species
+base_dir <- here("data/maxent_outputs", spp, "lowFilter", "monthly_dist_p10")
+hist_dir <- file.path(base_dir, "historic")
+
+# 12 historic files in calendar order
+hist_files <- file.path(hist_dir, paste0(months, "_", spp, "_2000_2023.tif"))
+stopifnot(all(file.exists(hist_files)))  # safety check
+
+r_hist <- rast(hist_files)
+names(r_hist) <- months
+r_hist
+```
+
+Read in future scenario to compare grids: 
+```{r}
+fut_dir_45  <- file.path(base_dir, "MIROC45")
+fut_files_45 <- file.path(fut_dir_45, paste0(months, "_", spp, "_MIROC45_2070_2099.tif"))
+stopifnot(all(file.exists(fut_files_45)))
+
+r_fut_45 <- rast(fut_files_45)
+names(r_fut_45) <- months
+
+# Ensure same grid; resample future to historic if needed
+if (!compareGeom(r_hist, r_fut_45, stopOnError = FALSE)) {
+  r_fut_45 <- resample(r_fut_45, r_hist, method = "near")
+}
+
+```
+
+We’ll convert each month’s historic/future pair into a 0–3 code:
+- 0 = No detection (both),
+- 1 = Loss, 
+- 2 = Gain, 
+- 3 = Stable presence 
+
+
+And remember that:
+- Loss: 1 → 0
+- Gain: 0 → 1
+- Stable presence: 1 → 1
+- No detection: 0 → 0
+
+```{r}
+# Codes: 1=Loss (1→0), 2=Gain (0→1), 3=Stable presence (1→1), 0=No detection (0→0)
+calc_change_pair <- function(h, f) {
+  ifel(is.na(h) | is.na(f), NA,
+       ifel(h == 1 & f == 0, 1,
+       ifel(h == 0 & f == 1, 2,
+       ifel(h == 1 & f == 1, 3, 0))))
+}
+```
+
+```{r}
+# Make an empty stack with same grid & 12 layers
+r_change_45 <- rast(r_hist)
+r_change_45[] <- NA
+```
+
+```{r}
+months <- tolower(month.abb)   # ensure we keep names aligned
+
+for (i in seq_along(months)) {
+  r_change_45[[i]] <- calc_change_pair(r_hist[[i]], r_fut_45[[i]])
+}
+names(r_change_45) <- months
+```
+
+```{r}
+levels(r_change_45) <- list(data.frame(
+  ID    = c(0, 1, 2, 3),
+  class = c("No detection (both)",
+            "Loss (hist→MIROC45)",
+            "Gain (hist→MIROC45)",
+            "Stable presence (both)")
+))
+```
+
+```{r}
+# change for one pair (returns a SpatRaster)
+calc_change_pair <- function(h, f) {
+  terra::ifel(is.na(h) | is.na(f), NA,
+       terra::ifel(h == 1 & f == 0, 1,
+       terra::ifel(h == 0 & f == 1, 2,
+       terra::ifel(h == 1 & f == 1, 3, 0))))
+}
+
+# build list of monthly change rasters
+chg_list <- lapply(seq_along(tolower(month.abb)), function(i) {
+  calc_change_pair(r_hist[[i]], r_fut_45[[i]])
+})
+
+# stack them into a single 12-layer SpatRaster
+r_change_45 <- terra::rast(chg_list)
+names(r_change_45) <- tolower(month.abb)
+
+# quick check: do we have 0/1/2/3 values now?
+terra::freq(r_change_45[["mar"]])
+
+```
+
+
+```{r}
+# treat classes as discrete categories for plotting
+r_change_45_fac <- as.factor(r_change_45)
+
+# colors + labels (Loss=red, Gain=green, Stable=yellow, NoDetection=grey)
+pal <- c("0" = "grey80",   # No Detection 
+         "1" = "#B22E2E",  # Loss
+         "2" = "#2E8B57",  # Gain
+         "3" = "#F6D26D")  # Stable
+lab <- c("0" = "No Detection (both)",
+         "1" = "Loss (hist→MIROC45)",
+         "2" = "Gain (hist→MIROC45)",
+         "3" = "Stable Presence (both)")
+
+# plot
+months <- tolower(month.abb)
+
+p45 <- ggplot() +
+  geom_spatraster(data = r_change_45_fac, na.rm = TRUE) +   # NA=transparent over CA polygon
+  facet_wrap(~lyr, ncol = 4,
+             labeller = as_labeller(setNames(month.abb, months))) +
+  scale_fill_manual(name = "Distribution change",
+                    values = pal, breaks = names(pal), labels = lab,
+                    na.translate = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme_void(base_size = 11) +                               # clean background
+  theme(strip.text = element_text(face = "bold", hjust = 0),
+        legend.position = "right") +
+  labs(
+    title = "Distribution Change for A. menziesii"
+  )
+
+p45
+```
+
+Get the great valley ecoregion shapefile
+```{r}
+# --- paths / inputs ---
+gv_path  <- here::here("data/Vegetation_-_Great_Valley_Ecoregion_[ds2632].geojson")
+scenario <- "MIROC45"  # or "MIROC85"
+
+# --- helper: get target CRS from raster, fallback to EPSG:3310 ---
+crs_hist_wkt <- terra::crs(r_hist)
+target_crs <- tryCatch(sf::st_crs(crs_hist_wkt),
+                       error = function(e) sf::st_crs(3310))
+if (is.na(target_crs)) target_crs <- sf::st_crs(3310)
+
+# --- read geojson; set source CRS if missing; transform BEFORE union ---
+sf_use_s2(TRUE)  # safe while still in lon/lat
+gv_sf <- st_read(gv_path, quiet = TRUE)
+
+if (is.na(st_crs(gv_sf))) {
+  message("GeoJSON has no CRS; assuming EPSG:4326 (lon/lat).")
+  st_crs(gv_sf) <- 4326
+}
+
+gv_sf <- gv_sf |>
+  st_zm(drop = TRUE, what = "ZM") |>
+  st_cast("MULTIPOLYGON", warn = FALSE) |>
+  st_make_valid() |>
+  st_transform(target_crs)
+
+# --- dissolve to one polygon (use planar ops) ---
+sf_use_s2(FALSE)
+gv_union_sf <- gv_sf |>
+  mutate(one = 1L) |>
+  group_by(one) |>
+  summarise(.groups = "drop") |>
+  st_make_valid()
+
+gv_poly <- terra::vect(gv_union_sf)
+
+# --- build the scenario stack with 'no detection' removed ---
+change_stack <- if (scenario == "MIROC45") r_change_45 else r_change_85
+fut_stack    <- if (scenario == "MIROC45") r_fut_45    else r_fut_85
+
+mask_any  <- (r_hist + fut_stack) > 0
+change_fac <- as.factor( terra::mask(change_stack, mask_any, maskvalues = 0) )
+
+# --- crop + mask to Great Valley ---
+change_cv <- terra::mask( terra::crop(change_fac, gv_poly), gv_poly)
+
+# --- plot (loss=red, gain=green, stable=yellow; grey valley background) ---
+pal <- c("1"="#B22E2E","2"="#2E8B57","3"="#F6D26D")
+lab <- c("1"=paste0("Loss (hist→", scenario, ")"),
+         "2"=paste0("Gain (hist→", scenario, ")"),
+         "3"="No change")
+
+months <- tolower(month.abb)
+p <- ggplot() +
+  geom_sf(data = gv_union_sf, fill = "grey90", color = "grey80", linewidth = 0.2) +
+  geom_spatraster(data = change_cv, na.rm = TRUE) +
+  facet_wrap(~lyr, ncol = 4,
+             labeller = as_labeller(setNames(month.abb, months))) +
+  scale_fill_manual("Dist change", values = pal,
+                    breaks = names(pal), labels = lab, na.translate = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme_void(base_size = 11) +
+  theme(strip.text = element_text(face = "bold", hjust = 0),
+        legend.position = "right")
+
+p
+
+```
+
+
+
+# Aggregate Model (Eco-relevant Model)
+
+This model is an SDM for each species aggregated across eco-relevant months or months where the species is known to germinate or bloom based on lit review. 
+
+```{r}
+# --- Aggregate (eco-relevant) change maps for all species --------------------
+# Keeps 0 = "No detection (both)"; facets by species; clipped to Great Valley.
+
+library(terra)
+library(tidyverse)
+library(dismo)
+library(tidyterra)
+library(ggplot2)
+library(sf)
+library(here)
+
+# Species and file root (matches your screenshot/naming)
+species <- c("a_menziesii","c_pungens","l_pentachaeta",
+             "p_arborea","p_ciliata","a_polycarpa","c_lasiophyllus")
+agg_root <- here("data/agg_models_072925")
+
+# Read & dissolve the Great Valley ecoregion (once)
+gv_path <- here("data/Vegetation_-_Great_Valley_Ecoregion_[ds2632].geojson")
+sf_use_s2(TRUE)
+gv_raw <- st_read(gv_path, quiet = TRUE)
+if (is.na(st_crs(gv_raw))) st_crs(gv_raw) <- 4326
+gv_raw <- gv_raw |>
+  st_zm(drop = TRUE, what = "ZM") |>
+  st_cast("MULTIPOLYGON", warn = FALSE) |>
+  st_make_valid()
+sf_use_s2(FALSE)
+gv_union <- gv_raw |>
+  mutate(one = 1L) |>
+  group_by(one) |>
+  summarise(.groups = "drop") |>
+  st_make_valid()
+
+# Change coder: 0=no detect, 1=Loss, 2=Gain, 3=Stable
+calc_change_pair <- function(h, f) {
+  terra::ifel(is.na(h) | is.na(f), NA,
+       terra::ifel(h == 1 & f == 0, 1,
+       terra::ifel(h == 0 & f == 1, 2,
+       terra::ifel(h == 1 & f == 1, 3, 0))))
+}
+
+# Build one eco-relevant change layer for a species+scenario (keeps zeros)
+change_layer_for <- function(spp, scenario = c("MIROC45","MIROC85")) {
+  scenario <- match.arg(scenario)
+  p10_dir  <- file.path(agg_root, spp, "lowFilter", "p10")
+  f_hist   <- file.path(p10_dir, sprintf("p10_%s_2000_2023_ecorelevant.tif", spp))
+  f_fut    <- file.path(p10_dir, sprintf("p10_%s_%s_2070_2099_ecorelevant.tif", spp, scenario))
+  stopifnot(file.exists(f_hist), file.exists(f_fut))
+
+  r_hist <- terra::rast(f_hist)
+  r_fut  <- terra::rast(f_fut)
+  if (!terra::compareGeom(r_hist, r_fut, stopOnError = FALSE)) {
+    r_fut <- terra::resample(r_fut, r_hist, method = "near")
+  }
+
+  # Transform GV to the raster CRS
+  crs_wkt   <- terra::crs(r_hist)
+  target_crs <- tryCatch(sf::st_crs(crs_wkt), error = function(e) sf::st_crs(3310))
+  if (is.na(target_crs)) target_crs <- sf::st_crs(3310)
+  gv_t  <- sf::st_transform(gv_union, target_crs)
+  gv_tv <- terra::vect(gv_t)
+
+  chg <- calc_change_pair(r_hist, r_fut)                   # 0..3 (keeps 0)
+  chg <- terra::mask(terra::crop(chg, gv_tv), gv_tv)      # clip to GV
+  chg <- as.factor(chg)                                    # categorical
+  names(chg) <- spp
+  chg
+}
+
+# Build stacks across species for each scenario
+chg_45 <- terra::rast(lapply(species, change_layer_for, scenario = "MIROC45"))
+chg_85 <- terra::rast(lapply(species, change_layer_for, scenario = "MIROC85"))
+
+# Transform GV for plotting in each CRS
+gv45 <- st_transform(gv_union, st_crs(terra::crs(chg_45)))
+gv85 <- st_transform(gv_union, st_crs(terra::crs(chg_85)))
+
+# Palette + labels
+pal <- c("0"="grey80","1"="#B22E2E","2"="#2E8B57","3"="#F6D26D")
+labs <- c("0"="Unsuitable Habitat",
+           "1"="Habitat Loss",
+           "2"="Habitat Gain",
+           "3"="No Change")
+facet_labs <- setNames(gsub("_", " ", species), species)
+```
+
+
+```{r}
+facet_labs <- c(
+  "a_menziesii"    = "A. menziesii",
+  "c_pungens"      = "C. pungens",
+  "l_pentachaeta"  = "L. pentachaeta",
+  "p_arborea"      = "P. arborea",
+  "p_ciliata"      = "P. ciliata",
+  "a_polycarpa"    = "A. polycarpa",   
+  "c_lasiophyllus" = "C. lasiophyllus"
+)
+
+p_45 <- ggplot() +
+  geom_sf(data = gv45, fill = "grey90", color = "grey80", linewidth = 0.2) +
+  geom_spatraster(data = chg_45, na.rm = TRUE) +
+  facet_wrap(~lyr, ncol = 4, labeller = labeller(lyr = facet_labs)) +
+  scale_fill_manual(name = NULL, 
+                    values = pal, breaks = names(pal),
+                    labels = labs, na.translate = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme_void(base_size = 11) +
+  theme(strip.text = element_text(face = "italic", 
+                                  hjust = 0, vjust = 1,
+                                  size = 7),
+        legend.position = "bottom",
+        # legend sizing
+        legend.text  = element_text(size = 7),
+        legend.title = element_text(size = 8),
+        legend.key.height = unit(6, "pt"),
+        legend.key.width  = unit(10, "pt"),
+        legend.spacing.y  = unit(2, "pt"),
+        plot.title = element_text(margin = margin(b = 5))) +
+  labs(title = "Current to MIROC45 Distribution")
+
+p_85 <- ggplot() +
+  geom_sf(data = gv85, fill = "grey90", color = "grey80", linewidth = 0.2) +
+  geom_spatraster(data = chg_85, na.rm = TRUE) +
+  facet_wrap(~lyr, ncol = 4, labeller = labeller(lyr = facet_labs)) +
+  scale_fill_manual(name = NULL, 
+                    values = pal, breaks = names(pal),
+                    labels = labs, na.translate = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme_void(base_size = 11) +
+  theme(strip.text = element_text(face = "italic", 
+                                  hjust = 0, vjust = 1, 
+                                  size = 7),
+        legend.position = "bottom",
+        # legend sizing
+        legend.text  = element_text(size = 7),
+        legend.title = element_text(size = 8),
+        legend.key.height = unit(6, "pt"),
+        legend.key.width  = unit(10, "pt"),
+        legend.spacing.y  = unit(2, "pt"),
+        plot.title = element_text(margin = margin(b = 5))) +
+  labs(title = "Current to MIROC85 Distribution")
+
+
+pad_legend <- theme(
+  plot.margin       = margin(t = 5, r = 5, b = 16, l = 5),  # more room below
+  legend.box.margin = margin(t = 2, r = 2, b = 8,  l = 2)   # padding around legend
+)
+
+p_45 <- p_45 + pad_legend
+p_85 <- p_85 + pad_legend
+
+
+p_45
+p_85
+```
+
+```{r}
+# Choose the font family 
+tnr_family <- "Times"  
+
+facet_labs <- c(
+  "a_menziesii"    = "A. menziesii",
+  "c_pungens"      = "C. pungens",
+  "l_pentachaeta"  = "L. pentachaeta",
+  "p_arborea"      = "P. arborea",
+  "p_ciliata"      = "P. ciliata",
+  "a_polycarpa"    = "A. polycarpa",   
+  "c_lasiophyllus" = "C. lasiophyllus"
+)
+
+p_45 <- ggplot() +
+  geom_sf(data = gv45, fill = "grey90", color = "grey80", linewidth = 0.2) +
+  geom_spatraster(data = chg_45, na.rm = TRUE) +
+  facet_wrap(~lyr, ncol = 4, labeller = labeller(lyr = facet_labs)) +
+  scale_fill_manual(name = NULL, values = pal, breaks = names(pal),
+                    labels = labs, na.translate = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme_void(base_size = 11, base_family = tnr_family) +
+  theme(
+    text = element_text(family = tnr_family),
+    strip.text = element_text(family = tnr_family, face = "italic",
+                              hjust = 0, vjust = 1, size = 8),
+    legend.position = "bottom",
+    legend.text  = element_text(family = tnr_family, size = 8),
+    legend.title = element_text(family = tnr_family, size = 8),
+    legend.key.height = unit(6, "pt"),
+    legend.key.width  = unit(10, "pt"),
+    legend.spacing.y  = unit(2, "pt"),
+    plot.title = element_text(family = tnr_family, margin = margin(b = 5))
+  ) +
+  labs(title = "Current to MIROC RCP 4.5 Distribution", size = 11)
+
+p_85 <- ggplot() +
+  geom_sf(data = gv85, fill = "grey90", color = "grey80", linewidth = 0.2) +
+  geom_spatraster(data = chg_85, na.rm = TRUE) +
+  facet_wrap(~lyr, ncol = 4, labeller = labeller(lyr = facet_labs)) +
+  scale_fill_manual(name = NULL, values = pal, breaks = names(pal),
+                    labels = labs, na.translate = FALSE) +
+  coord_sf(expand = FALSE) +
+  theme_void(base_size = 11, base_family = tnr_family) +
+  theme(
+    text = element_text(family = tnr_family),
+    strip.text = element_text(family = tnr_family, face = "italic",
+                              hjust = 0, vjust = 1, size = 8),
+    legend.position = "bottom",
+    legend.text  = element_text(family = tnr_family, size = 8),
+    legend.title = element_text(family = tnr_family, size = 8),
+    legend.key.height = unit(6, "pt"),
+    legend.key.width  = unit(10, "pt"),
+    legend.spacing.y  = unit(2, "pt"),
+    plot.title = element_text(family = tnr_family, margin = margin(b = 5))
+  ) +
+  labs(title = "Current to MIROC RCP 8.5 Distribution")
+
+pad_legend <- theme(
+  plot.margin       = margin(t = 5, r = 5, b = 16, l = 5),
+  legend.box.margin = margin(t = 2, r = 2, b = 8,  l = 2)
+)
+
+p_45 <- p_45 + pad_legend
+p_85 <- p_85 + pad_legend
+
+p_45
+p_85
+
+```
+
+
+
+
+

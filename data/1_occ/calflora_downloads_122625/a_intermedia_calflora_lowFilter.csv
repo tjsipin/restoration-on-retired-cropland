@@ -1,0 +1,191 @@
+"","id","taxon","observer","source","date","county","location_quality","latitude","longitude","location_description","accuracy_square_meters","plant","phenology","phenology_code"
+"1","gp10283","Amsinckia intermedia","Richard Spjut",NA,2010-03-30,"Kern","medium",34.905462,-119.377264,"Southern Joaquin Valley foothills: Bitter Creek National Wildlife Refuge",31416,"Amsinckia intermedia",NA,NA
+"2","gp10522","Amsinckia intermedia","Richard Spjut",NA,2003-04-10,"Kern","medium",35.222468,-118.565962,"Tehachapi Mountains: Vicinity of Keene, south of Hwy 58 and east of community along the Old Tehachapi Loop Road",31416,"Amsinckia intermedia",NA,NA
+"3","gp13350","Amsinckia intermedia","Ron Vanderhoff",NA,2019-03-24,"Orange","high",33.54117,-117.55164,"Caspers Park.",100,"Amsinckia intermedia","Flowering","F"
+"4","gp20474","Amsinckia intermedia","Ron Vanderhoff",NA,2020-02-16,"Orange","high",33.66028,-117.94163,"Fairview Park, Costa Mesa",100,"Amsinckia intermedia","Flowering","F"
+"5","gp20704","Amsinckia intermedia","Ron Vanderhoff",NA,2020-03-07,"Orange","high",33.65495,-117.819,"Sand Canyon Wash, W of Ridgeline Dr., Irvine",100,"Amsinckia intermedia","Flowering","F"
+"6","in:10021494","Amsinckia intermedia","Don Rideout","iNaturalist",2018-02-25,"San Diego","high",33.36729,-116.4446,"Anza-Borrego Desert State Park",113,"Amsinckia intermedia",NA,NA
+"7","in:10149619","Amsinckia intermedia","jenniferlchandler","iNaturalist",2018-03-08,"Napa","medium",38.368217,-122.256888,"2372 Atlas Peak Rd, Napa, CA, US",7853,"Amsinckia intermedia",NA,NA
+"8","in:10254113","Amsinckia intermedia","twr61","iNaturalist",2018-03-10,"Butte","high",39.726237,-121.781072,"Chico, CA, USA",314,"Amsinckia intermedia",NA,NA
+"9","in:10266686","Amsinckia intermedia","dtadelhelm","iNaturalist",2018-03-16,"San Diego","high",33.278284,-116.429626,"Anza-Borrego Desert State Park, Borrego Springs, CA, US",804,"Amsinckia intermedia",NA,NA
+"10","in:10474539","Amsinckia intermedia","jaygz","iNaturalist",2018-03-21,"Riverside","high",33.807183,-117.357599,"Harford Springs Reserve, Riverside County, US-CA, US",153,"Amsinckia intermedia",NA,NA
+"11","in:10474582","Amsinckia intermedia","jaygz","iNaturalist",2018-03-21,"Riverside","high",33.806163,-117.349424,"Harford Springs Reserve, Riverside County, US-CA, US",113,"Amsinckia intermedia",NA,NA
+"12","in:10547689","Amsinckia intermedia","arnel","iNaturalist",2018-03-11,"Santa Clara","medium",37.430211,-122.072568,"Shoreline Park, Mountain View, CA",8494,"Amsinckia intermedia",NA,NA
+"13","in:10694024","Amsinckia intermedia","kevinhintsa","iNaturalist",2018-04-05,"Contra Costa","high",37.954,-122.135267,"Briones Regional Park , California",2123,"Amsinckia intermedia",NA,NA
+"14","in:11195597","Amsinckia intermedia","Gena Bentall","iNaturalist",2018-04-19,"Monterey","high",36.756692,-121.506097,"Salinas, CA 93908, Salinas, CA, US",78,"Amsinckia intermedia",NA,NA
+"15","in:1347880","Amsinckia intermedia","Carlos Flores","iNaturalist",2015-03-25,"Riverside","high",33.96992,-117.486795,"6417",78,"Amsinckia intermedia",NA,NA
+"16","in:2794647","Amsinckia intermedia","Chris Evers","iNaturalist",2016-03-17,"Fresno","high",36.09066,-120.117535,"I-5 S, Huron, CA, US",78,"Amsinckia intermedia",NA,NA
+"17","in:4972603","Amsinckia intermedia","James Bailey","iNaturalist",2017-01-19,"Orange","high",33.553678,-117.665995,"Saddleback College, Mission Viejo, CA, US",78,"Amsinckia intermedia",NA,NA
+"18","in:5218020","Amsinckia intermedia","Jen Palladini","iNaturalist",2017-02-27,"Sonoma","high",38.356453,-122.513686,"95442, Glen Ellen, CA, US",314,"Amsinckia intermedia",NA,NA
+"19","in:5439877","Amsinckia intermedia","Matthew Salkiewicz","iNaturalist",2017-02-25,"San Diego","high",32.83685,-117.10951,"Villa Montserrat Park, San Diego, California",2290,"Amsinckia intermedia",NA,NA
+"20","in:5443366","Amsinckia intermedia","snakeinmypocket","iNaturalist",2017-03-24,"San Diego","high",33.223396,-117.054931,"Country Club Lane Valley Center, CA 92082",804,"Amsinckia intermedia",NA,NA
+"21","in:5446796","Amsinckia intermedia","James Bailey","iNaturalist",2017-03-24,"Orange","high",33.595023,-117.7976,"Laguna Coast Wilderness Park, Laguna Beach, CA, US",78,"Amsinckia intermedia",NA,NA
+"22","in:6006549","Amsinckia intermedia","Matthew Salkiewicz","iNaturalist",2017-03-11,"San Diego","medium",33.221277,-116.459316,"Anza Borrego Desert State Park, Ranchita, California",9503,"Amsinckia intermedia",NA,NA
+"23","in:9902934","Amsinckia intermedia","jimtgrove","iNaturalist",2018-02-15,"Nevada","high",39.114954,-121.243038,"Penn Valley, CA 95946, Penn Valley, CA, US",78,"Amsinckia intermedia",NA,NA
+"24","io10494","Amsinckia intermedia","Angelique Herman",NA,2019-04-13,"San Luis Obispo","high",35.516783,-120.667164,NA,201,"Amsinckia intermedia",NA,NA
+"25","io11481","Amsinckia intermedia","Mary Conway",NA,2019-04-27,"Stanislaus","high",37.166883,-121.404606,NA,78,"Amsinckia intermedia",NA,NA
+"26","io118541","Amsinckia intermedia","Ron Vanderhoff",NA,2024-01-11,"Orange","high",33.587462,-117.794997,"Slow and Easy Trail, +- 500-700 trail meters NW of junction of El Moro Canyon Trail, Crystal Cove State Park",50,"Amsinckia intermedia","Flowering","F"
+"27","io120964","Amsinckia intermedia","Keir Morse",NA,2024-03-05,"Los Angeles","high",34.1145,-117.93929,NA,50,"Amsinckia intermedia",NA,NA
+"28","io121699","Amsinckia intermedia","Mohith Parige",NA,2024-03-13,"Alameda","high",37.642087,-121.780542,NA,153,"Amsinckia intermedia",NA,NA
+"29","io121700","Amsinckia intermedia","Mohith Parige",NA,2024-03-13,"Alameda","high",37.638447,-121.776108,NA,50,"Amsinckia intermedia",NA,NA
+"30","io122134","Amsinckia intermedia","Mohith Parige",NA,2024-03-20,"Alameda","high",37.682408,-121.872087,NA,28,"Amsinckia intermedia",NA,NA
+"31","io122328","Amsinckia intermedia","Mohith Parige",NA,2024-03-22,"Alameda","high",37.669863,-121.85173,NA,28,"Amsinckia intermedia",NA,NA
+"32","io122403","Amsinckia intermedia","Mohith Parige",NA,2024-03-24,"Alameda","high",37.57888,-121.937133,NA,28,"Amsinckia intermedia",NA,NA
+"33","io122693","Amsinckia intermedia","Mohith Parige",NA,2024-03-27,"Alameda","high",37.687267,-121.93242,NA,50,"Amsinckia intermedia",NA,NA
+"34","io122866","Amsinckia intermedia","Mohith Parige",NA,2024-03-30,"Alameda","high",37.507778,-121.828125,NA,78,"Amsinckia intermedia",NA,NA
+"35","io123569","Amsinckia intermedia","Mohith Parige",NA,2024-04-07,"Alameda","high",37.670597,-121.759583,NA,28,"Amsinckia intermedia",NA,NA
+"36","io124972","Amsinckia intermedia","Mohith Parige",NA,2024-04-14,"Alameda","high",37.659803,-121.917405,NA,28,"Amsinckia intermedia",NA,NA
+"37","io125833","Amsinckia intermedia","Cynthia Powell",NA,2024-04-20,"Marin","high",37.82811,-122.49018,NA,50,"Amsinckia intermedia",NA,NA
+"38","io126696","Amsinckia intermedia","Mohith Parige",NA,2024-04-28,"Santa Clara","high",37.395042,-121.817612,NA,50,"Amsinckia intermedia",NA,NA
+"39","io136930","Amsinckia intermedia","Mohith Parige",NA,2024-07-27,"Alameda","high",37.517497,-121.886117,NA,380,"Amsinckia intermedia",NA,NA
+"40","io154153","Amsinckia intermedia","Mel Letterman","Irvine Ranch Conservancy",2025-05-07,"San Bernardino","high",33.925028,-117.707222,"Chino Hills State Park (CA)",50,"Amsinckia intermedia","Fruiting","R"
+"41","io154285","Amsinckia intermedia","Danya Orozco","Porterville College Biology P136",2025-04-03,"Tulare","high",36.050255,-119.016628,"On a patchy area that’s filled with different plants next to a stop sign that is also between the College Campus building, of Science & Mathematics, and the exit highway that is next to the S Main St.",380,"Amsinckia intermedia",NA,NA
+"42","io25009","Amsinckia intermedia","Angelique Herman",NA,2020-02-19,"Los Angeles","high",33.96657,-117.91692,NA,13273,"Amsinckia intermedia",NA,NA
+"43","io26972","Amsinckia intermedia","Angelique Herman",NA,2020-04-08,"Santa Barbara","high",34.85702,-120.42998,NA,113,"Amsinckia intermedia",NA,NA
+"44","io28549","Amsinckia intermedia","Mary Conway",NA,2020-04-30,"Monterey","high",36.4678,-121.75099,NA,78,"Amsinckia intermedia",NA,NA
+"45","io36657","Amsinckia intermedia","Angelique Herman",NA,2020-08-25,"Orange","high",33.91669,-117.75676,NA,113,"Amsinckia intermedia",NA,NA
+"46","io43146","Amsinckia intermedia","Angelique Herman",NA,2021-01-14,"Los Angeles","high",33.96285,-117.91755,NA,1809,"Amsinckia intermedia",NA,NA
+"47","io45207","Amsinckia intermedia","Aaron Sunshine","Midpeninsula Regional Open Space District",2021-04-14,"Santa Cruz","high",37.268832,-122.148008,"Long Ridge OSP",78,"Amsinckia intermedia",NA,NA
+"48","io45461","Amsinckia intermedia","Lucy Ferneyhough",NA,2021-03-13,"Monterey","high",36.834938,-121.617287,NA,314,"Amsinckia intermedia",NA,NA
+"49","io45936","Amsinckia intermedia","Mary Conway",NA,2021-04-22,"Santa Clara","high",37.05895,-121.21408,NA,78,"Amsinckia intermedia",NA,NA
+"50","io46548","Amsinckia intermedia","Aaron Sunshine","Midpeninsula Regional Open Space District",2021-04-29,"Santa Clara","high",37.332499,-122.175232,"Los Trancos OSP, east of gate LT01.",78,"Amsinckia intermedia",NA,NA
+"51","io49774","Amsinckia intermedia","Aaron Sunshine","Midpeninsula Regional Open Space District",2021-05-25,"San Mateo","high",37.30036,-122.203708,"Skyline Ridge, Big Dipper Ranch, along ridge-line.",78,"Amsinckia intermedia",NA,NA
+"52","io62143","Amsinckia intermedia","Cynthia Powell",NA,2022-03-13,"Santa Clara","high",37.39847,-121.80723,NA,78,"Amsinckia intermedia",NA,NA
+"53","io63273","Amsinckia intermedia","Sameer Saroa","Irvine Ranch Conservancy",2022-03-14,"Orange","high",33.75086,-117.69323,"Limestone Canyon (OC)",50,"Amsinckia intermedia","Flowering","F"
+"54","io65854","Amsinckia intermedia","Chris McDonald",NA,2022-04-26,"San Bernardino","high",33.98714,-117.66682,NA,50,"Amsinckia intermedia",NA,NA
+"55","io80883","Amsinckia intermedia","Mike Russler",NA,2023-01-13,"Fresno","high",36.718063,-119.331405,"Hwy 180 Kings Canyon Road",50,"Amsinckia intermedia",NA,NA
+"56","io80885","Amsinckia intermedia","Mike Russler",NA,2023-01-13,"Fresno","high",36.718075,-119.331397,"Hwy 180 Kings Canyon Road",50,"Amsinckia intermedia",NA,NA
+"57","io84260","Amsinckia intermedia","David Strauch",NA,2023-03-23,"Los Angeles","high",34.138333,-118.542328,"Caballero Canyon, Mulholland Gateway Park, Santa Monica Mountains",50,"Amsinckia intermedia","Flowering","F"
+"58","io85470","Amsinckia intermedia","John Rawlings","Jasper Ridge Biological Preserve (JRBP/JROH)",2023-04-11,"San Mateo","high",37.398945,-122.234025,"Jasper Ridge, Trail 12",50,"Amsinckia intermedia","Flowering","F"
+"59","io88912","Amsinckia intermedia","Keir Morse",NA,2023-05-10,"Santa Barbara","high",34.40406,-119.73789,NA,50,"Amsinckia intermedia",NA,NA
+"60","io92301","Amsinckia intermedia","Keir Morse",NA,2023-05-30,"Los Angeles","high",34.36058,-118.39164,NA,50,"Amsinckia intermedia",NA,NA
+"61","mg106407","Amsinckia intermedia","David popp",NA,2020-02-21,"Butte","high",39.702216,-121.761122,"Camp 2018",134,"Amsinckia intermedia","Flowering","F"
+"62","mg106638","Amsinckia intermedia","David popp",NA,2020-02-28,"Tehama","high",39.912816,-121.959167,NA,47,"Amsinckia intermedia","Flowering","F"
+"63","mg106898","Amsinckia intermedia","David popp",NA,2020-03-02,"Tehama","high",40.104021,-122.049221,NA,2040,"Amsinckia intermedia","Flowering","F"
+"64","mg107749","Amsinckia intermedia","David popp",NA,2020-03-11,"Butte","high",39.810968,-121.64019,NA,231,"Amsinckia intermedia","Flowering","F"
+"65","mg108180","Amsinckia intermedia","R.A. Chasey",NA,2020-03-21,"Contra Costa","high",37.968283,-122.205356,NA,144,"Amsinckia intermedia",NA,NA
+"66","mg108361","Amsinckia intermedia","David popp",NA,2020-03-26,"Butte","high",39.560447,-121.603373,"#fire",2567,"Amsinckia intermedia","Flowering","F"
+"67","mg108438","Amsinckia intermedia","David popp",NA,2020-03-30,"Butte","high",39.770625,-121.626618,"Camp 2018",393,"Amsinckia intermedia","Flowering","F"
+"68","mg108560","Amsinckia intermedia","Cynthia Powell",NA,2020-04-04,"Contra Costa","high",37.945742,-122.260297,NA,511,"Amsinckia intermedia",NA,NA
+"69","mg108592","Amsinckia intermedia","David popp",NA,2020-04-07,"Butte","high",39.505993,-121.574994,NA,1631,"Amsinckia intermedia","Flowering","F"
+"70","mg11534","Amsinckia intermedia","Chris Jaster","Marin County Parks data pro",2015-05-04,"Marin","high",38.001705,-122.640032,"GARY GIACOMINI",113,"Amsinckia intermedia",NA,NA
+"71","mg127385","Amsinckia intermedia","David popp",NA,2021-03-05,"Butte","high",39.822961,-121.712282,NA,231,"Amsinckia intermedia","Flowering","F"
+"72","mg127557","Amsinckia intermedia","David popp",NA,2021-03-09,"Butte","high",39.637638,-121.578414,NA,50,"Amsinckia intermedia","Flowering","F"
+"73","mg127936","Amsinckia intermedia","David popp",NA,2021-03-13,"Butte","high",39.724033,-121.611366,NA,90,"Amsinckia intermedia","Flowering","F"
+"74","mg128160","Amsinckia intermedia","David popp",NA,2021-03-17,"Butte","high",39.823175,-121.712329,NA,91,"Amsinckia intermedia","Flowering","F"
+"75","mg128503","Amsinckia intermedia","David popp",NA,2021-03-21,"Butte","high",39.527772,-121.450587,NA,90,"Amsinckia intermedia","Flowering","F"
+"76","mg128522","Amsinckia intermedia","David popp",NA,2021-03-21,"Butte","high",39.601349,-121.660916,NA,411,"Amsinckia intermedia","Flowering","F"
+"77","mg129091","Amsinckia intermedia","David popp",NA,2021-03-24,"Colusa","high",38.991005,-122.353434,NA,129,"Amsinckia intermedia","Flowering","F"
+"78","mg129345","Amsinckia intermedia","David popp",NA,2021-03-26,"Tehama","high",40.256823,-122.140144,NA,622,"Amsinckia intermedia","Flowering","F"
+"79","mg129480","Amsinckia intermedia","David popp",NA,2021-03-27,"Butte","high",39.6417,-121.640934,NA,62,"Amsinckia intermedia","Flowering","F"
+"80","mg129734","Amsinckia intermedia","Sameer Saroa","Irvine Ranch Conservancy",2021-03-24,"Orange","high",33.594366,-117.790666,"Crystal Cove State Park (CA)",165,"Amsinckia intermedia","Flowering","F"
+"81","mg129746","Amsinckia intermedia","Sameer Saroa","Irvine Ranch Conservancy",2021-03-24,"Orange","high",33.584342,-117.811868,"Crystal Cove State Park (CA)",271,"Amsinckia intermedia","Flowering","F"
+"82","mg129768","Amsinckia intermedia","Sameer Saroa","Irvine Ranch Conservancy",2021-03-27,"Orange","high",33.814283,-117.751416,"Weir Canyon (OC)",32,"Amsinckia intermedia",NA,NA
+"83","mg129789","Amsinckia intermedia","David popp",NA,2021-03-30,"Butte","high",39.536257,-121.58988,NA,231,"Amsinckia intermedia",NA,NA
+"84","mg131247","Amsinckia intermedia","David popp",NA,2021-04-12,"Butte","high",39.504671,-121.544851,NA,344,"Amsinckia intermedia","Flowering","F"
+"85","mg133175","Amsinckia intermedia","Noah Macchia","Marin County Parks data pro",2021-04-28,"Marin","high",38.138235,-122.607284,"MT. BURDELL: Frog Pond",125,"Amsinckia intermedia","Flowering","F"
+"86","mg134023","Amsinckia intermedia","Sameer Saroa","Irvine Ranch Conservancy",2021-05-04,"Orange","high",33.599486,-117.793512,"Laguna Coast Wilderness Park (OC)",43,"Amsinckia intermedia","Flowering","F"
+"87","mg136652","Amsinckia intermedia","Cynthia Powell",NA,2021-05-22,"Napa","high",38.700307,-122.407673,NA,453,"Amsinckia intermedia",NA,NA
+"88","mg156180","Amsinckia intermedia","R.A. Chasey",NA,2022-02-19,"Napa","high",38.17474,-122.22149,NA,41,"Amsinckia intermedia",NA,NA
+"89","mg157044","Amsinckia intermedia","David popp","Rare Plant Treasure Hunt",2022-03-08,"Butte","high",39.731611,-121.611738,NA,48,"Amsinckia intermedia","Flowering","F"
+"90","mg157996","Amsinckia intermedia","David popp",NA,2022-03-20,"Butte","high",39.580234,-121.550618,NA,181,"Amsinckia intermedia","Flowering","F"
+"91","mg159407","Amsinckia intermedia","Jacob Martin","Marin County Parks data pro",2022-03-28,"Marin","high",38.124875,-122.546042,"RUSH CREEK",834,"Amsinckia intermedia",NA,NA
+"92","mg159714","Amsinckia intermedia","R.A. Chasey",NA,2022-03-31,"Los Angeles","high",34.572265,-118.664767,NA,57,"Amsinckia intermedia",NA,NA
+"93","mg160556","Amsinckia intermedia","David popp",NA,2022-04-09,"Butte","high",39.731983,-121.611295,NA,53,"Amsinckia intermedia","Flowering","F"
+"94","mg161012","Amsinckia intermedia","David popp",NA,2022-04-13,"Butte","high",39.716882,-121.559946,"#fire",83,"Amsinckia intermedia","Flowering","F"
+"95","mg161394","Amsinckia intermedia","David popp",NA,2022-04-17,"Butte","high",39.647221,-121.553863,NA,98,"Amsinckia intermedia","Flowering","F"
+"96","mg163038","Amsinckia intermedia","Aja Mathews","Marin County Parks data pro",2022-04-28,"Marin","high",38.137976,-122.607256,"MT. BURDELL",70,"Amsinckia intermedia",NA,NA
+"97","mg196356","Amsinckia intermedia","David popp",NA,2023-03-21,"Butte","high",39.676799,-121.562381,NA,66,"Amsinckia intermedia","Flowering","F"
+"98","mg196365","Amsinckia intermedia","David popp",NA,2023-03-21,"Butte","high",39.686093,-121.572772,NA,260,"Amsinckia intermedia","Flowering","F"
+"99","mg196369","Amsinckia intermedia","David popp",NA,2023-03-22,"Sacramento","high",38.688453,-121.298444,NA,225,"Amsinckia intermedia","Flowering","F"
+"100","mg196595","Amsinckia intermedia","David popp",NA,2023-03-25,"Butte","high",39.883023,-121.994279,NA,47,"Amsinckia intermedia","Flowering","F"
+"101","mg197552","Amsinckia intermedia","R.A. Chasey",NA,2023-03-27,"Alameda","high",37.649983,-121.605972,NA,94,"Amsinckia intermedia",NA,NA
+"102","mg197881","Amsinckia intermedia","David popp",NA,2023-04-01,"Tehama","high",40.10503,-122.04149,NA,92,"Amsinckia intermedia","Flowering","F"
+"103","mg198203","Amsinckia intermedia","David popp",NA,2023-04-02,"Butte","high",39.683105,-121.566508,NA,1535,"Amsinckia intermedia","Flowering","F"
+"104","mg198525","Amsinckia intermedia","David popp",NA,2023-04-04,"Butte","high",39.680792,-121.562179,NA,185,"Amsinckia intermedia",NA,NA
+"105","mg198809","Amsinckia intermedia","David popp",NA,2023-04-08,"Butte","high",39.74022,-121.796393,NA,390,"Amsinckia intermedia","Flowering","F"
+"106","mg199336","Amsinckia intermedia","Ryan O'Dell",NA,2023-04-10,"Santa Cruz","high",37.010724,-122.154212,NA,254,"Amsinckia intermedia",NA,NA
+"107","mg199554","Amsinckia intermedia","David popp",NA,2023-04-11,"Butte","high",39.705501,-121.792143,NA,88,"Amsinckia intermedia","Flowering","F"
+"108","mg199699","Amsinckia intermedia","David popp",NA,2023-04-13,"Placer","high",38.850996,-121.22207,NA,45,"Amsinckia intermedia","Flowering","F"
+"109","mg201336","Amsinckia intermedia","David popp",NA,2023-04-26,"Butte","high",39.735771,-121.781498,NA,64,"Amsinckia intermedia","Flowering","F"
+"110","mg21635","Amsinckia intermedia","David popp",NA,2016-03-23,"Butte","high",39.596153,-121.547968,NA,615,"Amsinckia intermedia","Flowering","F"
+"111","mg21830","Amsinckia intermedia","Robert Steers",NA,2016-03-27,"Marin","high",37.904726,-122.613613,NA,50,"Amsinckia intermedia",NA,NA
+"112","mg22148","Amsinckia intermedia","Heath Bartosh",NA,2016-04-02,"Contra Costa","high",37.89927,-121.883662,NA,153,"Amsinckia intermedia",NA,NA
+"113","mg233006","Amsinckia intermedia","David popp",NA,2024-03-06,"Butte","high",39.595929,-121.647187,NA,136,"Amsinckia intermedia","Flowering","F"
+"114","mg234151","Amsinckia intermedia","David popp",NA,2024-03-14,"Butte","high",39.773996,-121.740489,NA,261,"Amsinckia intermedia","Flowering","F"
+"115","mg234248","Amsinckia intermedia","David popp",NA,2024-03-15,"Butte","high",39.708005,-121.728691,NA,112,"Amsinckia intermedia","Flowering","F"
+"116","mg235559","Amsinckia intermedia","David popp",NA,2024-03-19,"Butte","high",39.809751,-121.841854,NA,68,"Amsinckia intermedia","Flowering","F"
+"117","mg236283","Amsinckia intermedia","David popp",NA,2024-03-26,"Tehama","high",40.278894,-122.135895,NA,107,"Amsinckia intermedia","Flowering","F"
+"118","mg237337","Amsinckia intermedia","Elliot Gunnison","San Francisco Bay Area Network of National Parks",2024-04-04,"Marin","high",37.858959,-122.575034,"12-08",1546,"Amsinckia intermedia",NA,NA
+"119","mg237501","Amsinckia intermedia","David popp",NA,2024-04-06,"Butte","high",39.817773,-121.885923,NA,249,"Amsinckia intermedia","Flowering","F"
+"120","mg237619","Amsinckia intermedia","David popp",NA,2024-04-08,"Butte","high",39.721187,-121.703971,NA,213,"Amsinckia intermedia",NA,NA
+"121","mg238652","Amsinckia intermedia","David popp",NA,2024-04-18,"Butte","high",39.775553,-121.740038,NA,364,"Amsinckia intermedia","Flowering","F"
+"122","mg24129","Amsinckia intermedia","Andrew Longman","Marin County Parks data pro",2016-05-11,"Marin","high",38.108251,-122.625553,"VERISSIMO HILLS: Located on hillside behind houses. Many individuals scattered within this area (changed from A. lunaris to A. intermedia by J. Geoghegan on 4/30/18, see stacked record)",452,"Amsinckia intermedia",NA,NA
+"123","mg242165","Amsinckia intermedia","David popp",NA,2024-05-14,"Butte","high",39.677141,-121.677363,NA,130,"Amsinckia intermedia","Flowering","F"
+"124","mg266829","Amsinckia intermedia","David popp",NA,2025-02-19,"Butte","high",39.72122,-121.703171,NA,45,"Amsinckia intermedia","Flowering","F"
+"125","mg266964","Amsinckia intermedia","David popp",NA,2025-02-22,"Butte","high",39.779127,-121.748391,NA,57,"Amsinckia intermedia","Flowering","F"
+"126","mg267679","Amsinckia intermedia","David popp",NA,2025-03-05,"Butte","high",39.723137,-121.690152,NA,282,"Amsinckia intermedia","Flowering","F"
+"127","mg267897","Amsinckia intermedia","David popp",NA,2025-03-09,"Butte","high",39.810709,-121.822022,NA,392,"Amsinckia intermedia","Flowering","F"
+"128","mg268554","Amsinckia intermedia","David popp",NA,2025-03-19,"Butte","high",39.776349,-121.737431,NA,49,"Amsinckia intermedia","Flowering","F"
+"129","mg271099","Amsinckia intermedia","Elliot Gunnison","San Francisco Bay Area Network of National Parks",2025-04-16,"Marin","high",37.864903,-122.558508,"12-08",2,"Amsinckia intermedia",NA,NA
+"130","mg271640","Amsinckia intermedia","David popp",NA,2025-04-19,"Butte","high",39.755914,-121.735453,NA,75,"Amsinckia intermedia","Flowering","F"
+"131","mg273469","Amsinckia intermedia","David popp",NA,2025-04-29,"Sutter","high",39.245269,-121.800709,NA,199,"Amsinckia intermedia","Flowering","F"
+"132","mg274160","Amsinckia intermedia","David popp",NA,2025-05-01,"Butte","high",39.554161,-121.433836,NA,55,"Amsinckia intermedia","Flowering","F"
+"133","mg276319","Amsinckia intermedia","David popp",NA,2025-05-13,"Butte","high",39.544354,-121.589387,NA,108,"Amsinckia intermedia","Flowering","F"
+"134","mg2934","Amsinckia intermedia","Vertin Alvarez","Marin County Parks Staff",2014-04-09,"Marin","high",38.135971,-122.596296,"MT. BURDELL",47,"Amsinckia intermedia","Flowering","F"
+"135","mg3011","Amsinckia intermedia","David popp",NA,2014-04-09,"Sacramento","high",38.647599,-121.215313,NA,50,"Amsinckia intermedia","Flowering","F"
+"136","mg3233","Amsinckia intermedia","Vertin Alvarez","Marin County Parks Staff",2014-04-16,"Marin","high",38.045763,-122.578278,"LUCAS VALLEY",47,"Amsinckia intermedia",NA,NA
+"137","mg37425","Amsinckia intermedia","Elliot Gunnison","San Francisco Bay Area Network of National Parks",2017-03-17,"Marin","high",37.859738,-122.562051,"12-08: Wet depression, middle green gulch trail",15,"Amsinckia intermedia","Flowering","F"
+"138","mg38477","Amsinckia intermedia","Heath Bartosh",NA,2017-03-25,"Contra Costa","high",37.879089,-121.730448,NA,180,"Amsinckia intermedia",NA,NA
+"139","mg39016","Amsinckia intermedia","David popp",NA,2017-04-01,"Butte","medium",39.779523,-121.736743,NA,28952,"Amsinckia intermedia","Flowering","F"
+"140","mg40370","Amsinckia intermedia","MCOSD EDRR","Marin County Parks data pro",2017-04-17,"Marin","high",38.023733,-122.583981,"TERRA LINDA/SLEEPY HOLLOW DIVIDE",50,"Amsinckia intermedia",NA,NA
+"141","mg40382","Amsinckia intermedia","MCOSD EDRR","Marin County Parks data pro",2017-04-18,"Marin","high",38.012035,-122.568862,"TERRA LINDA/SLEEPY HOLLOW DIVIDE",50,"Amsinckia intermedia",NA,NA
+"142","mg58565","Amsinckia intermedia","David popp",NA,2018-03-31,"Butte","high",39.598202,-121.554591,NA,314,"Amsinckia intermedia","Flowering","F"
+"143","mg59790","Amsinckia intermedia","Rachelle Gray",NA,2018-04-16,"Los Angeles","high",34.29588,-118.28244,"Many weedy grasses and weedy forbs present. Big Tujunga Rd. Wash/ditch east side of Big Tujunga Canyon Road. Angeles National Forest. Associated with mugwort, native wildflowers. San Gabriel Mountains, Los Angeles County, CA.",314,"Amsinckia intermedia","Flowering","F"
+"144","mg59918","Amsinckia intermedia","David popp",NA,2018-04-16,"Butte","high",39.793304,-121.842045,NA,314,"Amsinckia intermedia","Flowering","F"
+"145","mg59940","Amsinckia intermedia","David popp",NA,2018-04-16,"Butte","high",39.868734,-121.994266,NA,314,"Amsinckia intermedia","Flowering","F"
+"146","mg60796","Amsinckia intermedia","Julian Geoghegan","Marin County Parks data pro",2018-04-26,"Marin","high",38.108215,-122.625667,"VERISSIMO HILLS",314,"Amsinckia intermedia","Flowering","F"
+"147","mg61042","Amsinckia intermedia","David popp",NA,2018-04-23,"Tehama","high",40.351562,-121.778993,NA,314,"Amsinckia intermedia","Flowering","F"
+"148","mg62996","Amsinckia intermedia","Brian Charles","San Francisco Bay Area Network of National Parks",2018-05-17,"Marin","high",37.859728,-122.562034,"12-08",314,"Amsinckia intermedia","Flowering","F"
+"149","mg79405","Amsinckia intermedia","R.A. Chasey",NA,2019-03-11,"Contra Costa","high",37.953567,-122.134871,NA,361,"Amsinckia intermedia",NA,NA
+"150","mg79420","Amsinckia intermedia","David popp",NA,2019-03-11,"Butte","high",39.704183,-121.741378,"#fire Camp 218",129,"Amsinckia intermedia","Flowering","F"
+"151","mg81382","Amsinckia intermedia","David popp",NA,2019-04-07,"Butte","high",39.720912,-121.70096,"#fire Camp 2018",129,"Amsinckia intermedia","Flowering","F"
+"152","mg81397","Amsinckia intermedia","David popp",NA,2019-04-07,"Butte","high",39.721823,-121.70236,"#fire Camp 2018",90,"Amsinckia intermedia","Flowering","F"
+"153","mg82341","Amsinckia intermedia","David popp",NA,2019-04-17,"Butte","high",39.726829,-121.693535,"#fire Camp 2018",90,"Amsinckia intermedia","Flowering","F"
+"154","mg83510","Amsinckia intermedia","David popp",NA,2019-04-29,"Butte","high",39.789878,-121.653883,"#fire camp 2018",231,"Amsinckia intermedia","Flowering","F"
+"155","mg9459","Amsinckia intermedia","Jamie Smith","Marin County Parks Early Detection",2015-04-01,"Marin","high",38.124616,-122.606857,"MT. BURDELL",1256,"Amsinckia intermedia",NA,NA
+"156","mg9543","Amsinckia intermedia","Jamie Smith","Marin County Parks Early Detection",2015-04-02,"Marin","high",38.12608,-122.544982,"RUSH CREEK",314,"Amsinckia intermedia",NA,NA
+"157","mu1331","Amsinckia intermedia","Julie A. Kierstead","Julie's data upload",2020-03-26,"Shasta","high",40.557577,-122.399451,"1801 Buenaventura Blvd, Redding, CA 96001, USA",7854,"Amsinckia intermedia",NA,NA
+"158","mu13419","Amsinckia intermedia","Toni Corelli",NA,2008-04-27,"San Mateo","high",37.232884,-122.414837,"San Mateo Coast: Bean Hollow State Park along the Arroyo de los Frijoles Trail, Pescadero, CA 94060, USA",2827,"Amsinckia intermedia",NA,NA
+"159","mu13510","Amsinckia intermedia","Toni Corelli",NA,2009-05-08,"San Mateo","high",37.231,-122.4136,"San Mateo Coast: Bean Hollow State Park along the Arroyo de los Frijoles Trail, Pescadero, CA 94060, USA",2827,"Amsinckia intermedia",NA,NA
+"160","mu14451","Amsinckia intermedia","eugene bradford",NA,2021-03-28,"Los Angeles","high",34.3441,-118.52,"Newhall Pass Open Space North Trailhead",7854,"Amsinckia intermedia",NA,NA
+"161","mu2453","Amsinckia intermedia","Abby Nichols",NA,2020-03-29,"Monterey","high",36.2432,-121.4306,"47051 Arroyo Seco Rd, Greenfield, CA 93927, USA",7854,"Amsinckia intermedia",NA,NA
+"162","mu29847","Amsinckia intermedia","Alaine Arslan",NA,2023-03-13,"San Diego","high",33.0159,-116.4505,"Hornblende Canyon Trail, Anza Borrego State Park, Shelter Valley CA 92036",7854,"Amsinckia intermedia",NA,NA
+"163","mu3409","Amsinckia intermedia","Laurie Williams",NA,2020-03-13,"Marin","high",38.0827,-122.5527,"102 Sequoia Glen Ln, Novato, CA 94947, USA",7854,"Amsinckia intermedia",NA,NA
+"164","mu39939","Amsinckia intermedia","R.A. Chasey",NA,2024-03-17,"Contra Costa","high",37.862617,-121.785859,NA,7854,"Amsinckia intermedia",NA,NA
+"165","mu50773","Amsinckia intermedia","Alaine Arslan",NA,2025-03-18,"Yuba","high",39.302,-121.3149,"Daugherty Hill Wildlife Area, Loma Rica, CA, USA",7854,"Amsinckia intermedia",NA,NA
+"166","mu50971","Amsinckia intermedia","Alaine Arslan",NA,2025-03-25,"Yuba","high",39.2959,-121.3123,"Daugherty Hill Wildlife Area, Loma Rica, CA, USA",7854,"Amsinckia intermedia",NA,NA
+"167","mu50973","Amsinckia intermedia","Alaine Arslan",NA,2025-03-25,"Yuba","high",39.2959,-121.3123,"Daugherty Hill Wildlife Area, Loma Rica, CA, USA",7854,"Amsinckia intermedia",NA,NA
+"168","mu51661","Amsinckia intermedia","Alaine Arslan",NA,2025-04-12,"Yuba","high",39.2947,-121.31,"Daugherty Hill Wildlife Area,  Loma Rica, CA, USA",7854,"Amsinckia intermedia",NA,NA
+"169","po14467","Amsinckia intermedia","Daygan S",NA,2016-04-09,"Riverside","high",33.569305,-117.208808,NA,79,"Amsinckia intermedia","Flowering","F"
+"170","po192873","Amsinckia intermedia","Alice Cummings, Diane Renshaw, Ann Lambrecht, John Rawlings,","JRBPTrail11",2012-04-10,"San Mateo","high",37.401129,-122.230808,"Jasper Ridge Biological Preserve; low rock outcrop about 75 meters above trail 11 bridge.",314,"Amsinckia intermedia","Flowering","F"
+"171","po203310","Amsinckia intermedia","stephen rosenthal","Alum Rock Todd Quick Restoration",2021-12-11,"Santa Clara","high",37.398339,-121.807176,"at weather loop",2827,"Amsinckia intermedia",NA,NA
+"172","po244740","Amsinckia intermedia","Julia Markey",NA,2023-02-12,"Orange","high",33.83226,-117.744608,NA,10,"Amsinckia intermedia",NA,NA
+"173","po32780","Amsinckia intermedia","David Ledger",NA,2017-04-21,"Shasta","high",40.49972,-122.33705,"Edge of parking area City of Redding parcel on Riverland Dr.",10,"Amsinckia intermedia",NA,NA
+"174","po33149","Amsinckia intermedia","David Ledger",NA,2017-04-28,"Shasta","high",40.56826,-122.45199,"Westside Trail complex,  top of the world  highest peak",10,"Amsinckia intermedia",NA,NA
+"175","po36281","Amsinckia intermedia","David Ledger",NA,2017-05-17,"Shasta","high",40.72817,-122.21853,"Clikapudi Trail 1.3 mile from trailhead",20,"Amsinckia intermedia",NA,NA
+"176","po76771","Amsinckia intermedia","David Ledger",NA,2018-02-13,"Tehama","high",40.294084,-122.17873,"Near Perry's Riffle Parking lot, Yana Trail",20,"Amsinckia intermedia",NA,NA
+"177","wb1194-159","Amsinckia intermedia","Brian and Eileen Keelan",NA,2010-03-26,"San Luis Obispo","high",35.4266,-120.54319,"Rte 58 0.3 mi E of Rte 229 -- ca 5 mi NE of Santa Margarita",1200,"Amsinckia intermedia",NA,NA
+"178","wb2187-507","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-05-09,"Orange","high",33.627096,-117.761337,"Open Space Preserve South-Shady Canyon (COI)",314,"Amsinckia intermedia",NA,NA
+"179","wb2187-517","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-05-13,"Orange","high",33.618433,-117.801019,"Open Space Preserve South-Bommer Canyon (COI)",314,"Amsinckia intermedia",NA,NA
+"180","wb2187-536","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-05-28,"Orange","high",33.620326,-117.767446,"Laguna Coast Wilderness Park (OC)",314,"Amsinckia intermedia",NA,NA
+"181","wb2187-538","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-06-03,"Orange","high",33.634851,-117.772408,"Open Space Preserve South-Shady Canyon (COI)",314,"Amsinckia intermedia",NA,NA
+"182","wb2187-539","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-05-30,"Orange","high",33.768569,-117.707961,"East Orange Area II",314,"Amsinckia intermedia",NA,NA
+"183","wb2187-544","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-05-30,"Orange","high",33.762981,-117.712667,"Limestone Canyon (OC)",314,"Amsinckia intermedia",NA,NA
+"184","wb2187-550","Amsinckia intermedia","Kalee Koeslag","Irvine Ranch Conservancy",2019-06-03,"Orange","high",33.634648,-117.762972,"Open Space Preserve South-Shady Canyon (COI)",314,"Amsinckia intermedia",NA,NA
+"185","gp15905","Amsinckia menziesii var. intermedia","Ron Vanderhoff",NA,2019-05-16,"Orange","high",33.58017,-117.76262,"Vic. Laguna Cyn. Rd. at El Toro Rd., Laguna Beach",100,"Amsinckia menziesii var. intermedia","Flowering","F"
+"186","oe1151","Amsinckia menziesii var. intermedia","Mike Loomis",NA,2010-03-23,"Mariposa","high",37.650053,-119.884936,"Hite's Cove Trail",1000,"Amsinckia menziesii var. intermedia","Flowering","F"
+"187","oe1308","Amsinckia menziesii var. intermedia","Mike Loomis",NA,2010-04-09,"Mariposa","high",37.601176,-119.998683,"Railroad Flat Road, 2.5 miles west of Briceburg",100,"Amsinckia menziesii var. intermedia","Flowering","F"
+"188","oe1484","Amsinckia menziesii var. intermedia","Mike Loomis",NA,2010-03-28,"Stanislaus","high",37.659585,-120.484764,"Hwy. 132 .5 miles west of LaGrange",50,"Amsinckia menziesii var. intermedia","Flowering","F"
+"189","oe1948","Amsinckia menziesii var. intermedia","Mike Loomis",NA,2010-04-23,"Butte","high",39.581737,-121.551833,"Table Mountain, Cherokee Rd., 1.5 miles north of Schimer Rd.",50,"Amsinckia menziesii var. intermedia","Flowering","F"
+"190","oe5111","Amsinckia menziesii var. intermedia","Bob Granger","COM",2013-04-15,"Marin","high",37.975461,-122.584247,"in grasses next to fire road leading to top of Bald Hill at the junction of Deer Park trail N 37 58.540' W 122 35.074'",10,"Amsinckia menziesii var. intermedia","Flowering","F"

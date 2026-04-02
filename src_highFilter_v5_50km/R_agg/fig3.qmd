@@ -1,0 +1,467 @@
+```{r}
+# --- Libraries ---------------------------------------------------------------
+library(tidyverse)
+library(here)
+library(terra)
+library(tidyterra)
+library(ggnewscale)
+library(scico)
+library(cowplot)
+library(tigris)   # for CA boundary
+library(ggspatial)
+
+
+options(tigris_use_cache = TRUE)
+sf_use_s2(FALSE)
+
+# --- Palette (8 discrete colors for classes 0..7) ----------------------------
+# Palette: blue → yellow → orange → red (8 steps for 0..7)
+suit_grad <- colorRampPalette(c(
+  "#1e3e95",  # deep blue
+  "#8fb0d9",  # light blue
+  "#F2D544",  # yellow (midpoint)
+  "#F5CA96",  # light orange
+  "#F1853F",  # orange
+  "#CC331A"   # red
+))
+pal <- setNames(suit_grad(8), as.character(0:7))
+
+
+# --- Helper: nice labels -----------------------------------------------------
+.pretty_labels <- function(model) {
+  if (grepl("2000_2023", model)) {
+    list(model_pretty = "2000 to 2023",
+         subtitle = "Current conditions\nEcorelevant period aggregate models")
+  } else if (grepl("MIROC45", model)) {
+    list(model_pretty = "end of century",
+         subtitle = "MIROC 4.5\nEcorelevant period aggregate models")
+  } else {
+    list(model_pretty = "end of century",
+         subtitle = "MIROC 8.5\nEcorelevant period aggregate models")
+  }
+}
+
+# --- Helper: load Central Valley polygon (projected on demand) ---------------
+load_cv <- function(target_crs) {
+  cv <- vect(here("data", "ds2632", "ds2632.gdb")) |> project(target_crs)
+  cv
+}
+
+# --- Helper: load CA polygon (projected on demand) ---------------------------
+load_ca <- function(target_crs) {
+  ca <- tigris::states(progress_bar = FALSE) |>
+    sf::st_as_sf() |>
+    dplyr::filter(STUSPS == "CA") |>
+    vect() |>
+    project(target_crs)
+  ca
+}
+
+# --- Find (or build) the CA/CV sum rasters for a model -----------------------
+resolve_sum_rasters <- function(model) {
+  # candidate folders (edit/add if yours differ)
+  base_dirs <- c(
+    here("data", "agg_models_072925", "jg_models_072925", "p10"),
+    here("data", "agg", "maxent_outputs_072925", "p10"),
+    here("data", "agg_models_072925", "p10")
+  )
+
+  ca_name <- paste0(model, "_lowFilter_sum_CA_072925.tif")
+  cv_name <- paste0(model, "_lowFilter_sum_CV_072925.tif")
+  gen_name <- paste0(model, "_lowFilter_sum_072925.tif")
+
+  # Try direct CA/CV first
+  f_CA <- NULL; f_CV <- NULL
+  for (bd in base_dirs) {
+    cand_ca <- file.path(bd, ca_name)
+    cand_cv <- file.path(bd, cv_name)
+    if (file.exists(cand_ca)) f_CA <- cand_ca
+    if (file.exists(cand_cv)) f_CV <- cand_cv
+  }
+
+  # Fallback: recursive search under data/
+  if (is.null(f_CA) || is.null(f_CV)) {
+    hits_ca <- list.files(here("data"), pattern = paste0("^", ca_name, "$"),
+                          recursive = TRUE, full.names = TRUE)
+    hits_cv <- list.files(here("data"), pattern = paste0("^", cv_name, "$"),
+                          recursive = TRUE, full.names = TRUE)
+    if (length(hits_ca)) f_CA <- hits_ca[1]
+    if (length(hits_cv)) f_CV <- hits_cv[1]
+  }
+
+  # If still missing, try to build from generic sum by cropping
+  if (is.null(f_CA) || is.null(f_CV)) {
+    gen_hits <- c(
+      unlist(lapply(base_dirs, function(bd) file.path(bd, gen_name))),
+      list.files(here("data"), pattern = paste0("^", gen_name, "$"),
+                 recursive = TRUE, full.names = TRUE)
+    )
+    gen_hits <- gen_hits[file.exists(gen_hits)]
+    if (length(gen_hits)) {
+      gen <- rast(gen_hits[1])          # generic statewide sum
+      crs_target <- crs(gen)
+      ca <- load_ca(crs_target)
+      cv <- load_cv(crs_target)
+
+      # Build temporary CA/CV tifs next to the generic file
+      out_dir <- dirname(gen_hits[1])
+      f_CA <- file.path(out_dir, ca_name)
+      f_CV <- file.path(out_dir, cv_name)
+      writeRaster(crop(gen, ca, mask = TRUE), f_CA, overwrite = TRUE)
+      writeRaster(crop(gen, cv, mask = TRUE), f_CV, overwrite = TRUE)
+    }
+  }
+
+  if (is.null(f_CA) || is.null(f_CV) || !file.exists(f_CA) || !file.exists(f_CV)) {
+    stop(paste0(
+      "Couldn't locate or build CA/CV rasters for ", model, ".\n",
+      "Searched under:\n  - ",
+      paste(normalizePath(base_dirs, mustWork = FALSE), collapse = "\n  - "),
+      "\nMake sure files named:\n  ", ca_name, "\n  ", cv_name,
+      "\nexist somewhere under your project 'data/' folder."
+    ))
+  }
+
+  message("Using files:\n  CA: ", f_CA, "\n  CV: ", f_CV)
+  list(CA = f_CA, CV = f_CV)
+}
+
+# --- Main plotting function ---------------------------------------------------
+p10VisualizeAgg <- function(model) {
+  message("Rendering: ", model)
+  f <- resolve_sum_rasters(model)
+
+  input_rast_CA <- rast(f$CA); names(input_rast_CA) <- "sum"
+  input_rast_CV <- rast(f$CV); names(input_rast_CV) <- "sum"
+
+  # categorical classes 0..7 so legend shows all bins
+  input_rast_CA <- tidyterra::mutate(input_rast_CA, sum = factor(sum, levels = 0:7))
+  input_rast_CV <- tidyterra::mutate(input_rast_CV, sum = factor(sum, levels = 0:7))
+
+  # grey mask over CA (so CV pops)
+  CV_mask <- terra::ifel(!is.na(input_rast_CV[[1]]), 0, NA)
+
+  labs_list <- .pretty_labels(model)
+
+  # --- inset (CV) with legend, scale bar, north arrow
+plot_CV <- ggplot() +
+  geom_spatraster(data = input_rast_CV, aes(fill = sum), show.legend = TRUE) +
+  scale_fill_manual(
+    name = "Number of species suitable",          # legend title
+    values = pal, drop = FALSE, na.translate = FALSE
+  ) +
+  theme_void() +
+  theme(
+    legend.position   = "bottom",
+    legend.box        = "vertical",               # stack title above keys
+    legend.justification = "center",
+    legend.key.width  = unit(0.7, "cm"),
+    legend.key.height = unit(0.5, "cm"),
+    legend.spacing.x  = unit(0.25, "cm"),
+    legend.title      = element_text(hjust = 0.5, size = 10),
+    legend.text       = element_text(size = 10),
+    text              = element_text(family = "Times")
+  ) +
+  guides(fill = guide_legend(
+    title.position = "top",   # put title on top
+    title.hjust    = 0.5,     # center the title
+    nrow = 1, byrow = TRUE,
+    label.position = "bottom" # 0–7 under the swatches
+  )) +
+  ggspatial::annotation_scale(location = "bl", width_hint = 0.25,
+                              text_cex = 0.8, line_width = 0.3,
+                              pad_x = unit(0.25, "cm"), pad_y = unit(0.25, "cm")) +
+  ggspatial::annotation_north_arrow(location = "bl", which_north = "true",
+                                    style = ggspatial::north_arrow_nautical(
+                                      fill = c("grey35","grey85"), line_col = "grey10"),
+                                    height = unit(1.1, "cm"), width = unit(1.1, "cm"),
+                                    pad_x = unit(0.25, "cm"), pad_y = unit(1.10, "cm"))
+
+
+
+  # --- full CA with greyed CV overlay
+  plot_CA <- ggplot() +
+    geom_spatraster(data = input_rast_CA, aes(fill = sum), show.legend = FALSE) +
+    scale_fill_manual(values = pal, drop = FALSE, na.translate = FALSE) +
+    guides(fill = "none") +
+    ggnewscale::new_scale_fill() +
+    geom_spatraster(data = CV_mask, na.rm = TRUE) +
+    scale_fill_gradientn(colours = c("grey20", "grey21"), na.value = "transparent") +
+    theme_void() +
+    theme(legend.position = "none")
+
+  # compose inset
+  plot_inset <- cowplot::ggdraw(plot = plot_CV) +
+    cowplot::draw_plot(plot_CA, x = 0.48, y = 0.48, width = 0.4, height = 0.4)
+
+  # save next to the p10 folder in use
+  figs_dir <- file.path(dirname(dirname(f$CA)), "figs")
+  dir.create(figs_dir, recursive = TRUE, showWarnings = FALSE)
+  out_png <- file.path(figs_dir, paste0(model, "_lowFilter_sum_072925.png"))
+
+  ggsave(out_png, plot = plot_inset, scale = 1.25, bg = "white",
+         units = "px", width = 1440, height = 1920)
+
+  plot_inset
+}
+
+
+# --- Run the three figures ----------------------------------------------------
+p1 <- p10VisualizeAgg("2000_2023")
+p2 <- p10VisualizeAgg("MIROC45_2070_2099")
+p3 <- p10VisualizeAgg("MIROC85_2070_2099")
+
+
+p1
+p2
+p3
+```
+
+
+#Put it all together with legend, north arrow, and scale bar 
+
+```{r}
+# Panel letters
+.panel_letter <- function(model) {
+  if (grepl("2000_2023", model)) "A"
+  else if (grepl("MIROC45", model)) "B"
+  else "C"
+}
+
+# --- Fixed p10VisualizeAgg (uses fontfamily, p1 compass only, p3 legend only) ---
+p10VisualizeAgg <- function(model, show_compass = FALSE, show_legend = FALSE) {
+  message("Rendering: ", model)
+  f <- resolve_sum_rasters(model)
+
+  input_rast_CA <- rast(f$CA); names(input_rast_CA) <- "sum"
+  input_rast_CV <- rast(f$CV); names(input_rast_CV) <- "sum"
+
+  input_rast_CA <- tidyterra::mutate(input_rast_CA, sum = factor(sum, levels = 0:7))
+  input_rast_CV <- tidyterra::mutate(input_rast_CV, sum = factor(sum, levels = 0:7))
+  CV_mask <- terra::ifel(!is.na(input_rast_CV[[1]]), 0, NA)
+
+  # CV map (legend present here but we can hide it later)
+  plot_CV <- ggplot() +
+    geom_spatraster(data = input_rast_CV, aes(fill = sum), show.legend = TRUE) +
+    scale_fill_manual(
+      name = "Number of species suitable",
+      values = pal, drop = FALSE, na.translate = FALSE
+    ) +
+    theme_void() +
+    theme(
+      legend.position     = "bottom",
+      legend.box          = "vertical",
+      legend.justification= "center",
+      legend.key.width    = unit(0.9, "cm"),
+      legend.key.height   = unit(0.5, "cm"),
+      legend.spacing.x    = unit(0.25, "cm"),
+      legend.title        = element_text(hjust = 0.5, size = 12),
+      legend.text         = element_text(size = 10),
+      text                = element_text(family = "Times")
+    ) +
+    guides(fill = guide_legend(
+      title.position = "top",
+      title.hjust    = 0.5,
+      nrow = 1, byrow = TRUE,
+      label.position = "bottom"
+    ))
+
+  if (isTRUE(show_compass)) {
+    plot_CV <- plot_CV +
+      ggspatial::annotation_scale(
+        location = "bl", width_hint = 0.25,
+        text_cex = 0.8, line_width = 0.3,
+        pad_x = unit(0.25, "cm"), pad_y = unit(0.25, "cm")
+      ) +
+      ggspatial::annotation_north_arrow(
+        location = "bl", which_north = "true",
+        style = ggspatial::north_arrow_nautical(
+          fill = c("grey35","grey85"), line_col = "grey10"
+        ),
+        height = unit(1.1, "cm"), width = unit(1.1, "cm"),
+        pad_x = unit(0.25, "cm"), pad_y = unit(1.10, "cm")
+      )
+  }
+
+  # CA background with greyed CV
+  plot_CA <- ggplot() +
+    geom_spatraster(data = input_rast_CA, aes(fill = sum), show.legend = FALSE) +
+    scale_fill_manual(values = pal, drop = FALSE, na.translate = FALSE) +
+    guides(fill = "none") +
+    ggnewscale::new_scale_fill() +
+    geom_spatraster(data = CV_mask, na.rm = TRUE) +
+    scale_fill_gradientn(colours = c("grey20", "grey21"), na.value = "transparent") +
+    theme_void() +
+    theme(legend.position = "none")
+
+  # Compose maps with panel letter
+  upper <- cowplot::ggdraw() +
+    cowplot::draw_plot(
+      plot_CV + theme(legend.position = if (show_legend) "bottom" else "none"),
+      x = 0, y = 0, width = 1, height = 1
+    ) +
+cowplot::draw_label(
+  label = .panel_letter(model),  # "A","B","C"
+  x = 0.985, y = 0.985,          # top-right corner of the panel
+  hjust = 1, vjust = 1,
+  fontface = "bold", size = 18, fontfamily = "Times"
+    ) +
+    cowplot::draw_plot(plot_CA, x = 0.48, y = 0.48, width = 0.4, height = 0.4)
+
+  if (isTRUE(show_legend)) {
+    # Centered, full-width legend stacked below map (p3 only)
+    legend_g <- cowplot::get_legend(
+      plot_CV +
+        guides(fill = guide_legend(
+          title.position = "top", title.hjust = 0.5,
+          nrow = 1, byrow = TRUE, label.position = "bottom"
+        )) +
+        theme(
+          legend.position     = "bottom",
+          legend.box          = "horizontal",
+          legend.box.just     = "center",
+          legend.justification= "center"
+        )
+    )
+    cowplot::plot_grid(upper, legend_g, ncol = 1, rel_heights = c(1, 0.12), align = "v")
+  } else {
+    upper
+  }
+}
+
+# --- Build the three panels with your options ---------------------------------
+p1 <- p10VisualizeAgg("2000_2023",         show_compass = TRUE,  show_legend = FALSE)  # A: compass only
+p2 <- p10VisualizeAgg("MIROC45_2070_2099", show_compass = FALSE, show_legend = FALSE)  # B: plain
+p3 <- p10VisualizeAgg("MIROC85_2070_2099", show_compass = FALSE, show_legend = TRUE)   # C: legend only
+
+# --- Combine into one final figure (one row) ----------------------------------
+final_fig <- cowplot::plot_grid(p1, p2, p3, ncol = 3, rel_widths = c(1,1,1), align = "h")
+
+# Save
+final_path <- here::here("data","agg_models_072925","jg_models_072925","figs","sum_three_panel_072925.png")
+ggsave(final_path, plot = final_fig, width = 2400, height = 900, units = "px", bg = "white")
+final_fig
+
+```
+
+# Move legend to the right side 
+
+```{r}
+# Panel letters
+.panel_letter <- function(model) {
+  if (grepl("2000_2023", model)) "A"
+  else if (grepl("MIROC45", model)) "B"
+  else "C"
+}
+
+# --- Build ONE panel (legend-free), compass optional -------------------------
+p10Panel <- function(model, show_compass = FALSE) {
+  f <- resolve_sum_rasters(model)
+
+  rCA <- rast(f$CA); names(rCA) <- "sum"
+  rCV <- rast(f$CV); names(rCV) <- "sum"
+  rCA <- tidyterra::mutate(rCA, sum = factor(sum, levels = 0:7))
+  rCV <- tidyterra::mutate(rCV, sum = factor(sum, levels = 0:7))
+  CV_mask <- terra::ifel(!is.na(rCV[[1]]), 0, NA)
+
+  p_cv <- ggplot() +
+    geom_spatraster(data = rCV, aes(fill = sum), show.legend = TRUE) +
+    scale_fill_manual(
+      name = "# of species",
+      values = pal, drop = FALSE, na.translate = FALSE
+    ) +
+    theme_void()
+
+  if (isTRUE(show_compass)) {
+    p_cv <- p_cv +
+      ggspatial::annotation_scale(location = "bl", width_hint = 0.25,
+                                  text_cex = 0.8, line_width = 0.3,
+                                  pad_x = unit(0.25, "cm"), pad_y = unit(0.25, "cm")) +
+      ggspatial::annotation_north_arrow(
+        location = "bl", which_north = "true",
+        style = ggspatial::north_arrow_nautical(
+          fill = c("grey35","grey85"), line_col = "grey10"
+        ),
+        height = unit(1.1, "cm"), width = unit(1.1, "cm"),
+        pad_x = unit(0.25, "cm"), pad_y = unit(1.10, "cm")
+      )
+  }
+
+  p_ca <- ggplot() +
+    geom_spatraster(data = rCA, aes(fill = sum), show.legend = FALSE) +
+    scale_fill_manual(values = pal, drop = FALSE, na.translate = FALSE) +
+    guides(fill = "none") +
+    ggnewscale::new_scale_fill() +
+    geom_spatraster(data = CV_mask, na.rm = TRUE, show.legend = FALSE) +
+    scale_fill_gradientn(colours = c("grey20", "grey21"),
+                         na.value = "transparent", guide = "none") +
+    theme_void()
+
+  # compose (legend removed so all panels are same size)
+  cowplot::ggdraw() +
+    cowplot::draw_plot(p_cv + theme(legend.position = "none"),
+                       x = 0, y = 0, width = 1, height = 1) +
+    cowplot::draw_label(.panel_letter(model),
+                        x = 0.985, y = 0.985, hjust = 1, vjust = 1,
+                        fontface = "bold", size = 18, fontfamily = "Times") +
+    cowplot::draw_plot(p_ca, x = 0.48, y = 0.48, width = 0.4, height = 0.4)
+}
+
+# --- Make a vertical legend grob to place on the RIGHT -----------------------
+make_vertical_legend <- function(model_for_scale = "MIROC85_2070_2099") {
+  f <- resolve_sum_rasters(model_for_scale)
+  rCV <- rast(f$CV); names(rCV) <- "sum"
+  rCV <- tidyterra::mutate(rCV, sum = factor(sum, levels = 0:7))
+
+  base <- ggplot() +
+    geom_spatraster(data = rCV, aes(fill = sum), show.legend = TRUE) +
+    scale_fill_manual(
+      name = "# of species",
+      values = pal, drop = FALSE, na.translate = FALSE
+    ) +
+    theme_void() +
+    theme(
+      legend.position      = "right",
+      legend.box           = "vertical",
+      legend.justification = "center",
+      legend.key.width     = unit(1.0, "cm"),
+      legend.key.height    = unit(0.6, "cm"),
+      legend.title         = element_text(hjust = 0.5, size = 12),
+      legend.text          = element_text(size = 10),
+      legend.box.margin    = margin(t = 0, r = 16, b = 0, l = 8),
+      plot.margin          = margin(t = 0, r = 16, b = 0, l = 0),
+      text                 = element_text(family = "Times")
+    ) +
+    guides(fill = guide_legend(
+      title.position = "top", title.hjust = 0.5,
+      ncol = 1, byrow = FALSE, label.position = "right"
+    ))
+
+  cowplot::get_legend(base)
+}
+
+# --- Build panels (A with compass; B plain; C plain) --------------------------
+p1 <- p10Panel("2000_2023",         show_compass = TRUE)
+p2 <- p10Panel("MIROC45_2070_2099", show_compass = FALSE)
+p3 <- p10Panel("MIROC85_2070_2099", show_compass = FALSE)
+
+# combine the three panels (equal widths)
+row3 <- cowplot::plot_grid(p1, p2, p3, ncol = 3, rel_widths = c(1,1,1), align = "h")
+
+# build one vertical legend and attach it to the RIGHT of the combined row
+legend_right <- make_vertical_legend("MIROC85_2070_2099")
+final_fig <- cowplot::plot_grid(row3, legend_right, ncol = 2,
+                                rel_widths = c(1, 0.20), align = "h")
+
+# save (wider canvas so nothing clips)
+final_path <- here::here("data","agg_models_072925","jg_models_072925","figs",
+                         "sum_three_panel_rightlegend_072925.png")
+ggsave(final_path, plot = final_fig,
+       width = 2800, height = 1000, units = "px",
+       bg = "white", limitsize = FALSE)
+
+final_fig
+
+```
+
+
