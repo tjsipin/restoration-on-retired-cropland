@@ -57,12 +57,6 @@ pred_fxn <- function(model, spp, month, model_years, bcmPath, soilPath, pathOut)
                               pattern = "natsgo_cec_270m_CA_2023",
                               full = TRUE)
     
-    # bd_POLARIS_filename = 'data/0_env/polaris/rasters/bd_0_200_weightedAverages_scale270_bcmProjScale_reprojectFuncNoScale.tif'
-    # clay_POLARIS_filename =  'data/0_env/polaris/rasters/clay_0_200_weightedAverages_scale270_bcmProjScale_reprojectFuncNoScale.tif'
-    # om_POLARIS_filename = 'data/0_env/polaris/rasters/om_0_200_weightedAverages_scale270_bcmProjScale_reprojectFuncNoScale.tif'
-    # ph_POLARIS_filename = 'data/0_env/polaris/rasters/ph_0_200_weightedAverages_scale270_bcmProjScale_reprojectFuncNoScale.tif'
-    # silt_POLARIS_filename = 'data/0_env/polaris/rasters/silt_0_200_weightedAverages_scale270_bcmProjScale_reprojectFuncNoScale.tif'
-    
     salinity_filename = 'data/0_env/salinity/salinity_full_CA_res.tif'
     
     ## Read each variable
@@ -84,17 +78,6 @@ pred_fxn <- function(model, spp, month, model_years, bcmPath, soilPath, pathOut)
     salinity <- terra::rast(salinity_filename) %>% 
         resample(aet, method='mode')
     
-    # bd_POLARIS <- raster::raster(bd_POLARIS_filename) %>% 
-    #     resample(aet)
-    # clay_POLARIS <- raster::raster(clay_POLARIS_filename) %>% 
-    #     resample(aet)
-    # om_POLARIS <- raster::raster(om_POLARIS_filename) %>% 
-    #     resample(aet)
-    # ph_POLARIS <- raster::raster(ph_POLARIS_filename) %>% 
-    #     resample(aet)
-    # silt_POLARIS <- raster::raster(silt_POLARIS_filename) %>% 
-    #     resample(aet)
-    
     ## Stack and match lyr names to model variables
     stack <- raster::stack(rast(list(aet, tdiff, tmx, tmxSummer, pptWinter, om, ph, drclass, cec, salinity)))
     names(stack) <- c(
@@ -103,7 +86,6 @@ pred_fxn <- function(model, spp, month, model_years, bcmPath, soilPath, pathOut)
     )
     ## Predict suitability with model, then save raster
     pred <- dismo::predict(model, stack)
-    # pred_new <- dismo::predict(model, stack_new)
     writeRaster(pred, out.filename, overwrite=TRUE)
 } ### END `pred_fxn()`
 

@@ -381,15 +381,6 @@ extractEnvWY = function(sp){
     out.dir = 'data_v5_50km_highFilter/3_swd/wy'
     
     out.filename = paste0('data_v5_50km_highFilter/3_swd/wy/', 'swd_', sp, '_soil200cm_highFilter_wy.csv')
-    # out = read_csv(out.filename)
-    # if(nrow(out)==(nrow(occ) + nrow(back))){
-    #     message(paste0('No changes necessary\n', sp))
-    #     return(NULL)
-    # } else{
-    #     message(paste0('Changes are necessary\n', sp))
-    #     return(NULL)
-    # }
-    # if(file.exists(out.filename)) return(NULL)
     
     #1) Read in the occurrence and background data 
     points = occ %>% 

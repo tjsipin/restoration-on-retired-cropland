@@ -12,38 +12,36 @@ library(tidymodels)
 library(ENMeval)
 library(SDMtune)
 tidymodels_prefer()
-dir.create('data/4_maxent_outputs/selective/tuning/', recursive = T)
+dir.create('data_MAIN/4_maxent_outputs/monthly/tuning/', recursive = T)
 set.seed(123)
+
+## sp to run
 names = c(
     'a_menziesii',
+    'a_intermedia',
     'c_pungens',
     'l_pentachaeta',
     'p_arborea',
     'p_ciliata',
     'a_polycarpa',
-    'c_lasiophyllus'
+    'c_lasiophyllus',
+    'l_californica',
+    'l_gracilis'
 )
 
 map(
     names,
     function(sp){
-        enm_eval.filename = paste0('data/4_maxent_outputs/selective/tuning/', sp, "_tuned_args_lowFilter.rds")
-        enm_eval_res.filename = paste0('data/4_maxent_outputs/selective/tuning/', sp, "_tuned_args_res_lowFilter.rds")
+        enm_eval.filename = paste0('data_MAIN/4_maxent_outputs/monthly/tuning/', sp, "_tuned_args_lowFilter.rds")
+        enm_eval_res.filename = paste0('data_MAIN/4_maxent_outputs/monthly/tuning/', sp, "_tuned_args_res_lowFilter.rds")
         
-        # if(file.exists(enm_eval.filename)){
-        #     print(paste0("enm eval exists: ", sp))
-        #     enm_eval = readRDS(enm_eval.filename)
-        #     enm_eval_res = eval.results(enm_eval)
-        #     saveRDS(enm_eval_res, enm_eval_res.filename)
-        #     return(NULL)
-        # }
         cat("Processing:", sp, "\n")
-        swd <- read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')) %>% 
+        swd <- read_csv(paste0('data_MAIN/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')) %>% 
             mutate(tdiff = tmx - tmn) %>% 
             select(
                 lon, lat, month, year, 
                 aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             ) %>% 
             mutate(drclass = as.factor(drclass))
@@ -86,8 +84,8 @@ map(
 map(
     names,
     function(sp){
-        res.filename = paste0('data/4_maxent_outputs/selective/tuning/', sp, "_tuned_args_res_lowFilter.rds")
-        args.filename = paste0("data/4_maxent_outputs/selective/tuning/", sp, "_finalModelArgs_lowFilter.rds")
+        res.filename = paste0('data_MAIN/4_maxent_outputs/monthly/tuning/', sp, "_tuned_args_res_lowFilter.rds")
+        args.filename = paste0("data_MAIN/4_maxent_outputs/monthly/tuning/", sp, "_finalModelArgs_lowFilter.rds")
         res = readRDS(res.filename)
         best_res = res %>%
             select(rm, auc.train, auc.val.avg, auc.diff.avg, or.10p.avg) %>% 
@@ -129,12 +127,12 @@ map(
         set.seed(123)
         print(sp)    
         # Read in all points
-        training <- read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')) %>% 
+        training <- read_csv(paste0('data_MAIN/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')) %>% 
             mutate(tdiff = tmx - tmn) %>% 
             select(
                 lon, lat, month, year, 
                 aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             ) %>% 
             mutate(drclass = as.factor(drclass))
@@ -142,17 +140,17 @@ map(
         ## Select env predictors for model (presence + background)
         x <- training %>% 
             # dplyr::select(aet:ph) 
-            select(aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff, cec, drclass, om, ph)
+            select(aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff, cec, drclass, om, ph, salinity)
         
         ## Specify occurrence data
         p <- training$presence
         
         
         #reading in best args
-        args = readRDS(paste0("data/4_maxent_outputs/selective/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
+        args = readRDS(paste0("data_MAIN/4_maxent_outputs/monthly/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
         
         ## Path to save results
-        out.path <- paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model_training/')
+        out.path <- paste0('data_MAIN/4_maxent_outputs/monthly/', sp, '/lowFilter/model_training/')
         dir.create(out.path, recursive=T)
         
         ## Final Model Creation
@@ -167,10 +165,10 @@ map(
 aucs = map(
     names,
     function(sp){
-        training = read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv'))
-        testing = read_csv(paste0('data/3_swd/monthly/selective/testing_', sp, '_soil200cm_lowFilter_monthly_selective.csv'))
-        model = readRDS(paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
-        best_rm = readRDS(paste0('data/4_maxent_outputs/selective/tuning/', sp, '_finalModelArgs_lowFilter.rds'))[4] %>% 
+        training = read_csv(paste0('data_MAIN/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv'))
+        testing = read_csv(paste0('data_MAIN/3_swd/monthly/testing_', sp, '_soil200cm_lowFilter_monthly.csv'))
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/monthly/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        best_rm = readRDS(paste0('data_MAIN/4_maxent_outputs/monthly/tuning/', sp, '_finalModelArgs_lowFilter.rds'))[4] %>% 
             str_split_i('=', 2)
         
         training_pred = training %>% 
@@ -178,7 +176,7 @@ aucs = map(
             select( 
                 lon, lat, month, year, 
                 aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             ) %>% 
             filter(complete.cases(.)) %>% 
@@ -189,7 +187,7 @@ aucs = map(
             select(
                 lon, lat, month, year, 
                 aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             ) %>% 
             filter(complete.cases(.)) %>% 
@@ -214,10 +212,10 @@ aucs = map(
 aucs_monthly = map(
     names,
     function(sp){
-        training = read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv'))
-        testing = read_csv(paste0('data/3_swd/monthly/selective/testing_', sp, '_soil200cm_lowFilter_monthly_selective.csv'))
-        model = readRDS(paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
-        best_rm = readRDS(paste0('data/4_maxent_outputs/selective/tuning/', sp, '_finalModelArgs_lowFilter.rds'))[4] %>% 
+        training = read_csv(paste0('data_MAIN/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv'))
+        testing = read_csv(paste0('data_MAIN/3_swd/monthly/testing_', sp, '_soil200cm_lowFilter_monthly.csv'))
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/monthly/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        best_rm = readRDS(paste0('data_MAIN/4_maxent_outputs/monthly/tuning/', sp, '_finalModelArgs_lowFilter.rds'))[4] %>% 
             str_split_i('=', 2)
         
         training_pred = training %>% 
@@ -225,7 +223,7 @@ aucs_monthly = map(
             select( 
                 lon, lat, month, year, 
                 aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             ) %>% 
             filter(complete.cases(.)) %>% 
@@ -239,7 +237,7 @@ aucs_monthly = map(
             select( 
                 lon, lat, month, year, 
                 aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             ) %>% 
             filter(complete.cases(.)) %>% 
@@ -264,7 +262,7 @@ aucs_monthly = map(
 variable_importance = map(
     names,
     function(sp){
-        model = readRDS(paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/monthly/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
         var_imp = model@results %>% 
             as.data.frame() %>% 
             mutate(variable = rownames(.)) %>% 
@@ -285,8 +283,8 @@ variable_importance = map(
 pearson_correlation = map(
     names,
     function(sp){
-        model = readRDS(paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
-        training = read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')) %>% 
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/monthly/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        training = read_csv(paste0('data_MAIN/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')) %>% 
             mutate(tdiff=tmx-tmn)
         p = training %>% 
             filter(presence==1) 
@@ -304,7 +302,7 @@ pearson_correlation = map(
 presence_distribution = map(
     names,
     function(sp){
-        training = read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')) 
+        training = read_csv(paste0('data_MAIN/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')) 
         presence_absence = training %>% 
             mutate(sp = sp) %>% 
             group_by(sp, presence) %>% 
@@ -323,25 +321,25 @@ map(
         print(sp)
         # Read in all points
         training <- read_csv(
-            paste0("data/3_swd/monthly/selective/training_", sp, "_soil200cm_lowFilter_monthly_selective.csv")
+            paste0("data_MAIN/3_swd/monthly/training_", sp, "_soil200cm_lowFilter_monthly.csv")
         ) %>%
             mutate(tdiff = tmx - tmn) %>% 
             mutate(drclass = as.factor(drclass)) %>%
             select(
                 lon, lat, month, year,
                 cwd, aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             )
         testing <- read_csv(
-            paste0("data/3_swd/monthly/selective/testing_", sp, "_soil200cm_lowFilter_monthly_selective.csv")
+            paste0("data_MAIN/3_swd/monthly/testing_", sp, "_soil200cm_lowFilter_monthly.csv")
         ) %>%
             mutate(tdiff = tmx - tmn) %>% 
             mutate(drclass = as.factor(drclass)) %>%
             select(
                 lon, lat, month, year,
                 cwd, aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff,
-                cec, drclass, om, ph,
+                cec, drclass, om, ph, salinity,
                 presence
             )
         
@@ -350,7 +348,7 @@ map(
         
         ## Select env predictors for model (presence + background)
         x <- full %>%
-            select(aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff, cec, drclass, om, ph)
+            select(aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff, cec, drclass, om, ph, salinity)
         
         
         ## Specify occurrence data
@@ -358,10 +356,10 @@ map(
         
         
         #reading in best args
-        args = readRDS(paste0("data/4_maxent_outputs/selective/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
+        args = readRDS(paste0("data_MAIN/4_maxent_outputs/monthly/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
         
         ## Path to save results
-        out.path <- paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model/')
+        out.path <- paste0('data_MAIN/4_maxent_outputs/monthly/', sp, '/lowFilter/model/')
         dir.create(out.path, recursive=T)
         
         ## Final Model Creation

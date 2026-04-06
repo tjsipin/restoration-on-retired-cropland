@@ -17,7 +17,7 @@ tidymodels_prefer()
 set.seed(123)
 
 ## Read in fxn
-source('src_lowFilter_v5_50km_POLARIS/util/pred_wy.R')
+source('src_POLARIS/util/pred_wy.R')
 
 central_valley = vect('data/central_valley/ds2632.gdb') %>% 
     project('epsg:3310')
@@ -46,10 +46,10 @@ map(
     names,
     function(sp){
         print(paste0("Working on ", sp))
-        model = readRDS(paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/", sp,
+        model = readRDS(paste0("data_POLARIS/4_maxent_outputs/wy/", sp,
                                "/lowFilter/model/",
                                sp, "_final_sdm.rds"))
-        out.path = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/",
+        out.path = paste0("data_POLARIS/4_maxent_outputs/wy/",
                           sp,
                           "/lowFilter/monthly_dist_hist/")
         dir.create(out.path, recursive = T)
@@ -66,150 +66,150 @@ map(
     }
 )
 
-# #RCP4.5
-# map(
-#     names,
-#     function(sp){
-#         ## Read in Maxent model
-#         print(paste0("Working on ", sp))
-#         model = readRDS(paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/", sp,
-#                                "/lowFilter/model/",
-#                                sp, "_final_sdm.rds"))
-#         out.path = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy//",
-#                           sp,
-#                           "/lowFilter/monthly_dist_MIROC45/")
-#         dir.create(out.path, recursive = T)
-#         ## Run fxn
-#         pred_wy(
-#             model = model,
-#             sp = sp,
-#             model_years = "MIROC45_2070_2099",
-#             bcmPath = "data/0_env/bcm/bcm_future/MIROC45/resampled/",
-#             soilPath = "data/0_env/natsgo/rasters/",
-#             salinityPath = 'data/0_env/salinity/',
-#             pathOut = out.path
-#         )
-#     }
-# )
-# 
-# #RCP8.5
-# map(
-#     names,
-#     function(sp){
-#         ## Read in Maxent model
-#         print(paste0("Working on ", sp))
-#         model = readRDS(paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/", sp,
-#                                "/lowFilter/model/",
-#                                sp, "_final_sdm.rds"))
-#         out.path = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/",
-#                           sp,
-#                           "/lowFilter/monthly_dist_MIROC85/")
-#         dir.create(out.path, recursive = T)
-#         ## Run fxn
-#         pred_wy(
-#             model = model,
-#             sp = sp,
-#             model_years = "MIROC85_2070_2099",
-#             bcmPath = "data/0_env/bcm/bcm_future/MIROC85/resampled/",
-#             soilPath = "data/0_env/natsgo/rasters/",
-#             salinityPath = 'data/0_env/salinity/',
-#             pathOut = out.path
-#         )
-#     }
-# )
-# 
-# 
-# # Threshold rasters -------------------------------------------------------
-# 
-# ## P10 threshold raster per species and model-years combination
-# getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099", "MIROC85_2070_2099")){
-#     #Read in training data and model
-#     training.filename = paste0('data_v5_50km_POLARIS/3_swd/wy/training_', sp, '_soil200cm_lowFilter_wy.csv')
-#     testing.filename = paste0('data_v5_50km_POLARIS/3_swd/wy/testing_', sp, '_soil200cm_lowFilter_wy.csv')
-#     model.filename = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/", sp, "/lowFilter/model/", sp, "_final_sdm.rds")
-#     
-#     training = read_csv(training.filename)
-#     testing = read_csv(testing.filename)
-#     model = readRDS(model.filename)
-#     
-#     #Subset training data to occurrences only
-#     pred1 = training %>%
-#         rbind(testing) %>%
-#         filter(presence==1) %>%
-#         # mutate(tdiff = tmx - tmn) %>%
-#         filter(complete.cases(.)) %>%
-#         mutate(pred = predict(model, .))
-#     
-#     #Get the 10th percentile of occurrence point predictions
-#     p10 = quantile(pred1$pred, 0.1)
-#     
-#     #Designate filepath string
-#     if(str_detect(model_years, "MIROC45")){
-#         monthly_dist_str = "monthly_dist_MIROC45/"
-#     } else if(str_detect(model_years, "MIROC85")){
-#         monthly_dist_str = "monthly_dist_MIROC85/"
-#     } else if(str_detect(model_years, "2023")){
-#         monthly_dist_str = "monthly_dist_hist/"
-#     }
-#     
-#     #List input prediction rast filenames
-#     input.filenames = list.files(
-#         paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/', monthly_dist_str),
-#         full.names = T,
-#         pattern='.tif'
-#     )
-#     
-#     #Create binary 10th percentile rasts
-#     output.rast = rast(input.filenames)
-#     output.rast = ifel(output.rast > p10, 1, 0)
-#     output.rast = output.rast %>% sum()
-#     
-#     dir.create(paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'), recursive=T, showWarnings=F)
-#     output.filename = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_wy.tif')
-#     writeRaster(output.rast, output.filename, overwrite = T)
-# }
-# 
-# map(
-#     .x = names,
-#     .f = ~ getThresholdRasts(sp = .x, '2000_2023')
-# )
-# map(
-#     .x = names,
-#     .f = ~ getThresholdRasts(sp = .x, 'MIROC45_2070_2099')
-# )
-# map(
-#     .x = names,
-#     .f = ~ getThresholdRasts(sp = .x, 'MIROC85_2070_2099')
-# )
-# 
-# 
-# # To use in Figure 3 ------------------------------------------------------
-# 
-# sumThresholdRasts = function(model){
-#     out.dir = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/")
-#     dir.create(out.dir, recursive=T)
-#     out.rast.filename.CA = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/", model, "_lowFilter_sum_CA.tif")
-#     out.rast.filename.CV = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/", model, "_lowFilter_sum_CV.tif")
-#     #Read in p10 rasters
-#     input_rast.filenames = list.files(
-#         paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/"),
-#         pattern=paste0("p10_.*", model, '_wy'),
-#         recursive = T,
-#         full.names=T
-#     )
-#     #Sum across CA
-#     input_rast_CA = rast(input_rast.filenames) %>%
-#         sum() %>%
-#         mutate(sum = factor(sum, levels = as.integer(0:10))) %>%
-#         crop(CA, mask=T)
-#     #Sum across CV
-#     input_rast_CV = input_rast_CA %>%
-#         crop(central_valley, mask=T)
-#     
-#     writeRaster(input_rast_CA, out.rast.filename.CA, overwrite = T)
-#     writeRaster(input_rast_CV, out.rast.filename.CV, overwrite = T)
-# }
-# 
-# sumThresholdRasts(model = "2000_2023")
-# sumThresholdRasts(model = "MIROC45_2070_2099")
-# sumThresholdRasts(model = "MIROC85_2070_2099")
+#RCP4.5
+map(
+    names,
+    function(sp){
+        ## Read in Maxent model
+        print(paste0("Working on ", sp))
+        model = readRDS(paste0("data_POLARIS/4_maxent_outputs/wy/", sp,
+                               "/lowFilter/model/",
+                               sp, "_final_sdm.rds"))
+        out.path = paste0("data_POLARIS/4_maxent_outputs/wy//",
+                          sp,
+                          "/lowFilter/monthly_dist_MIROC45/")
+        dir.create(out.path, recursive = T)
+        ## Run fxn
+        pred_wy(
+            model = model,
+            sp = sp,
+            model_years = "MIROC45_2070_2099",
+            bcmPath = "data/0_env/bcm/bcm_future/MIROC45/resampled/",
+            soilPath = "data/0_env/natsgo/rasters/",
+            salinityPath = 'data/0_env/salinity/',
+            pathOut = out.path
+        )
+    }
+)
+
+#RCP8.5
+map(
+    names,
+    function(sp){
+        ## Read in Maxent model
+        print(paste0("Working on ", sp))
+        model = readRDS(paste0("data_POLARIS/4_maxent_outputs/wy/", sp,
+                               "/lowFilter/model/",
+                               sp, "_final_sdm.rds"))
+        out.path = paste0("data_POLARIS/4_maxent_outputs/wy/",
+                          sp,
+                          "/lowFilter/monthly_dist_MIROC85/")
+        dir.create(out.path, recursive = T)
+        ## Run fxn
+        pred_wy(
+            model = model,
+            sp = sp,
+            model_years = "MIROC85_2070_2099",
+            bcmPath = "data/0_env/bcm/bcm_future/MIROC85/resampled/",
+            soilPath = "data/0_env/natsgo/rasters/",
+            salinityPath = 'data/0_env/salinity/',
+            pathOut = out.path
+        )
+    }
+)
+
+
+# Threshold rasters -------------------------------------------------------
+
+## P10 threshold raster per species and model-years combination
+getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099", "MIROC85_2070_2099")){
+    #Read in training data and model
+    training.filename = paste0('data_POLARIS/3_swd/wy/training_', sp, '_soil200cm_lowFilter_wy.csv')
+    testing.filename = paste0('data_POLARIS/3_swd/wy/testing_', sp, '_soil200cm_lowFilter_wy.csv')
+    model.filename = paste0("data_POLARIS/4_maxent_outputs/wy/", sp, "/lowFilter/model/", sp, "_final_sdm.rds")
+
+    training = read_csv(training.filename)
+    testing = read_csv(testing.filename)
+    model = readRDS(model.filename)
+
+    #Subset training data to occurrences only
+    pred1 = training %>%
+        rbind(testing) %>%
+        filter(presence==1) %>%
+        # mutate(tdiff = tmx - tmn) %>%
+        filter(complete.cases(.)) %>%
+        mutate(pred = predict(model, .))
+
+    #Get the 10th percentile of occurrence point predictions
+    p10 = quantile(pred1$pred, 0.1)
+
+    #Designate filepath string
+    if(str_detect(model_years, "MIROC45")){
+        monthly_dist_str = "monthly_dist_MIROC45/"
+    } else if(str_detect(model_years, "MIROC85")){
+        monthly_dist_str = "monthly_dist_MIROC85/"
+    } else if(str_detect(model_years, "2023")){
+        monthly_dist_str = "monthly_dist_hist/"
+    }
+
+    #List input prediction rast filenames
+    input.filenames = list.files(
+        paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/', monthly_dist_str),
+        full.names = T,
+        pattern='.tif'
+    )
+
+    #Create binary 10th percentile rasts
+    output.rast = rast(input.filenames)
+    output.rast = ifel(output.rast > p10, 1, 0)
+    output.rast = output.rast %>% sum()
+
+    dir.create(paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'), recursive=T, showWarnings=F)
+    output.filename = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_wy.tif')
+    writeRaster(output.rast, output.filename, overwrite = T)
+}
+
+map(
+    .x = names,
+    .f = ~ getThresholdRasts(sp = .x, '2000_2023')
+)
+map(
+    .x = names,
+    .f = ~ getThresholdRasts(sp = .x, 'MIROC45_2070_2099')
+)
+map(
+    .x = names,
+    .f = ~ getThresholdRasts(sp = .x, 'MIROC85_2070_2099')
+)
+
+
+# To use in Figure 3 ------------------------------------------------------
+
+sumThresholdRasts = function(model){
+    out.dir = paste0("data_POLARIS/4_maxent_outputs/wy/p10/")
+    dir.create(out.dir, recursive=T)
+    out.rast.filename.CA = paste0("data_POLARIS/4_maxent_outputs/wy/p10/", model, "_lowFilter_sum_CA.tif")
+    out.rast.filename.CV = paste0("data_POLARIS/4_maxent_outputs/wy/p10/", model, "_lowFilter_sum_CV.tif")
+    #Read in p10 rasters
+    input_rast.filenames = list.files(
+        paste0("data_POLARIS/4_maxent_outputs/wy/"),
+        pattern=paste0("p10_.*", model, '_wy'),
+        recursive = T,
+        full.names=T
+    )
+    #Sum across CA
+    input_rast_CA = rast(input_rast.filenames) %>%
+        sum() %>%
+        mutate(sum = factor(sum, levels = as.integer(0:10))) %>%
+        crop(CA, mask=T)
+    #Sum across CV
+    input_rast_CV = input_rast_CA %>%
+        crop(central_valley, mask=T)
+
+    writeRaster(input_rast_CA, out.rast.filename.CA, overwrite = T)
+    writeRaster(input_rast_CV, out.rast.filename.CV, overwrite = T)
+}
+
+sumThresholdRasts(model = "2000_2023")
+sumThresholdRasts(model = "MIROC45_2070_2099")
+sumThresholdRasts(model = "MIROC85_2070_2099")

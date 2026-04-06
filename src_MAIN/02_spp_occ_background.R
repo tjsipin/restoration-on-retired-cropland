@@ -105,98 +105,98 @@ taxon_keys <- name_backbone_checklist(c(
     pull(usageKey)
 
 
-# dir.create('data/1_occ/gbif_downloads_122625/extracts', recursive = T)
-# ## Loop through spp list and save each
-# for (i in 1:length(taxon_keys)) {
-#     #CAUTION: Do not run as this may overwrite our gbif downloads!
-#     ### download filtered data for A. polycarpa
-#     gbif_download <- occ_download(
-#         pred_in("taxonKey", taxon_keys[i]),
-#         ## remove geospatial issues
-#         pred("hasGeospatialIssue", FALSE),
-#         ## ensure coords
-#         pred("hasCoordinate", TRUE),
-#         ## remove "absent" occurences
-#         pred("occurrenceStatuss", "PRESENT"),
-#         ## within US
-#         pred("country", "US"),
-#         ## within CA
-#         pred("stateProvince", "California"),
-#         ## output as CSV
-#         format = "DWCA",####################################################################################################
-#         ## enter your GBIF credentials below:
-#         user = "tjsipin_ucsb",
-#         pwd = "RKh4pXLx",
-#         email = "tjsipin@ucsb.edu"
-#     )
-# 
-#     ### check on download status
-#     occ_download_wait(gbif_download)
-# 
-#     ### import GBIF data into env and filter using CoordinateCleaner pkg
-#     species <- occ_download_get(
-#         gbif_download,
-#         path = "data/1_occ/gbif_downloads_122625/extracts/",
-#         overwrite = F
-#     ) %>%
-#         occ_download_import() %>%
-#         ## set lowercase column names to work with CC
-#         setNames(tolower(names(.))) %>%
-#         ## filter out duplicate points
-#         distinct(decimallongitude, decimallatitude,
-#                  specieskey, datasetkey, .keep_all = TRUE) %>%
-#         ## filter known uncertainty below 270 and keep NAs
-#         filter(coordinateuncertaintyinmeters < 270 |
-#                    is.na(coordinateuncertaintyinmeters)) %>%
-#         ## known inaccurate default values
-#         filter(!coordinateuncertaintyinmeters %in% c(301,3036,999,9999)) %>%
-#         ## remove herbaria/zoo locations
-#         cc_inst(lon = "decimallongitude", lat = "decimallatitude",
-#                 buffer = 270, value = "clean", verbose = TRUE) %>%
-#         ## remove ocean values
-#         cc_sea(lon = "decimallongitude", lat = "decimallatitude") %>%
-#         ## remove points before 2000 wy
-#         filter(eventdate >= "1999-10-01") %>%
-#         mutate(reproductivecondition_clean = tolower(str_trim(reproductivecondition))) %>%
-#         left_join(repro_values)
-# 
-#     species_repro_filter = species %>%
-#         filter(phenology_code %in% c("F", "R") | is.na(phenology_code))
-# 
-#     ## export file
-#     dir.create(paste0("data/1_occ/gbif_downloads_122625/",names[i]))
-#     write_csv(species, paste0("data/1_occ/gbif_downloads_122625/",names[i],"/", names[i], "_gbif_lowFilter_noReproFilter.csv"))
-#     write_csv(species_repro_filter, paste0("data/1_occ/gbif_downloads_122625/", names[i],"/", names[i], "_gbif_lowFilter.csv"))
-# 
-# } ## END LOOP
-# 
-# #See lifestage counts per species
-# map(
-#     1:length(names),
-#     function(i){
-#         read_csv(paste0("data/1_occ/calflora_downloads_122625/", names[i], "_calflora_lowFilter.csv")) %>%
-#             #Fix the phenology_code column type
-#             mutate(phenology_code = ifelse(phenology_code==F, "F", phenology_code)) %>%
-#             mutate(species = names[i]) %>%
-#             group_by(species, phenology_code) %>%
-#             count() %>%
-#             ungroup()
-#     }
-# ) %>%
-#     bind_rows() %>%
-#     pivot_wider(names_from = phenology_code, values_from = n)
-# 
-# map(
-#     1:length(names),
-#     function(i){
-#         read.csv(paste0("data/1_occ/gbif_downloads_122625/", names[i], "/", names[i], "_gbif_lowFilter.csv")) %>%
-#             group_by(species, phenology_code) %>%
-#             count() %>%
-#             ungroup()
-#     }
-# ) %>%
-#     bind_rows() %>%
-#     pivot_wider(names_from = phenology_code, values_from = n)
+dir.create('data/1_occ/gbif_downloads_122625/extracts', recursive = T)
+## Loop through spp list and save each
+for (i in 1:length(taxon_keys)) {
+    #CAUTION: Do not run as this may overwrite our gbif downloads!
+    ### download filtered data for A. polycarpa
+    gbif_download <- occ_download(
+        pred_in("taxonKey", taxon_keys[i]),
+        ## remove geospatial issues
+        pred("hasGeospatialIssue", FALSE),
+        ## ensure coords
+        pred("hasCoordinate", TRUE),
+        ## remove "absent" occurences
+        pred("occurrenceStatuss", "PRESENT"),
+        ## within US
+        pred("country", "US"),
+        ## within CA
+        pred("stateProvince", "California"),
+        ## output as CSV
+        format = "DWCA",####################################################################################################
+        ## enter your GBIF credentials below:
+        user = "tjsipin_ucsb",
+        pwd = "RKh4pXLx",
+        email = "tjsipin@ucsb.edu"
+    )
+
+    ### check on download status
+    occ_download_wait(gbif_download)
+
+    ### import GBIF data into env and filter using CoordinateCleaner pkg
+    species <- occ_download_get(
+        gbif_download,
+        path = "data/1_occ/gbif_downloads_122625/extracts/",
+        overwrite = F
+    ) %>%
+        occ_download_import() %>%
+        ## set lowercase column names to work with CC
+        setNames(tolower(names(.))) %>%
+        ## filter out duplicate points
+        distinct(decimallongitude, decimallatitude,
+                 specieskey, datasetkey, .keep_all = TRUE) %>%
+        ## filter known uncertainty below 270 and keep NAs
+        filter(coordinateuncertaintyinmeters < 270 |
+                   is.na(coordinateuncertaintyinmeters)) %>%
+        ## known inaccurate default values
+        filter(!coordinateuncertaintyinmeters %in% c(301,3036,999,9999)) %>%
+        ## remove herbaria/zoo locations
+        cc_inst(lon = "decimallongitude", lat = "decimallatitude",
+                buffer = 270, value = "clean", verbose = TRUE) %>%
+        ## remove ocean values
+        cc_sea(lon = "decimallongitude", lat = "decimallatitude") %>%
+        ## remove points before 2000 wy
+        filter(eventdate >= "1999-10-01") %>%
+        mutate(reproductivecondition_clean = tolower(str_trim(reproductivecondition))) %>%
+        left_join(repro_values)
+
+    species_repro_filter = species %>%
+        filter(phenology_code %in% c("F", "R") | is.na(phenology_code))
+
+    ## export file
+    dir.create(paste0("data/1_occ/gbif_downloads_122625/",names[i]))
+    write_csv(species, paste0("data/1_occ/gbif_downloads_122625/",names[i],"/", names[i], "_gbif_lowFilter_noReproFilter.csv"))
+    write_csv(species_repro_filter, paste0("data/1_occ/gbif_downloads_122625/", names[i],"/", names[i], "_gbif_lowFilter.csv"))
+
+} ## END LOOP
+
+#See lifestage counts per species
+map(
+    1:length(names),
+    function(i){
+        read_csv(paste0("data/1_occ/calflora_downloads_122625/", names[i], "_calflora_lowFilter.csv")) %>%
+            #Fix the phenology_code column type
+            mutate(phenology_code = ifelse(phenology_code==F, "F", phenology_code)) %>%
+            mutate(species = names[i]) %>%
+            group_by(species, phenology_code) %>%
+            count() %>%
+            ungroup()
+    }
+) %>%
+    bind_rows() %>%
+    pivot_wider(names_from = phenology_code, values_from = n)
+
+map(
+    1:length(names),
+    function(i){
+        read.csv(paste0("data/1_occ/gbif_downloads_122625/", names[i], "/", names[i], "_gbif_lowFilter.csv")) %>%
+            group_by(species, phenology_code) %>%
+            count() %>%
+            ungroup()
+    }
+) %>%
+    bind_rows() %>%
+    pivot_wider(names_from = phenology_code, values_from = n)
 
 #Combine gbif to one file
 all_gbif = map(
@@ -213,7 +213,6 @@ all_gbif = map(
 ) %>% 
     bind_rows()
 write_csv(all_gbif, 'data/1_occ/gbif_all.csv')
-all_gbif$license %>% table()
 
 derived_datasets = map(
     names,
@@ -325,8 +324,8 @@ for (i in 1:length(names)) {
 # Background points
 
 ##Generate background points without month, which will be assigned later
-source('src_lowFilter_v5_50km/util/generate_backOcc.R')
-dir.create('data_v5_50km/2_background', recursive=T)
+source('src_MAIN/util/generate_backOcc.R')
+dir.create('data_MAIN/2_background', recursive=T)
 ### 50km buffer
 buffer = 50000
 CA = tigris::states() %>%
@@ -351,7 +350,7 @@ purrr::map(
         backOcc_pts <- backOcc(sppOcc, raster=referenceRaster, buffer=buffer)
 
         ## Save
-        write_csv(backOcc_pts, paste0("data_v5_50km/2_background/back_",
+        write_csv(backOcc_pts, paste0("data_MAIN/2_background/back_",
                                       names[i],
                                       "_5km_lowFilter.csv"))
     }
@@ -359,10 +358,8 @@ purrr::map(
 
 
 ## Read in fxn and set parameters --------------------------
-#Use this for selective monthly model
-source("src_lowFilter_v5_50km/util/generateMonths_backOcc_matchMonth.R")
-#Use this for agg and comprehensive monthly model
-source("src_lowFilter_v5_50km/util/generateMonths_backOcc_evenMonth.R")
+#Use this for agg and monthly model
+source("src_MAIN/util/generateMonths_backOcc_evenMonth.R")
 
 
 ## Generate backOccs for each spp in list -------------------
@@ -371,11 +368,8 @@ purrr::map(
     .f = function(i) {
         set.seed(123)
         print(i)
-        matching_backOcc_pts.filename = paste0("data_v5_50km/2_background/back_", names[i], "_5km_lowFilter_match.csv")
-        matching_backOcc_pts = generateMatchingMonths(sp = names[i])
-        write_csv(matching_backOcc_pts, matching_backOcc_pts.filename)
 
-        even_backOcc_pts.filename = paste0("data_v5_50km/2_background/back_", names[i], "_5km_lowFilter_even.csv")
+        even_backOcc_pts.filename = paste0("data_MAIN/2_background/back_", names[i], "_5km_lowFilter_even.csv")
         even_backOcc_pts = generateEvenMonths(sp = names[i])
         write_csv(even_backOcc_pts, even_backOcc_pts.filename)
     }
@@ -403,81 +397,22 @@ pathNatsgo = "data/0_env/natsgo/rasters/"
 pathPolaris = "data/0_env/polaris/rasters/"
 pathSalinity = "data/0_env/salinity/"
 
-dir.create('data_v5_50km/3_swd/monthly/selective', recursive=T)
-source('src_lowFilter_v5_50km/util/env_extract_monthly.R')
-
-##Extract for matched months background set
-map(
-    1:nrow(spp_occ_back),
-    function(i){
-        set.seed(123)
-        spp = spp_occ_back$spp[i]
-        occ_back = spp_occ_back$occ_back[i]
-        out.filename = paste0('data_v5_50km/3_swd/monthly/selective/swd_', spp, '_', occ_back, '_soil200cm_lowFilter_monthly_selective.csv')
-
-        # if(file.exists(out.filename)) return(NULL)
-        if(occ_back=='occ'){
-            points.filename = paste0('data/1_occ/combined_spp_occ/', spp, '_lowFilter.csv')
-        } else{
-            points.filename = paste0("data_v5_50km/2_background/back_", spp, "_5km_lowFilter_match.csv")
-        }
-        points = read_csv(points.filename)
-
-        print(spp)
-        out = extractEnvMonthly(
-            startYear = startYear,
-            endYear = endYear,
-            pathMonth = pathMonth,
-            pathQuarter = pathQuarter,
-            pathNatsgo = pathNatsgo,
-            pathPolaris = pathPolaris,
-            pathSalinity = pathSalinity,
-            occ = points,
-            lon = 'lon',
-            lat = 'lat'
-        )
-
-        write_csv(out, out.filename)
-
-    },
-    .progress = T
-)
-
-map(
-    names,
-    function(sp){
-        print(sp)
-        out.dir = paste0('data_v5_50km/3_swd/monthly/selective')
-        #Get occ and back extracted sets
-        occ.filename = paste0(out.dir, '/swd_', sp, '_occ_soil200cm_lowFilter_monthly_selective.csv')
-        back.filename = paste0(out.dir, '/swd_', sp, '_back_soil200cm_lowFilter_monthly_selective.csv')
-
-        training.filename = paste0(out.dir, '/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')
-        testing.filename = paste0(out.dir, '/testing_', sp, '_soil200cm_lowFilter_monthly_selective.csv')
-        trainingTestingFunc(
-            sp=sp,
-            occ.filename=occ.filename,
-            back.filename=back.filename,
-            training.filename=training.filename,
-            testing.filename=testing.filename
-        )
-    }
-)
+source('src_MAIN/util/env_extract_monthly.R')
 
 ##Extract for even months background set
-dir.create('data_v5_50km/3_swd/monthly/comprehensive', recursive=T)
+dir.create('data_MAIN/3_swd/monthly/', recursive=T)
 set.seed(123)
 map(
     1:nrow(spp_occ_back),
     function(i){
         spp = spp_occ_back$spp[i]
         occ_back = spp_occ_back$occ_back[i]
-        out.filename = paste0('data_v5_50km/3_swd/monthly/comprehensive/swd_', spp, '_', occ_back, '_soil200cm_lowFilter_monthly_comprehensive.csv')
+        out.filename = paste0('data_MAIN/3_swd/monthly/swd_', spp, '_', occ_back, '_soil200cm_lowFilter_monthly.csv')
         # if(file.exists(out.filename)) return(NULL)
         if(occ_back=='occ'){
             points.filename = paste0('data/1_occ/combined_spp_occ/', spp, '_lowFilter.csv')
         } else{
-            points.filename = paste0("data_v5_50km/2_background/back_", spp, "_5km_lowFilter_even.csv")
+            points.filename = paste0("data_MAIN/2_background/back_", spp, "_5km_lowFilter_even.csv")
         }
         points = read_csv(points.filename)
 
@@ -505,13 +440,13 @@ map(
     names,
     function(sp){
         print(sp)
-        out.dir = paste0('data_v5_50km/3_swd/monthly/comprehensive')
+        out.dir = paste0('data_MAIN/3_swd/monthly')
         #Get occ and back extracted sets
-        occ.filename = paste0(out.dir, '/swd_', sp, '_occ_soil200cm_lowFilter_monthly_comprehensive.csv')
-        back.filename = paste0(out.dir, '/swd_', sp, '_back_soil200cm_lowFilter_monthly_comprehensive.csv')
+        occ.filename = paste0(out.dir, '/swd_', sp, '_occ_soil200cm_lowFilter_monthly.csv')
+        back.filename = paste0(out.dir, '/swd_', sp, '_back_soil200cm_lowFilter_monthly.csv')
 
-        training.filename = paste0(out.dir, '/training_', sp, '_soil200cm_lowFilter_monthly_comprehensive.csv')
-        testing.filename = paste0(out.dir, '/testing_', sp, '_soil200cm_lowFilter_monthly_comprehensive.csv')
+        training.filename = paste0(out.dir, '/training_', sp, '_soil200cm_lowFilter_monthly.csv')
+        testing.filename = paste0(out.dir, '/testing_', sp, '_soil200cm_lowFilter_monthly.csv')
         trainingTestingFunc(
             sp=sp,
             occ.filename=occ.filename,
@@ -524,8 +459,8 @@ map(
 
 ###Water year####
 # Read in fxn
-source('src_lowFilter_v5_50km/util/env_extract_wy.R')
-dir.create('data_v5_50km/3_swd/wy', recursive=T)
+source('src_MAIN/util/env_extract_wy.R')
+dir.create('data_MAIN/3_swd/wy', recursive=T)
 
 set.seed(123)
 map(
@@ -541,7 +476,7 @@ set.seed(123)
 map(
     names,
     function(sp){
-        out.dir = paste0('data_v5_50km/3_swd/wy')
+        out.dir = paste0('data_MAIN/3_swd/wy')
         #Get occ and back extracted sets
         in.filename = paste0(out.dir, '/swd_', sp, '_soil200cm_lowFilter_wy.csv')
         
@@ -559,8 +494,8 @@ map(
 
 ####Agg####
 ## Read in fxn
-source('src_lowFilter_v5_50km/util/env_extract_agg.R')
-dir.create('data_v5_50km/3_swd/agg', recursive=T)
+source('src_MAIN/util/env_extract_agg.R')
+dir.create('data_MAIN/3_swd/agg', recursive=T)
 spp_relevant_months = tibble(
     sp = c(
         "a_polycarpa",
@@ -602,7 +537,7 @@ map(
 map(
     names,
     function(sp){
-        out.dir = paste0('data_v5_50km/3_swd/agg')
+        out.dir = paste0('data_MAIN/3_swd/agg')
         #Get occ and back extracted sets
         in.filename = paste0(out.dir, '/swd_', sp, '_soil200cm_lowFilter_agg.csv')
 
@@ -617,117 +552,3 @@ map(
         )
     }
 )
-
-
-# # # Appendix ----------------------------------------------------------------
-# #
-# map(
-#     names,
-#     function(sp){
-#         lowOcc.filename = paste0('data/1_occ/combined_spp_occ/', sp, '_lowFilter.csv')
-#         lowBack.filename = paste0('data_v5_50km/2_background/back_', sp, '_5km_lowFilter.csv')
-#         highOcc.filename = paste0('data/1_occ/combined_spp_occ/', sp, '_highFilter.csv')
-#         highBack.filename = paste0('data_v5_50km/2_background/back_', sp, '_5km_highFilter.csv')
-#         swd.lowOcc.filename = paste0('data_v5_50km/3_swd/agg/', '/swd_', sp, '_occ_soil200cm_lowFilter_agg.csv')
-#         swd.lowBack.filename = paste0('data_v5_50km/3_swd/agg/', '/swd_', sp, '_back_soil200cm_lowFilter_agg.csv')
-#         swd.highOcc.filename = paste0('data_v5_50km/3_swd/agg/', '/swd_', sp, '_occ_soil200cm_highFilter_agg.csv')
-#         swd.highBack.filename = paste0('data_v5_50km/3_swd/agg/', '/swd_', sp, '_back_soil200cm_highFilter_agg.csv')
-#
-#         lowOcc = read_csv(lowOcc.filename)
-#         lowBack = read_csv(lowBack.filename)
-#         highOcc = read_csv(highOcc.filename)
-#         highBack = read_csv(highBack.filename)
-#         swd.lowOcc = read_csv(swd.lowOcc.filename)
-#         swd.lowBack = read_csv(swd.lowBack.filename)
-#         swd.highOcc = read_csv(swd.highOcc.filename)
-#         swd.highBack = read_csv(swd.highBack.filename)
-#         out = tibble(
-#             sp = sp,
-#             lowOcc_nrow = nrow(lowOcc),
-#             lowBack_nrow = nrow(lowBack),
-#             highOcc_nrow = nrow(highOcc),
-#             highBack_nrow = nrow(highBack),
-#
-#             swd.lowOcc_nrow = nrow(swd.lowOcc),
-#             swd.lowBack_nrow = nrow(swd.lowBack),
-#             swd.highOcc_nrow = nrow(swd.highOcc),
-#             swd.highBack_nrow = nrow(swd.highBack)
-#         )
-#     }
-# ) %>%
-#     bind_rows() %>%
-#     data.frame()
-# #
-# # map(
-# #     names,
-# #     function(sp){
-# #         lowOcc.filename = paste0('data/1_occ/combined_spp_occ/', sp, '_lowFilter.csv')
-# #         lowBack.filename = paste0('data_v5_50km/2_background/back_', sp, '_5km_lowFilter.csv')
-# #         highOcc.filename = paste0('data/1_occ/combined_spp_occ/', sp, '_highFilter.csv')
-# #         highBack.filename = paste0('data_v5_50km/2_background/back_', sp, '_5km_highFilter.csv')
-# #         swd.lowOcc.filename = paste0('data_v5_50km/3_swd/monthly/comprehensive//', '/swd_', sp, '_occ_soil200cm_lowFilter_monthly_comprehensive.csv')
-# #         swd.lowBack.filename = paste0('data_v5_50km/3_swd/monthly/comprehensive//', '/swd_', sp, '_back_soil200cm_lowFilter_monthly_comprehensive.csv')
-# #         swd.highOcc.filename = paste0('data_v5_50km/3_swd/monthly/comprehensive//', '/swd_', sp, '_occ_soil200cm_highFilter_monthly_comprehensive.csv')
-# #         swd.highBack.filename = paste0('data_v5_50km/3_swd/monthly/comprehensive//', '/swd_', sp, '_back_soil200cm_highFilter_monthly_comprehensive.csv')
-# #
-# #         lowOcc = read_csv(lowOcc.filename)
-# #         lowBack = read_csv(lowBack.filename)
-# #         highOcc = read_csv(highOcc.filename)
-# #         highBack = read_csv(highBack.filename)
-# #         swd.lowOcc = read_csv(swd.lowOcc.filename)
-# #         swd.lowBack = read_csv(swd.lowBack.filename)
-# #         swd.highOcc = read_csv(swd.highOcc.filename)
-# #         swd.highBack = read_csv(swd.highBack.filename)
-# #         out = tibble(
-# #             sp = sp,
-# #             lowOcc_nrow = nrow(lowOcc),
-# #             lowBack_nrow = nrow(lowBack),
-# #             highOcc_nrow = nrow(highOcc),
-# #             highBack_nrow = nrow(highBack),
-# #
-# #             swd.lowOcc_nrow = nrow(swd.lowOcc),
-# #             swd.lowBack_nrow = nrow(swd.lowBack),
-# #             swd.highOcc_nrow = nrow(swd.highOcc),
-# #             swd.highBack_nrow = nrow(swd.highBack)
-# #         )
-# #     }
-# # ) %>%
-# #     bind_rows() %>%
-# #     data.frame()
-# #
-# # map(
-# #     names,
-# #     function(sp){
-# #         lowOcc.filename = paste0('data/1_occ/combined_spp_occ/', sp, '_lowFilter.csv')
-# #         lowBack.filename = paste0('data_v5_50km/2_background/back_', sp, '_5km_lowFilter.csv')
-# #         highOcc.filename = paste0('data/1_occ/combined_spp_occ/', sp, '_highFilter.csv')
-# #         highBack.filename = paste0('data_v5_50km/2_background/back_', sp, '_5km_highFilter.csv')
-# #         swd.lowOcc.filename = paste0('data_v5_50km/3_swd/monthly/selective//', '/swd_', sp, '_occ_soil200cm_lowFilter_monthly_selective.csv')
-# #         swd.lowBack.filename = paste0('data_v5_50km/3_swd/monthly/selective//', '/swd_', sp, '_back_soil200cm_lowFilter_monthly_selective.csv')
-# #         swd.highOcc.filename = paste0('data_v5_50km/3_swd/monthly/selective//', '/swd_', sp, '_occ_soil200cm_highFilter_monthly_selective.csv')
-# #         swd.highBack.filename = paste0('data_v5_50km/3_swd/monthly/selective//', '/swd_', sp, '_back_soil200cm_highFilter_monthly_selective.csv')
-# #
-# #         lowOcc = read_csv(lowOcc.filename)
-# #         lowBack = read_csv(lowBack.filename)
-# #         highOcc = read_csv(highOcc.filename)
-# #         highBack = read_csv(highBack.filename)
-# #         swd.lowOcc = read_csv(swd.lowOcc.filename)
-# #         swd.lowBack = read_csv(swd.lowBack.filename)
-# #         swd.highOcc = read_csv(swd.highOcc.filename)
-# #         swd.highBack = read_csv(swd.highBack.filename)
-# #         out = tibble(
-# #             sp = sp,
-# #             lowOcc_nrow = nrow(lowOcc),
-# #             lowBack_nrow = nrow(lowBack),
-# #             highOcc_nrow = nrow(highOcc),
-# #             highBack_nrow = nrow(highBack),
-# #
-# #             swd.lowOcc_nrow = nrow(swd.lowOcc),
-# #             swd.lowBack_nrow = nrow(swd.lowBack),
-# #             swd.highOcc_nrow = nrow(swd.highOcc),
-# #             swd.highBack_nrow = nrow(swd.highBack)
-# #         )
-# #     }
-# # ) %>%
-# #     bind_rows() %>%
-# #     data.frame()

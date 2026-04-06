@@ -34,7 +34,10 @@ names <- c(
     "l_pentachaeta",
     "p_ciliata",
     "a_menziesii",
-    "c_lasiophyllus"
+    "a_intermedia",
+    "c_lasiophyllus",
+    'l_californica',
+    'l_gracilis'
 )
 ## list of months
 months = month.abb %>% str_to_lower()
@@ -74,12 +77,12 @@ p10Visualize = function(sp, model){
     sp_proper = str_replace(sp, "_", ". ") %>% 
         str_to_sentence()
     
-    out.dir = paste0("data/5_figs/lowFilter/selective/p10_sum/")
+    out.dir = paste0("data_5km/5_figs/lowFilter/monthly/p10_sum/")
     dir.create(out.dir, recursive=T)
-    out.png.filename.CA = paste0("data/5_figs/lowFilter/selective/p10_sum/", sp, "_", model, "_lowFilter_sum_CA.png")
-    out.png.filename.CV = paste0("data/5_figs/lowFilter/selective/p10_sum/", sp, "_", model, "_lowFilter_sum_CV.png")
-    in.rast.filename.CA = paste0("data/4_maxent_outputs/selective/", sp, "/", "lowFilter/p10/p10_", sp, "_", model, "_monthly_CA.tif")
-    in.rast.filename.CV = paste0("data/4_maxent_outputs/selective/", sp, "/", "lowFilter/p10/p10_", sp, "_", model, "_monthly_CV.tif")
+    out.png.filename.CA = paste0("data_5km/5_figs/lowFilter/monthly/p10_sum/", sp, "_", model, "_lowFilter_sum_CA.png")
+    out.png.filename.CV = paste0("data_5km/5_figs/lowFilter/monthly/p10_sum/", sp, "_", model, "_lowFilter_sum_CV.png")
+    in.rast.filename.CA = paste0("data_5km/4_maxent_outputs/monthly/", sp, "/", "lowFilter/p10/p10_", sp, "_", model, "_monthly_CA.tif")
+    in.rast.filename.CV = paste0("data_5km/4_maxent_outputs/monthly/", sp, "/", "lowFilter/p10/p10_", sp, "_", model, "_monthly_CV.tif")
     in.rast.CA = rast(in.rast.filename.CA) %>% 
         mutate(sum = factor(sum, levels = as.integer(0:12)))
     in.rast.CV = rast(in.rast.filename.CV) %>% 
@@ -116,20 +119,20 @@ map(
 
 
 
-# Fig. 4: Sum of suitable pixels per month --------------------------------
+# Fig. 5: Sum of suitable pixels per month --------------------------------
 
 speciesPerMonthHist = function(sp, crop_poly = c("CA",  "CV")){
     print(sp)
     input.filenames.hist = list.files(
-        paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/p10/p10_hist"),
+        paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/p10/p10_hist"),
         full.names=T
     )
     input.filenames.MIROC45 = list.files(
-        paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/p10/p10_MIROC45"),
+        paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/p10/p10_MIROC45"),
         full.names=T
     )
     input.filenames.MIROC85 = list.files(
-        paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/p10/p10_MIROC85"),
+        paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/p10/p10_MIROC85"),
         full.names=T
     )
     
@@ -225,7 +228,7 @@ speciesPerMonthHist = function(sp, crop_poly = c("CA",  "CV")){
     sp_pretty = sp %>%
         str_replace('_', '. ') %>%
         str_to_sentence()
-    crop_poly_pretty = ifelse(crop_poly=="CA", "CA", "the Central Valley")
+    crop_poly_pretty = ifelse(crop_poly=="CA", "CA", "the Great Valley")
     
     if(crop_poly=="CA"){
         ggplot(data=ha_per_month.all) +
@@ -246,7 +249,6 @@ speciesPerMonthHist = function(sp, crop_poly = c("CA",  "CV")){
             scale_y_continuous(labels = scales::comma, limits = c(0, 101000)) +
             # scale_y_continuous(labels = scales::comma) +
             labs(
-                x = 'Month',
                 y = 'Hectares',
                 fill = "Years (and Climate Scenario)",
                 title = paste0('Suitability across ', crop_poly_pretty, ' (hectares)'),
@@ -279,7 +281,6 @@ speciesPerMonthHist = function(sp, crop_poly = c("CA",  "CV")){
             scale_y_continuous(labels = scales::comma, limits = c(0, 18000)) +
             # scale_y_continuous(labels = scales::comma) +
             labs(
-                x = 'Month',
                 y = 'Hectares',
                 fill = "Years (and Climate Scenario)",
                 title = paste0('Suitability across ', crop_poly_pretty, ' (hectares)'),
@@ -294,19 +295,19 @@ speciesPerMonthHist = function(sp, crop_poly = c("CA",  "CV")){
                 )
             )
     }
-    output.filename = paste0('data/5_figs/lowFilter/selective/ha_histograms/p10_', sp, '_monthly_barplots_', crop_poly, '.png')
+    output.filename = paste0('data_5km/5_figs/lowFilter/monthly/ha_histograms/p10_', sp, '_monthly_barplots_', crop_poly, '.png')
     ggsave(output.filename, scale = 2, width = 7, height = 4, units = 'in', bg = 'white')
     
     ha_per_month.all_wider = ha_per_month.all %>% 
         pivot_wider(id_cols = 'model', names_from = c('mon'), values_from = 'num_ha') %>% 
         mutate(species = sp_pretty, .before = model)
     
-    output.csv.filename = paste0('data/6_tables/lowFilter/selective/ha_histograms/p10_', sp, '_suitable_ha.csv')
+    output.csv.filename = paste0('data_5km/6_tables/lowFilter/monthly/ha_histograms/p10_', sp, '_suitable_ha.csv')
     write_csv(ha_per_month.all_wider, output.csv.filename)
 }
 
-dir.create('data/5_figs/lowFilter/selective/ha_histograms/', recursive = T)
-dir.create('data/6_tables/lowFilter/selective/ha_histograms/', recursive = T)
+dir.create('data_5km/5_figs/lowFilter/monthly/ha_histograms/', recursive = T)
+dir.create('data_5km/6_tables/lowFilter/monthly/ha_histograms/', recursive = T)
 map(
     .x = names,
     .f = ~speciesPerMonthHist(sp = .x, crop_poly = "CA"),
@@ -319,10 +320,10 @@ map(
 
 
 predictionAggregate = function(sp, monthly_dist_path){
-    in.path = paste0("data/4_maxent_outputs/selective/",
-                     sp, 
-                     "/lowFilter/", monthly_dist_path)
-    in.training.filename = paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')
+    in.path = paste0("data_5km/4_maxent_outputs/monthly/",
+                      sp, 
+                      "/lowFilter/", monthly_dist_path)
+    in.training.filename = paste0('data_5km/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')
     in.files = list.files(
         in.path,
         full.names=T
@@ -348,8 +349,8 @@ predictionAggregate = function(sp, monthly_dist_path){
     } else if(str_detect(monthly_dist_path, "85")){
         model_years_pretty = "End-of-century conditions (MIROC RCP 8.5)"
     }
-    out.filename = paste0("data/4_maxent_outputs/selective/figs/prediction_aggregate/", monthly_dist_path, "/", sp, '.png')
-    dir.create(paste0("data/4_maxent_outputs/selective/figs/prediction_aggregate/", monthly_dist_path))
+    out.filename = paste0("data_5km/4_maxent_outputs/monthly/figs/prediction_aggregate/", monthly_dist_path, "/", sp, '.png')
+    dir.create(paste0("data_5km/4_maxent_outputs/monthly/figs/prediction_aggregate/", monthly_dist_path))
     ggplot() + 
         geom_spatraster(
             data = in.rast
@@ -372,11 +373,11 @@ predictionAggregate = function(sp, monthly_dist_path){
 }
 
 predictionPerMonth = function(sp, monthly_dist_path){
-    out.filename = paste0('data/5_figs/lowFilter/selective/monthly_suitability/', monthly_dist_path, '/', sp, '_monthly_suitability.png')
-    in.path = paste0("data/4_maxent_outputs/selective//",
+    out.filename = paste0('data_5km/5_figs/lowFilter/monthly/monthly_suitability/', monthly_dist_path, '/', sp, '_monthly_suitability.png')
+    in.path = paste0("data_5km/4_maxent_outputs/monthly//",
                      sp, 
                      "/lowFilter/", monthly_dist_path)
-    in.swd.filename = paste0('data/3_swd/monthly/selective/swd_', sp, '_occ_soil200cm_lowFilter_monthly_selective.csv')
+    in.swd.filename = paste0('data_5km/3_swd/monthly/swd_', sp, '_occ_soil200cm_lowFilter_monthly.csv')
     in.files = list.files(
         in.path,
         full.names=T
@@ -395,8 +396,8 @@ predictionPerMonth = function(sp, monthly_dist_path){
         vect(geom=c('x', 'y'), crs=crs(in.rast)) %>% 
         select(-ID) %>% 
         filter(!is.na(Apr))
-    
-    
+
+        
     
     sp_pretty = sp %>% 
         str_replace("_", ". ") %>% 
@@ -430,9 +431,9 @@ predictionPerMonth = function(sp, monthly_dist_path){
     ggsave(out.filename, background = )
 }
 
-dir.create("data/5_figs/lowFilter/selective/monthly_suitability/monthly_dist_hist", recursive = T)
-dir.create("data/5_figs/lowFilter/selective/monthly_suitability/monthly_dist_MIROC45", recursive = T)
-dir.create("data/5_figs/lowFilter/selective/monthly_suitability/monthly_dist_MIROC85", recursive = T)
+dir.create("data_5km/5_figs/lowFilter/monthly/monthly_suitability/monthly_dist_hist", recursive = T)
+dir.create("data_5km/5_figs/lowFilter/monthly/monthly_suitability/monthly_dist_MIROC45", recursive = T)
+dir.create("data_5km/5_figs/lowFilter/monthly/monthly_suitability/monthly_dist_MIROC85", recursive = T)
 
 predictionPerMonth(sp = 'a_polycarpa', monthly_dist_path = 'monthly_dist_hist')
 predictionPerMonth(sp = 'p_arborea', monthly_dist_path = 'monthly_dist_hist')
@@ -459,10 +460,10 @@ predictionPerMonth(sp = 'a_menziesii', monthly_dist_path = 'monthly_dist_MIROC85
 predictionPerMonth(sp = 'c_lasiophyllus', monthly_dist_path = 'monthly_dist_MIROC85')
 
 envDistribution = function(sp){
-    output.filepath = paste0('data/5_figs/lowFilter/selective/env_distribution/monthly_selective/')
+    output.filepath = paste0('data_5km/5_figs/lowFilter/monthly/env_distribution/monthly/')
     dir.create(output.filepath, recursive=T)
     output.filename = paste0(output.filepath, sp, '_envDistribution_.png')
-    training = read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')) %>% 
+    training = read_csv(paste0('data_5km/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')) %>% 
         mutate(
             tdiff = tmx - tmn,
             presence = as.factor(presence)
@@ -498,7 +499,7 @@ envDistribution = function(sp){
         facet_wrap(~name, scales='free') +
         theme_classic() +
         labs(
-            title = "selective monthly model environmental density distributions",
+            title = "Monthly model environmental density distributions",
             subtitle = pretty_sp,
             x = "",
             y = '',
@@ -516,10 +517,10 @@ map(names, envDistribution)
 aucs = map(
     names,
     function(sp){
-        training = read_csv(paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv'))
-        testing = read_csv(paste0('data/3_swd/monthly/selective/testing_', sp, '_soil200cm_lowFilter_monthly_selective.csv'))
-        model = readRDS(paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
-        best_rm = readRDS(paste0('data/4_maxent_outputs/selective/tuning/', sp, '_finalModelArgs_lowFilter.rds'))[4] %>% 
+        training = read_csv(paste0('data_5km/3_swd/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv'))
+        testing = read_csv(paste0('data_5km/3_swd/monthly/testing_', sp, '_soil200cm_lowFilter_monthly.csv'))
+        model = readRDS(paste0('data_5km/4_maxent_outputs/monthly/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        best_rm = readRDS(paste0('data_5km/4_maxent_outputs/monthly/tuning/', sp, '_finalModelArgs_lowFilter.rds'))[4] %>% 
             str_split_i('=', 2)
         
         training_pred = training %>% 
@@ -560,12 +561,12 @@ aucs = map(
 ) %>% 
     bind_rows()
 
-write_csv(aucs, "data/6_tables/lowFilter/selective/aucs.csv")
+write_csv(aucs, "data_5km/6_tables/lowFilter/monthly/aucs.csv")
 
 # Permutation importance --------------------------------------------------
 
 getVImp = function(sp){
-    mod.filename = paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/model/', sp, '_final_sdm.rds')
+    mod.filename = paste0('data_5km/4_maxent_outputs/monthly/', sp, '/lowFilter/model/', sp, '_final_sdm.rds')
     sp_pretty = sp %>% 
         str_replace("_", ". ") %>% 
         str_to_sentence()
@@ -589,4 +590,4 @@ var_imps = map(
     getVImp
 ) %>% 
     bind_rows()
-write_csv(var_imps, 'data/6_tables/lowFilter/selective/perm_var_imps.csv')
+write_csv(var_imps, 'data_5km/6_tables/lowFilter/monthly/perm_var_imps.csv')

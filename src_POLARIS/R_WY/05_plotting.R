@@ -26,7 +26,7 @@ library(wacolors)
 
 tidymodels_prefer()
 
-dir.create('data_v5_50km_POLARIS/5_figs/lowFilter/wy', recursive=T)
+dir.create('data_POLARIS/5_figs/lowFilter/wy', recursive=T)
 
 set.seed(123)
 central_valley = vect('data/central_valley/ds2632.gdb') %>% 
@@ -53,8 +53,8 @@ names = c(
 
 distributionSpPlotWithoutLegend = function(sp){
     print(sp)
-    output.filename = paste0("data_v5_50km_POLARIS/5_figs/lowFilter/wy/fig2_", sp, "_2000_2023.png")
-    input.filename = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/", sp, "/lowFilter/monthly_dist_hist/", sp, "_2000_2023_wy.tif")
+    output.filename = paste0("data_POLARIS/5_figs/lowFilter/wy/fig2_", sp, "_2000_2023.png")
+    input.filename = paste0("data_POLARIS/4_maxent_outputs/wy/", sp, "/lowFilter/monthly_dist_hist/", sp, "_2000_2023_wy.tif")
     input.rast = rast(input.filename)
     rast_CA = input.rast %>%
         crop(CA, mask=T)
@@ -66,7 +66,6 @@ distributionSpPlotWithoutLegend = function(sp){
 
     plot_CV = ggplot() +
         geom_spatraster(data=rast_CV) +
-        # scale_fill_gradientn(colours = c('navy', 'lightblue', 'lightyellow', 'goldenrod1', 'red'), limits=c(0, 1), na.value='transparent') +
         scale_fill_gradientn(colours = c('navy', 'lightblue', 'lightyellow2', 'goldenrod1', 'red'), limits=c(0, 1), na.value='transparent') +
         labs(
             fill = "Predicted suitability",
@@ -107,7 +106,7 @@ Fig_2 = map(names, distributionSpPlotWithoutLegend)
 
 #Extract legend
 sp='c_lasiophyllus'
-input.legend.filename = paste0("data_v5_50km_POLARIS/4_maxent_outputs/wy/", sp, "/lowFilter/monthly_dist_hist/", sp, "_2000_2023_wy.tif")
+input.legend.filename = paste0("data_POLARIS/4_maxent_outputs/wy/", sp, "/lowFilter/monthly_dist_hist/", sp, "_2000_2023_wy.tif")
 input.legend.rast = rast(input.legend.filename)
 legend.rast = input.legend.rast %>%
     crop(central_valley, mask=T)
@@ -137,7 +136,6 @@ legend.plot = ggplot() +
 legend = legend.plot %>%
     ggpubr::get_legend() %>%
     as_ggplot() +
-    # ggspatial::annotation_scale(data = legend.rast, plot_unit = 'km') +
     ggspatial::annotation_north_arrow(
         data = legend.rast,
         location = "br", which_north = "true",
@@ -149,12 +147,10 @@ legend = legend.plot %>%
         )
     )
 
-# legend_arrow = cowplot::plot_grid(legend, arrow, nrow = 1)
-
 Fig_2_legend = Fig_2
 Fig_2_legend[[11]] = legend
 cowplot::plot_grid(plotlist = Fig_2_legend, nrow = 2)
-ggsave('data_v5_50km_POLARIS/5_figs/lowFilter/wy/fig2.png', width = 2800, height = 2180, units = "px", bg = 'white')
+ggsave('data_POLARIS/5_figs/lowFilter/wy/fig2.png', width = 2800, height = 2180, units = "px", bg = 'white')
 
 
 
@@ -164,7 +160,7 @@ ggsave('data_v5_50km_POLARIS/5_figs/lowFilter/wy/fig2.png', width = 2800, height
 #'@author Madi Calbert
 # Species and file root (matches your screenshot/naming)
 species <- names
-wy_root <- "data_v5_50km_POLARIS/4_maxent_outputs/wy"
+wy_root <- "data_POLARIS/4_maxent_outputs/wy"
 
 # Read & dissolve the Great Valley ecoregion (once)
 gv_path <- "data/central_valley/ds2632.gdb/"
@@ -367,7 +363,7 @@ p_45_final = cowplot::plot_grid(
     ncol = 1, rel_heights = c(0.05, 1), align = 'h'
 )
 ggsave(
-    'data_v5_50km_POLARIS/5_figs/lowFilter/wy/fig3_RCP45.png', 
+    'data_POLARIS/5_figs/lowFilter/wy/fig3_RCP45.png', 
     plot = p_45_final,
     width = 3400, height = 3000, units = "px", scale = 1,
     bg = "white", limitsize = FALSE
@@ -396,7 +392,7 @@ p_85_final = cowplot::plot_grid(
     ncol = 1, rel_heights = c(0.05, 1), align = 'h'
 )
 ggsave(
-    'data_v5_50km_POLARIS/5_figs/lowFilter/wy/fig3_RCP85.png', 
+    'data_POLARIS/5_figs/lowFilter/wy/fig3_RCP85.png', 
     plot = p_85_final,
     width = 3400, height = 3000, units = "px",
     bg = "white", limitsize = FALSE
@@ -430,7 +426,7 @@ pal_fig4 <- setNames(suit_grad(11), as.character(0:10))
 # --- Build ONE panel (legend-free), compass optional -------------------------
 p10Panel <- function(model, show_compass = FALSE) {
     message("Rendering: ", model)
-    base_dir = 'data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/'
+    base_dir = 'data_POLARIS/4_maxent_outputs/wy/p10/'
     input_rast_CA_name <- paste0(base_dir, model, "_lowFilter_sum_CA.tif")
     input_rast_CV_name <- paste0(base_dir, model, "_lowFilter_sum_CV.tif")
     
@@ -494,7 +490,7 @@ p10Panel <- function(model, show_compass = FALSE) {
 
 # --- Make a vertical legend grob to place on the RIGHT -----------------------
 make_vertical_legend <- function(model_for_scale = "MIROC85_2070_2099") {
-    base_dir = 'data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/'
+    base_dir = 'data_POLARIS/4_maxent_outputs/wy/p10/'
     input_rast_CV_name <- paste0(base_dir, model_for_scale, "_lowFilter_sum_CV.tif")
     input_rast_CV = rast(input_rast_CV_name)
     names(input_rast_CV) <- "sum"
@@ -543,7 +539,7 @@ final_fig <- cowplot::plot_grid(row3, legend_right, ncol = 2,
                                 rel_widths = c(1, 0.20), align = "h")
 
 # save (wider canvas so nothing clips)
-final_path <- paste0('data_v5_50km_POLARIS/5_figs/lowFilter/wy/fig4.png')
+final_path <- paste0('data_POLARIS/5_figs/lowFilter/wy/fig4.png')
 ggsave(final_path, plot = final_fig,
        width = 2800, height = 2000, units = "px",
        bg = "white", limitsize = FALSE)
@@ -563,9 +559,9 @@ suitable_hectares_CA = map(
     names,
     function(sp){
         print(sp)
-        input.filename.hist = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_2000_2023_wy.tif')
-        input.filename.RCP45 = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC45_2070_2099_wy.tif')
-        input.filename.RCP85 = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC85_2070_2099_wy.tif')
+        input.filename.hist = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_2000_2023_wy.tif')
+        input.filename.RCP45 = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC45_2070_2099_wy.tif')
+        input.filename.RCP85 = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC85_2070_2099_wy.tif')
         
         
         
@@ -580,9 +576,6 @@ suitable_hectares_CA = map(
         num_ha.RCP45 = expanse(input.rast.RCP45, unit='ha', byValue=T)
         num_ha.RCP85 = expanse(input.rast.RCP85, unit='ha', byValue=T)
         
-        # num_ha.hist = terra::global(input.rast.hist, fun='sum', na.rm=T)$sum*0.027 # convert pixel to hectare
-        # num_ha.RCP45 = terra::global(input.rast.RCP45, fun='sum', na.rm=T)$sum*0.027 # convert pixel to hectare
-        # num_ha.RCP85 = terra::global(input.rast.RCP85, fun='sum', na.rm=T)$sum*0.027 # convert pixel to hectare
         sp_pretty = sp %>%
             str_to_sentence() %>%
             str_replace("_", ". ")
@@ -615,9 +608,9 @@ suitable_hectares_CA = map(
 ) %>%
     bind_rows() 
 
-dir.create('data_v5_50km_POLARIS/6_tables/lowFilter/wy', recursive=T)
-write_csv(suitable_hectares_CA, "data_v5_50km_POLARIS/6_tables/lowFilter/wy/suitable_hectares_wy_CA.csv")
-suitable_hectares_CA = read_csv("data_v5_50km_POLARIS/6_tables/lowFilter/wy/suitable_hectares_wy_CA.csv")
+dir.create('data_POLARIS/6_tables/lowFilter/wy', recursive=T)
+write_csv(suitable_hectares_CA, "data_POLARIS/6_tables/lowFilter/wy/suitable_hectares_wy_CA.csv")
+suitable_hectares_CA = read_csv("data_POLARIS/6_tables/lowFilter/wy/suitable_hectares_wy_CA.csv")
 
 ref_rast = rast('data/0_env/bcm/bcmv8_historic/2000_2023_monthly/aet1999dec.tif')
 cv_rast = ref_rast %>% 
@@ -631,9 +624,9 @@ suitable_hectares_CV = map(
     names,
     function(sp){
         print(sp)
-        input.filename.hist = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_2000_2023_wy.tif')
-        input.filename.RCP45 = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC45_2070_2099_wy.tif')
-        input.filename.RCP85 = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC85_2070_2099_wy.tif')
+        input.filename.hist = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_2000_2023_wy.tif')
+        input.filename.RCP45 = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC45_2070_2099_wy.tif')
+        input.filename.RCP85 = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/', '/p10_', sp, '_MIROC85_2070_2099_wy.tif')
         
         
         
@@ -648,9 +641,6 @@ suitable_hectares_CV = map(
         num_ha.RCP45 = expanse(input.rast.RCP45, unit='ha', byValue=T)
         num_ha.RCP85 = expanse(input.rast.RCP85, unit='ha', byValue=T)
         
-        # num_ha.hist = terra::global(input.rast.hist, fun='sum', na.rm=T)$sum*0.027 # convert pixel to hectare
-        # num_ha.RCP45 = terra::global(input.rast.RCP45, fun='sum', na.rm=T)$sum*0.027 # convert pixel to hectare
-        # num_ha.RCP85 = terra::global(input.rast.RCP85, fun='sum', na.rm=T)$sum*0.027 # convert pixel to hectare
         sp_pretty = sp %>%
             str_to_sentence() %>%
             str_replace("_", ". ")
@@ -683,18 +673,18 @@ suitable_hectares_CV = map(
 ) %>%
     bind_rows() 
 
-dir.create('data_v5_50km_POLARIS/6_tables/lowFilter/wy')
-write_csv(suitable_hectares_CV, "data_v5_50km_POLARIS/6_tables/lowFilter/wy/suitable_hectares_wy_CV.csv")
+dir.create('data_POLARIS/6_tables/lowFilter/wy')
+write_csv(suitable_hectares_CV, "data_POLARIS/6_tables/lowFilter/wy/suitable_hectares_wy_CV.csv")
 
 # AUCs table --------------------------------------------------------------
 
 aucs = map(
-    1:7,
+    1:10,
     function(i){
-        training = read_csv(paste0('data_v5_50km_POLARIS/3_swd/wy/training_', names[i], '_soil200cm_lowFilter_agg.csv'))
-        testing = read_csv(paste0('data_v5_50km_POLARIS/3_swd/wy/testing_', names[i], '_soil200cm_lowFilter_agg.csv'))
-        model = readRDS(paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', names[i], '/lowFilter/model_training/', names[i], '_training_sdm.rds'))
-        best_rm = readRDS(paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/tuning/', names[i], '_finalModelArgs_lowFilter.rds'))[4] %>%
+        training = read_csv(paste0('data_POLARIS/3_swd/wy/training_', names[i], '_soil200cm_lowFilter_wy.csv'))
+        testing = read_csv(paste0('data_POLARIS/3_swd/wy/testing_', names[i], '_soil200cm_lowFilter_wy.csv'))
+        model = readRDS(paste0('data_POLARIS/4_maxent_outputs/wy/', names[i], '/lowFilter/model_training/', names[i], '_training_sdm.rds'))
+        best_rm = readRDS(paste0('data_POLARIS/4_maxent_outputs/wy/tuning/', names[i], '_finalModelArgs_lowFilter.rds'))[4] %>%
             str_split_i('=', 2)
         
         training_pred = training %>%
@@ -733,13 +723,13 @@ aucs = map(
 ) %>%
     bind_rows()
 
-write_csv(aucs, 'data_v5_50km_POLARIS/6_tables/lowFilter/wy/aucs_lowFilter.csv')
+write_csv(aucs, 'data_POLARIS/6_tables/lowFilter/wy/aucs_lowFilter.csv')
 
 
 # Permutation importance --------------------------------------------------
 
 getVImp = function(sp){
-    mod.filename = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/model/', sp, '_final_sdm.rds')
+    mod.filename = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/model/', sp, '_final_sdm.rds')
     sp_pretty = sp %>% 
         str_replace("_", ". ") %>% 
         str_to_sentence()
@@ -771,13 +761,13 @@ var_imps = map(
     getVImp
 ) %>% 
     bind_rows()
-write_csv(var_imps, 'data_v5_50km_POLARIS/6_tables/lowFilter/wy/perm_var_imps_lowFilter.csv')
+write_csv(var_imps, 'data_POLARIS/6_tables/lowFilter/wy/perm_var_imps_lowFilter.csv')
 
 sp_pretty_c = names %>% 
     str_replace('_', '. ') %>% 
     str_to_sentence()
 vipLong = function(sp){
-    mod.filename = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/model/', sp, '_final_sdm.rds')
+    mod.filename = paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/model/', sp, '_final_sdm.rds')
     sp_pretty = sp %>% 
         str_replace("_", ". ") %>% 
         str_to_sentence()
@@ -827,7 +817,7 @@ current_p10_rasts = map(
     names,
     function(sp){
         list.files(
-            paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'),
+            paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'),
             pattern = '_2000_2023_wy.tif',
             full.names=T
         )
@@ -847,7 +837,7 @@ rcp45_p10_rasts = map(
     names,
     function(sp){
         list.files(
-            paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'),
+            paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'),
             pattern = '45',
             full.names=T
         )
@@ -866,7 +856,7 @@ rcp85_p10_rasts = map(
     names,
     function(sp){
         list.files(
-            paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'),
+            paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/'),
             pattern = '85',
             full.names=T
         )
@@ -923,16 +913,16 @@ ggplot(data=suitable_sp_count.all, aes(fill=Model, group=Model)) +
             family="Times New Roman", size = 24
         )
     )
-ggsave("data_v5_50km_POLARIS/5_figs/lowFilter/wy/figS5.png", width = 2040, height = 1440, units='px', scale = 2)
+ggsave("data_POLARIS/5_figs/lowFilter/wy/figS5.png", width = 2040, height = 1440, units='px', scale = 2)
 suitable_sp_count.all_wider = suitable_sp_count.all %>% 
     pivot_wider(names_from='Number_of_species', values_from=c('Ha'), names_prefix = 'Number of species = ', values_fill = 0)
-write_csv(suitable_sp_count.all_wider, "data_v5_50km_POLARIS/6_tables/lowFilter/wy/tableS9_nsp_ha.csv")
+write_csv(suitable_sp_count.all_wider, "data_POLARIS/6_tables/lowFilter/wy/tableS9_nsp_ha.csv")
 
 
 p10_rasts = map(
     names,
     function(sp=.x){
-        file=paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/p10_', sp, '_2000_2023_wy.tif')
+        file=paste0('data_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/p10/p10_', sp, '_2000_2023_wy.tif')
         r = rast(file) %>% 
             crop(cv_rast, mask=T) %>% 
             mutate(sum=ifelse(sum==0, 'Not suitable', 'Suitable'))
@@ -955,9 +945,9 @@ ggplot() +
     ) +
     labs(title='P10 suitability under current conditions', fill='') +
     facet_wrap(~lyr, nrow=2) 
-ggsave('data_v5_50km_POLARIS/5_figs/lowFilter/wy/figS2_p10_facet.png', width=3200, height=2800, units='px', bg='white')
+ggsave('data_POLARIS/5_figs/lowFilter/wy/figS2_p10_facet.png', width=3200, height=2800, units='px', bg='white')
 
-p10_sums = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/2000_2023_lowFilter_sum_CV.tif') %>% 
+p10_sums = paste0('data_POLARIS/4_maxent_outputs/wy/p10/2000_2023_lowFilter_sum_CV.tif') %>% 
     rast()
 
 p10_sums_r = p10_sums %>% 
@@ -975,7 +965,7 @@ p10_sums_r = p10_sums %>%
     ) %>%
     select(bins) 
 
-p10_sums_r_RCP45 = rast('data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/MIROC45_2070_2099_lowFilter_sum_CV.tif') %>% 
+p10_sums_r_RCP45 = rast('data_POLARIS/4_maxent_outputs/wy/p10/MIROC45_2070_2099_lowFilter_sum_CV.tif') %>% 
     mutate(
         bins=case_when(
             sum == 0 ~ '0',
@@ -989,7 +979,7 @@ p10_sums_r_RCP45 = rast('data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/MIROC45_20
             factor(ordered=T, levels=c('0', '1', '2-5', '6-7', '8', '9', '10'))
     ) %>%
     select(bins) 
-p10_sums_r_RCP85 = rast('data_v5_50km_POLARIS/4_maxent_outputs/wy/p10/MIROC85_2070_2099_lowFilter_sum_CV.tif') %>% 
+p10_sums_r_RCP85 = rast('data_POLARIS/4_maxent_outputs/wy/p10/MIROC85_2070_2099_lowFilter_sum_CV.tif') %>% 
     mutate(
         bins=case_when(
             sum == 0 ~ '0',
@@ -1038,270 +1028,3 @@ ggplotly(p) %>%
         selected = attrs_selected(line = list(color = "black"))
     ) %>% 
     widgetframe::frameWidget()
-
-# Appendix ----------------------------------------------------------------
-# suitable_hectares_CV = read_csv("data_v5_50km_POLARIS/6_tables/lowFilter/wy/suitable_hectares_agg_CV.csv")
-# suitable_hectares_CV
-# 
-# suitable_hectares_CA %>%  
-#     kbl(
-#         caption = "Baseline and changes in suitability (California)",
-#         format.args = list(big.mark = ',')
-#     ) %>% 
-#     kable_classic(html_font = 'Times')
-# 
-# suitable_hectares_CV %>% 
-#     kbl(
-#         caption = "Baseline and changes in suitability (Great Valley)",
-#         format.args = list(big.mark = ',')
-#     ) %>% 
-#     kable_classic(html_font = 'Times')
-# 
-# 
-# suitable_hectares_CA_pretty = suitable_hectares_CA
-# suitable_hectares_CA_pretty[5:6] = lapply(suitable_hectares_CA_pretty[5:6], function(.x){
-#     cell_spec(
-#         .x, 
-#         background = spec_color(
-#             .x, 
-#             palette = paletteer_c("ggthemes::Classic Red-Green Light", 30)
-#         ),
-#         escape = F
-#     )
-# })
-# suitable_hectares_CA_pretty %>% 
-#     kbl(
-#         caption = "Baseline and changes in suitability (California)",
-#         format.args = list(big.mark = ','),
-#         escape = F
-#     ) %>% 
-#     kable_classic(html_font = 'Times') %>% 
-#     save_kable('data_v5_50km_POLARIS/6_tables/lowFilter/wy/suitable_hectares_agg_CA.png')
-# 
-# 
-# suitable_hectares_CV_pretty = suitable_hectares_CV
-# suitable_hectares_CV_pretty[5:6] = lapply(suitable_hectares_CV_pretty[5:6], function(.x){
-#     cell_spec(
-#         .x, 
-#         background = spec_color(
-#             .x, 
-#             palette = paletteer_c("ggthemes::Classic Red-Green Light", 30)
-#         ),
-#         escape = F
-#     )
-# })
-# suitable_hectares_CV_pretty %>% 
-#     kbl(
-#         caption = "Baseline and changes in suitability (Central Valley)",
-#         format.args = list(big.mark = ','),
-#         escape = F
-#     ) %>% 
-#     kable_classic(html_font = 'Times') %>% 
-#     save_kable('data_v5_50km_POLARIS/6_tables/lowFilter/wy/suitable_hectares_agg_CV.png')
-# 
-# 
-# # Actual minus optimum ----------------------------------------------------
-# ###Based on model
-# 
-# ###tmx
-# spp_tmx_optimum = tibble(
-#     sp = names
-# )
-# 
-# spp_relevant_months = tibble(
-#     sp = names,
-#     mons = c(list(2:8), list(c(10:12, 1:7)), list(2:9), list(c(10:12, 1:5)), list(1:5), list(c(11:12, 1:5)), list(c(11:12, 1:6)))
-# )
-# 
-# spp_opts = map(
-#     1:7,
-#     function(i){
-#         sp = spp_relevant_months$sp[i]
-#         tmx.filename = paste0('data_v5_50km_POLARIS/4_maxent_outputs/wy/', sp, '/lowFilter/model/plots/species_tmx.dat')
-#         tmx = read_csv(tmx.filename)
-# 
-#         optimum = tmx %>%
-#             filter(y == max(y)) %>%
-#             pull(x) %>%
-#             median()
-# 
-#         return(
-#             tibble(
-#                 sp = spp_relevant_months$sp[[i]],
-#                 mons = spp_relevant_months$mons[i],
-#                 opt = optimum
-#             )
-#         )
-#     }
-# ) %>%
-#     bind_rows()
-# 
-# avgOptDiffRaster = function(i, model){
-#     sp = spp_opts$sp[i]
-#     mons = spp_opts$mons[i]
-#     opt = spp_opts$opt[i]
-# 
-#     mons_abb = month.abb[unlist(mons)] %>%
-#         str_to_lower()
-# 
-#     output.filename = paste0('data_v5_50km_POLARIS/5_figs/lowFilter/wy/tmx_opt_diff_', sp, '_', model, '_lowFilter.png')
-# 
-#     if(model == "hist"){
-#         model.filepath = "data_v5_50km_POLARIS/bcm/bcmv8_historic/monthly_avgs/"
-#     } else if(model == "RCP4.5"){
-#         model.filepath = "data_v5_50km_POLARIS/bcm/bcm_future/MIROC45/resampled/"
-#     } else if(model == "RCP8.5"){
-#         model.filepath = "data_v5_50km_POLARIS/bcm/bcm_future/MIROC85/resampled/"
-#     }
-# 
-#     input_rasts.filenames = list.files(
-#         model.filepath,
-#         pattern = paste0(paste0('tmx_', mons_abb), collapse = '|'),
-#         full.names = T
-#     )
-#     input_rast = rast(input_rasts.filenames) %>%
-#         mean()
-#     names(input_rast) = 'tmx'
-# 
-#     diff_rast = (input_rast - opt) %>%
-#         crop(central_valley, mask=T)
-# 
-#     sp_pretty = sp %>%
-#         str_replace('_', '. ') %>%
-#         str_to_sentence()
-# 
-#     ggplot() +
-#         geom_spatraster(data=diff_rast) +
-#         scale_fill_gradient2(low = 'navy', mid = 'lightyellow2', high = 'red', limits = c(-18, 12), midpoint = 0, na.value='transparent') +
-#         labs(
-#             fill = "mean(max temperature) - optimum",
-#             title = 'Difference between mean max temperature and optimum',
-#             subtitle = paste0(sp_pretty, " - ", model)
-#         ) +
-#         theme_void()
-# 
-#     ggsave(output.filename, bg = 'white')
-# }
-# 
-# map2(
-#     .x = rep(1:7, 3),
-#     .y = c(rep('hist', 7), rep('RCP4.5', 7), rep('RCP8.5', 7)),
-#     ~ avgOptDiffRaster(i=.x, model=.y)
-# )
-# 
-# #aet, tmx, ppt_winter, tmx_summer, tdiff, cec, drclass, om, ph
-# envAvgFutureDiff = function(future){
-#     message(paste(future))
-#     if(future == "RCP4.5"){
-#         future.filepath = "data_v5_50km_POLARIS/bcm/bcm_future/MIROC45/resampled/"
-#     } else if(future == "RCP8.5"){
-#         future.filepath = "data_v5_50km_POLARIS/bcm/bcm_future/MIROC85/resampled/"
-#     }
-# 
-#     env_files.map = map(
-#         c('aet', 'tmx', 'ppt_winter', 'tmx_summer', 'tdiff'),
-#         function(env_var){
-#             current_rasts.filenames = list.files(
-#                 "data_v5_50km_POLARIS/bcm/bcmv8_historic/monthly_avgs/",
-#                 pattern = env_var,
-#                 full.names = T
-#             )
-#             future_rasts.filenames = list.files(
-#                 future.filepath,
-#                 pattern = env_var,
-#                 full.names = T
-#             )
-#             if(env_var=='tmx'){
-#                 current_rasts.filenames = current_rasts.filenames[str_detect(current_rasts.filenames, "summer", negate=T)]
-#                 future_rasts.filenames = future_rasts.filenames[str_detect(future_rasts.filenames, "summer", negate=T)]
-#             } else if(env_var=='ppt'){
-#                 current_rasts.filenames = current_rasts.filenames[str_detect(current_rasts.filenames, "winter", negate=T)]
-#                 future_rasts.filenames = future_rasts.filenames[str_detect(future_rasts.filenames, "winter", negate=T)]
-#             }
-# 
-#             current_rast.mean = rast(current_rasts.filenames) %>%
-#                 mean()
-#             future_rast.mean = rast(future_rasts.filenames) %>%
-#                 mean()
-#             diff_rast = future_rast.mean - current_rast.mean
-#             names(diff_rast) = paste0('diff_', env_var)
-# 
-#             diff_rast = diff_rast %>%
-#                 crop(central_valley, mask=T)
-# 
-#             ggplot() +
-#                 geom_spatraster(data=diff_rast) +
-#                 scale_fill_gradient2(low = 'navy', mid = 'lightyellow2', high = 'red', midpoint = 0, na.value='transparent') +
-#                 labs(
-#                     subtitle = env_var,
-#                     fill = ''
-#                 ) +
-#                 theme_void()
-#         }
-#     )
-#     output.filename = paste0('data_v5_50km_POLARIS/5_figs/lowFilter/wy/env_diff/diff_future_', future, '_lowFilter.png')
-#     p = ggarrange(plotlist=env_files.map)
-#     p_title = annotate_figure(
-#         p = p,
-#         top = text_grob(paste0('Difference between current environmental predictor and future (', future, ')'))
-#     )
-# 
-#     ggsave(output.filename, bg='white')
-# }
-# envAvgFutureDiff(future='RCP4.5')
-# envAvgFutureDiff(future='RCP8.5')
-# 
-# 
-# envDistribution = function(sp){
-#     output.filepath = paste0('data_v5_50km_POLARIS/figs/env_distribution/wy/')
-#     dir.create(output.filepath, recursive=T)
-#     output.filename = paste0(output.filepath, sp, '_envDistribution_lowFilter.png')
-#     training = read_csv(paste0('data_v5_50km_POLARIS/3_swd/wy/training_', sp, '_soil200cm_lowFilter_agg.csv')) %>% 
-#         mutate(
-#             tdiff = tmx - tmn,
-#             presence = as.factor(presence)
-#         )
-#     training_long = training %>%
-#         select(presence, aet, tmx, ppt_winter_sum, tmx_summer_mean, tdiff, cec, drclass, om, ph) %>%
-#         rename(
-#             AET=aet,
-#             `Max temperature`=tmx,
-#             `Winter Precipitation`=ppt_winter_sum,
-#             `Max summer temperature`=tmx_summer_mean,
-#             `Temperature difference`=tdiff,
-#             `CEC`=cec,
-#             `Drainage class`=drclass,
-#             `Organic matter`=om,
-#             `pH`=ph
-#         ) %>%
-#         pivot_longer(-presence) %>%
-#         mutate(presence = ifelse(presence==1, 'Occurrence', 'Background'))
-#     
-#     pretty_sp = sp %>%
-#         str_replace('_', '. ') %>%
-#         str_to_sentence()
-#     
-#     ggplot(training_long) +
-#         geom_density(
-#             aes(
-#                 x = value,
-#                 group = presence,
-#                 color = presence
-#             )
-#         ) +
-#         facet_wrap(~name, scales='free') +
-#         theme_classic() +
-#         labs(
-#             title = "Ecorelevant aggregate model environmental density distributions",
-#             subtitle = pretty_sp,
-#             x = "",
-#             y = '',
-#             color = ''
-#         )
-#     ggsave(output.filename, scale=2)
-# }
-# 
-# map(
-#     names,
-#     envDistribution
-# )

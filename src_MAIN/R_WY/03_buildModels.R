@@ -12,7 +12,7 @@ library(tidymodels)
 library(ENMeval)
 library(SDMtune)
 tidymodels_prefer()
-dir.create('data_v5_50km/4_maxent_outputs/wy/tuning/', recursive = T)
+dir.create('data_MAIN/4_maxent_outputs/wy/tuning/', recursive = T)
 set.seed(123)
 
 names = c(
@@ -32,18 +32,18 @@ map(
     names,
     function(sp){
         set.seed(123)
-        enm_eval.filename = paste0('data_v5_50km/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_lowFilter.rds")
-        enm_eval_res.filename = paste0('data_v5_50km/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_res_lowFilter.rds")
+        enm_eval.filename = paste0('data_MAIN/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_lowFilter.rds")
+        enm_eval_res.filename = paste0('data_MAIN/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_res_lowFilter.rds")
         
-        # if(file.exists(enm_eval.filename)){
-        #     print(paste0("enm eval exists: ", sp))
-        #     enm_eval = readRDS(enm_eval.filename)
-        #     enm_eval_res = eval.results(enm_eval)
-        #     saveRDS(enm_eval_res, enm_eval_res.filename)
-        #     return(NULL)
-        # }
+        if(file.exists(enm_eval.filename)){
+            print(paste0("enm eval exists: ", sp))
+            enm_eval = readRDS(enm_eval.filename)
+            enm_eval_res = eval.results(enm_eval)
+            saveRDS(enm_eval_res, enm_eval_res.filename)
+            return(NULL)
+        }
         cat("Processing:", sp, "\n")
-        swd <- read_csv(paste0('data_v5_50km/3_swd/wy/', '/training_', sp, '_soil200cm_lowFilter_wy.csv')) %>% 
+        swd <- read_csv(paste0('data_MAIN/3_swd/wy/', '/training_', sp, '_soil200cm_lowFilter_wy.csv')) %>% 
             select(
                 x, y, month, year, 
                 aet, tmx, tmx_summer_mean, tdiff, 
@@ -72,9 +72,6 @@ map(
         ## check for even number in each group
         print(table(block$occs.grp))
         
-        #   1   2   3   4 
-        # 503 502 502 502 
-        
         # Evaluating --------------------------------------
         occs.z <- swdOcc %>% 
             dplyr::select(!c(month, year, presence))
@@ -100,8 +97,8 @@ map(
 best_model_args = map(
     names,
     function(sp){
-        res.filename = paste0('data_v5_50km/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_res_lowFilter.rds")
-        args.filename = paste0("data_v5_50km/4_maxent_outputs/wy/tuning/", sp, "_finalModelArgs_lowFilter.rds")
+        res.filename = paste0('data_MAIN/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_res_lowFilter.rds")
+        args.filename = paste0("data_MAIN/4_maxent_outputs/wy/tuning/", sp, "_finalModelArgs_lowFilter.rds")
         res = readRDS(res.filename) %>%
             select(rm, auc.train, auc.val.avg, auc.diff.avg, or.10p.avg, AICc) %>%
             rowwise() %>%
@@ -112,13 +109,11 @@ best_model_args = map(
             tibble()
         best_res = res %>%
             filter(score == min(score, na.rm=T))
-            # filter(or.10p.avg == min(or.10p.avg, na.rm=T))
         args <- c(
             'jackknife=TRUE',
             'autofeature=TRUE',
             'responsecurves=TRUE',
             paste0('betamultiplier=', best_res$rm),
-            # 'betamultiplier=2.5',
             'linear=TRUE',
             'quadratic=TRUE',
             'product=TRUE',
@@ -142,7 +137,7 @@ best_model_args = map(
 best_model_args_tibble = map(
     names,
     function(sp){
-        res.filename = paste0('data_v5_50km/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_res_lowFilter.rds")
+        res.filename = paste0('data_MAIN/4_maxent_outputs/wy/tuning/', sp, "_tuned_args_res_lowFilter.rds")
         res = readRDS(res.filename) %>%
             select(rm, auc.train, auc.val.avg, auc.diff.avg, or.10p.avg, AICc) %>%
             rowwise() %>%
@@ -171,7 +166,7 @@ map(
         print(sp)
         # Read in all points
         training <- read_csv(
-            paste0("data_v5_50km/3_swd/wy/", "/training_", sp, "_soil200cm_lowFilter_wy.csv")
+            paste0("data_MAIN/3_swd/wy/", "/training_", sp, "_soil200cm_lowFilter_wy.csv")
         ) %>%
             mutate(
                 drclass=as.factor(drclass),
@@ -208,10 +203,10 @@ map(
 
 
         #reading in best args
-        args = readRDS(paste0("data_v5_50km/4_maxent_outputs/wy/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
+        args = readRDS(paste0("data_MAIN/4_maxent_outputs/wy/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
 
         ## Path to save results
-        out.path <- paste0('data_v5_50km/4_maxent_outputs/wy/', sp, '/lowFilter/model_training/')
+        out.path <- paste0('data_MAIN/4_maxent_outputs/wy/', sp, '/lowFilter/model_training/')
         dir.create(out.path, recursive=T)
 
         ## Final Model Creation
@@ -226,10 +221,10 @@ map(
 aucs = map(
     1:length(names),
     function(i){
-        training = read_csv(paste0('data_v5_50km/3_swd/wy/training_', names[i], '_soil200cm_lowFilter_wy.csv'))
-        testing = read_csv(paste0('data_v5_50km/3_swd/wy/testing_', names[i], '_soil200cm_lowFilter_wy.csv'))
-        model = readRDS(paste0('data_v5_50km/4_maxent_outputs/wy/', names[i], '/lowFilter/model_training/', names[i], '_training_sdm.rds'))
-        best_rm = readRDS(paste0('data_v5_50km/4_maxent_outputs/wy/tuning/', names[i], '_finalModelArgs_lowFilter.rds'))[4] %>%
+        training = read_csv(paste0('data_MAIN/3_swd/wy/training_', names[i], '_soil200cm_lowFilter_wy.csv'))
+        testing = read_csv(paste0('data_MAIN/3_swd/wy/testing_', names[i], '_soil200cm_lowFilter_wy.csv'))
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/wy/', names[i], '/lowFilter/model_training/', names[i], '_training_sdm.rds'))
+        best_rm = readRDS(paste0('data_MAIN/4_maxent_outputs/wy/tuning/', names[i], '_finalModelArgs_lowFilter.rds'))[4] %>%
             str_split_i('=', 2)
 
         training_pred = training %>%
@@ -286,68 +281,10 @@ aucs = map(
 
 aucs
 
-# aucs_monthly = map(
-#     1:length(names),
-#     function(i){
-#         training = read_csv(paste0('data_v5_50km/3_swd/wy/training_', names[i], '_soil200cm_lowFilter_wy.csv'))
-#         testing = read_csv(paste0('data_v5_50km/3_swd/wy/testing_', names[i], '_soil200cm_lowFilter_wy.csv'))
-#         model = readRDS(paste0('data_v5_50km/4_maxent_outputs/wy/', names[i], '/lowFilter/model_training/', names[i], '_training_sdm.rds'))
-#         best_rm = readRDS(paste0('data_v5_50km/4_maxent_outputs/wy/tuning/', names[i], '_finalModelArgs_lowFilter.rds'))[4] %>%
-#             str_split_i('=', 2)
-# 
-#         training_pred = training %>%
-#             select(
-#                 x, y, month, year,
-#                 aet, tmx, tmx_summer_mean, tdiff, 
-#                 ppt10, ppt11, ppt12, ppt1, ppt2, ppt3,
-#                 ppt4, ppt5, ppt6, ppt7, ppt8, ppt9,
-#                 tmx_max_month, tmx_min_month, ppt_max_month, ppt_min_month,
-#                 cec, om, ph, drclass, salinity,
-#                 presence
-#             ) %>%
-#             mutate(
-#                 drclass=as.factor(drclass),
-#                 salinity=as.factor(salinity)
-#             ) %>%
-#             filter(complete.cases(.)) %>%
-#             mutate(pred = predict(model, .))
-# 
-#         testing_pred = testing %>%
-#             select(
-#                 x, y, month, year,
-#                 aet, tmx, tmx_summer_mean, tdiff, 
-#                 ppt10, ppt11, ppt12, ppt1, ppt2, ppt3,
-#                 ppt4, ppt5, ppt6, ppt7, ppt8, ppt9,
-#                 tmx_max_month, tmx_min_month, ppt_max_month, ppt_min_month,
-#                 cec, om, ph, drclass, salinity,
-#                 presence
-#             ) %>%
-#             mutate(
-#                 drclass=as.factor(drclass),
-#                 salinity=as.factor(salinity)
-#             ) %>%
-#             filter(complete.cases(.)) %>%
-#             mutate(pred = predict(model, .))
-# 
-#         training.auc = pROC::auc(training_pred$presence, training_pred$pred) %>%
-#             as.numeric()
-#         testing.auc = pROC::auc(testing_pred$presence, testing_pred$pred) %>%
-#             as.numeric()
-# 
-#         out = tibble(
-#             sp = names[i],
-#             training.auc = training.auc,
-#             testing.auc = testing.auc,
-#             reg_mult = best_rm
-#         )
-#         return(out)
-#     }
-# ) %>% bind_rows()
-
 variable_importance = map(
     names,
     function(sp){
-        model = readRDS(paste0('data_v5_50km/4_maxent_outputs/wy/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/wy/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
         var_imp = model@results %>%
             as.data.frame() %>%
             mutate(variable = rownames(.)) %>%
@@ -368,8 +305,8 @@ variable_importance = map(
 pearson_correlation = map(
     names,
     function(sp){
-        model = readRDS(paste0('data_v5_50km/4_maxent_outputs/wy/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
-        training = read_csv(paste0('data_v5_50km/3_swd/wy/training_', sp, '_soil200cm_lowFilter_wy.csv'))
+        model = readRDS(paste0('data_MAIN/4_maxent_outputs/wy/', sp, '/lowFilter/model_training/', sp, '_training_sdm.rds'))
+        training = read_csv(paste0('data_MAIN/3_swd/wy/training_', sp, '_soil200cm_lowFilter_wy.csv'))
         p = training %>%
             filter(presence==1)
         a = training %>%
@@ -386,7 +323,7 @@ pearson_correlation = map(
 presence_distribution = map(
     names,
     function(sp){
-        training = read_csv(paste0('data_v5_50km/3_swd/wy/training_', sp, '_soil200cm_lowFilter_wy.csv'))
+        training = read_csv(paste0('data_MAIN/3_swd/wy/training_', sp, '_soil200cm_lowFilter_wy.csv'))
         presence_absence = training %>%
             mutate(sp = sp) %>%
             group_by(sp, presence) %>%
@@ -406,7 +343,7 @@ map(
         print(sp)
         # Read in all points
         training <- read_csv(
-            paste0("data_v5_50km/3_swd/wy/", "/training_", sp, "_soil200cm_lowFilter_wy.csv")
+            paste0("data_MAIN/3_swd/wy/", "/training_", sp, "_soil200cm_lowFilter_wy.csv")
         ) %>%
             mutate(
                 drclass=as.factor(drclass),
@@ -422,7 +359,7 @@ map(
                 presence
             )
         testing <- read_csv(
-            paste0("data_v5_50km/3_swd/wy/", "/testing_", sp, "_soil200cm_lowFilter_wy.csv")
+            paste0("data_MAIN/3_swd/wy/", "/testing_", sp, "_soil200cm_lowFilter_wy.csv")
         ) %>%
             mutate(
                 drclass=as.factor(drclass),
@@ -443,7 +380,6 @@ map(
 
         ## Select env predictors for model (presence + background)
         x <- full %>%
-            # dplyr::select(aet:ph)
             select(
                 aet, tmx, tmx_summer_mean, tdiff, 
                 ppt10, ppt11, ppt12, ppt1, ppt2, ppt3,
@@ -462,10 +398,10 @@ map(
 
 
         #reading in best args
-        args = readRDS(paste0("data_v5_50km/4_maxent_outputs/wy/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
+        args = readRDS(paste0("data_MAIN/4_maxent_outputs/wy/tuning/", sp, "_finalModelArgs_lowFilter.rds"))
 
         ## Path to save results
-        out.path <- paste0('data_v5_50km/4_maxent_outputs/wy//', sp, '/lowFilter/model/')
+        out.path <- paste0('data_MAIN/4_maxent_outputs/wy//', sp, '/lowFilter/model/')
         dir.create(out.path, recursive=T)
 
         ## Final Model Creation

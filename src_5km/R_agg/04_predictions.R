@@ -17,7 +17,7 @@ tidymodels_prefer()
 set.seed(123)
 
 ## Read in fxn
-source('src_lowFilter_v2/util/pred_agg.R')
+source('src_5km/util/pred_agg.R')
 
 central_valley = vect('data/central_valley/ds2632.gdb') %>% 
     project('epsg:3310')
@@ -67,36 +67,36 @@ names <- c(
     'l_gracilis'
 )
 
-# ## Loop fxn for all spp
-# ###Low filter
-# map(
-#     names[1:10],
-#     function(sp){
-#         print(paste0("Working on ", sp))
-#         model = readRDS(paste0("data_v2/4_maxent_outputs/agg/", sp,
-#                                "/lowFilter/model/",
-#                                sp, "_final_sdm.rds"))
-#         out.path = paste0("data_v2/4_maxent_outputs/agg/",
-#                           sp,
-#                           "/lowFilter/monthly_dist_hist/")
-#         dir.create(out.path, recursive = T)
-#         months_vec = spp_relevant_months %>%
-#             filter(spp == sp) %>%
-#             pull(mons) %>%
-#             unlist()
-#         ## Run fxn
-#         pred_agg(
-#             model = model,
-#             spp = sp,
-#             months_vec = months_vec,
-#             model_years = "2000_2023",
-#             bcmPath = "data/0_env/bcm/bcmv8_historic/monthly_avgs/",
-#             soilPath = "data/0_env/natsgo/rasters/",
-#             salinityPath = 'data/0_env/salinity/',
-#             pathOut = out.path
-#         )
-#     }
-# )
+## Loop fxn for all spp
+###Low filter
+map(
+    names[1:10],
+    function(sp){
+        print(paste0("Working on ", sp))
+        model = readRDS(paste0("data_5km/4_maxent_outputs/agg/", sp,
+                               "/lowFilter/model/",
+                               sp, "_final_sdm.rds"))
+        out.path = paste0("data_5km/4_maxent_outputs/agg/",
+                          sp,
+                          "/lowFilter/monthly_dist_hist/")
+        dir.create(out.path, recursive = T)
+        months_vec = spp_relevant_months %>%
+            filter(spp == sp) %>%
+            pull(mons) %>%
+            unlist()
+        ## Run fxn
+        pred_agg(
+            model = model,
+            spp = sp,
+            months_vec = months_vec,
+            model_years = "2000_2023",
+            bcmPath = "data/0_env/bcm/bcmv8_historic/monthly_avgs/",
+            soilPath = "data/0_env/natsgo/rasters/",
+            salinityPath = 'data/0_env/salinity/',
+            pathOut = out.path
+        )
+    }
+)
 
 #RCP4.5
 map(
@@ -104,10 +104,10 @@ map(
     function(sp){
         ## Read in Maxent model
         print(paste0("Working on ", sp))
-        model = readRDS(paste0("data_v2/4_maxent_outputs/agg/", sp,
+        model = readRDS(paste0("data_5km/4_maxent_outputs/agg/", sp,
                                "/lowFilter/model/",
                                sp, "_final_sdm.rds"))
-        out.path = paste0("data_v2/4_maxent_outputs/agg//",
+        out.path = paste0("data_5km/4_maxent_outputs/agg//",
                           sp,
                           "/lowFilter/monthly_dist_MIROC45/")
         dir.create(out.path, recursive = T)
@@ -135,10 +135,10 @@ map(
     function(sp){
         ## Read in Maxent model
         print(paste0("Working on ", sp))
-        model = readRDS(paste0("data_v2/4_maxent_outputs/agg/", sp,
+        model = readRDS(paste0("data_5km/4_maxent_outputs/agg/", sp,
                                "/lowFilter/model/",
                                sp, "_final_sdm.rds"))
-        out.path = paste0("data_v2/4_maxent_outputs/agg/",
+        out.path = paste0("data_5km/4_maxent_outputs/agg/",
                           sp,
                           "/lowFilter/monthly_dist_MIROC85/")
         dir.create(out.path, recursive = T)
@@ -166,9 +166,9 @@ map(
 ## P10 threshold raster per species and model-years combination
 getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099", "MIROC85_2070_2099")){
     #Read in training data and model
-    training.filename = paste0('data_v2/3_swd/agg/training_', sp, '_soil200cm_lowFilter_agg.csv')
-    testing.filename = paste0('data_v2/3_swd/agg/testing_', sp, '_soil200cm_lowFilter_agg.csv')
-    model.filename = paste0("data_v2/4_maxent_outputs/agg/", sp, "/lowFilter/model/", sp, "_final_sdm.rds")
+    training.filename = paste0('data_5km/3_swd/agg/training_', sp, '_soil200cm_lowFilter_agg.csv')
+    testing.filename = paste0('data_5km/3_swd/agg/testing_', sp, '_soil200cm_lowFilter_agg.csv')
+    model.filename = paste0("data_5km/4_maxent_outputs/agg/", sp, "/lowFilter/model/", sp, "_final_sdm.rds")
     
     training = read_csv(training.filename)
     testing = read_csv(testing.filename)
@@ -196,7 +196,7 @@ getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099",
     
     #List input prediction rast filenames
     input.filenames = list.files(
-        paste0('data_v2/4_maxent_outputs/agg/', sp, '/lowFilter/', monthly_dist_str),
+        paste0('data_5km/4_maxent_outputs/agg/', sp, '/lowFilter/', monthly_dist_str),
         full.names = T,
         pattern='.tif'
     )
@@ -206,8 +206,8 @@ getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099",
     output.rast = ifel(output.rast > p10, 1, 0)
     output.rast = output.rast %>% sum()
     
-    dir.create(paste0('data_v2/4_maxent_outputs/agg/', sp, '/lowFilter/p10/'), recursive=T, showWarnings=F)
-    output.filename = paste0('data_v2/4_maxent_outputs/agg/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_agg.tif')
+    dir.create(paste0('data_5km/4_maxent_outputs/agg/', sp, '/lowFilter/p10/'), recursive=T, showWarnings=F)
+    output.filename = paste0('data_5km/4_maxent_outputs/agg/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_agg.tif')
     writeRaster(output.rast, output.filename, overwrite = T)
 }
 
@@ -228,13 +228,13 @@ map(
 # To use in Figure 3 ------------------------------------------------------
 
 sumThresholdRasts = function(model){
-    out.dir = paste0("data_v2/4_maxent_outputs/agg/p10/")
+    out.dir = paste0("data_5km/4_maxent_outputs/agg/p10/")
     dir.create(out.dir, recursive=T)
-    out.rast.filename.CA = paste0("data_v2/4_maxent_outputs/agg/p10/", model, "_lowFilter_sum_CA.tif")
-    out.rast.filename.CV = paste0("data_v2/4_maxent_outputs/agg/p10/", model, "_lowFilter_sum_CV.tif")
+    out.rast.filename.CA = paste0("data_5km/4_maxent_outputs/agg/p10/", model, "_lowFilter_sum_CA.tif")
+    out.rast.filename.CV = paste0("data_5km/4_maxent_outputs/agg/p10/", model, "_lowFilter_sum_CV.tif")
     #Read in p10 rasters
     input_rast.filenames = list.files(
-        paste0("data_v2/4_maxent_outputs/agg/"),
+        paste0("data_5km/4_maxent_outputs/agg/"),
         pattern=paste0("p10_.*", model, '_agg'),
         recursive = T,
         full.names=T

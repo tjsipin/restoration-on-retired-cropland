@@ -10,11 +10,14 @@ library(lubridate)    ## Dates and progress bar
 library(corrplot)     ## Correlation matrix
 library(pROC)
 library(tidymodels)
+library(tidyterra)
 library(ENMeval)
 tidymodels_prefer()
 
+message('v2/mc/04')
+
 ## Read in fxn
-source('src_lowFilter/util/pred_month.R')
+source('src_5km/util/pred_month.R')
 
 central_valley = vect('data/central_valley/ds2632.gdb') %>% 
     project('epsg:3310')
@@ -30,7 +33,10 @@ names <- c(
     "l_pentachaeta",
     "p_ciliata",
     "a_menziesii",
-    "c_lasiophyllus"
+    "a_intermedia",
+    "c_lasiophyllus",
+    'l_californica',
+    'l_gracilis'
 )
 
 # Loop fxn for all spp
@@ -40,10 +46,10 @@ map(
     function(sp){
         ## Read in Maxent model
         print(paste0("Working on ", sp))
-        model = readRDS(paste0("data/4_maxent_outputs/selective/", sp,
+        model = readRDS(paste0("data_5km/4_maxent_outputs/monthly/", sp,
                                "/lowFilter/model/",
                                sp, "_final_sdm.rds"))
-        out.path = paste0("data/4_maxent_outputs/selective/",
+        out.path = paste0("data_5km/4_maxent_outputs/monthly/",
                           sp,
                           "/lowFilter/monthly_dist_hist/")
         dir.create(out.path, recursive = T)
@@ -64,8 +70,8 @@ map(
     function(sp){
         ## Read in Maxent model
         print(paste0("Working on ", sp))
-        model = readRDS(paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/model/", sp, "_final_sdm.rds"))
-        out.path = paste0("data/4_maxent_outputs/selective//",
+        model = readRDS(paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/model/", sp, "_final_sdm.rds"))
+        out.path = paste0("data_5km/4_maxent_outputs/monthly//",
                           sp,
                           "/lowFilter/monthly_dist_MIROC45/")
         dir.create(out.path, recursive = T)
@@ -86,8 +92,8 @@ map(
     function(sp){
         ## Read in Maxent model
         print(paste0("Working on ", sp))
-        model = readRDS(paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/model/", sp, "_final_sdm.rds"))
-        out.path = paste0("data/4_maxent_outputs/selective//",
+        model = readRDS(paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/model/", sp, "_final_sdm.rds"))
+        out.path = paste0("data_5km/4_maxent_outputs/monthly//",
                           sp,
                           "/lowFilter/monthly_dist_MIROC85/")
         dir.create(out.path, recursive = T)
@@ -108,14 +114,14 @@ map(
 ## P10 threshold per species, month, and model-years combination
 getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099", "MIROC85_2070_2099")){
     print(paste0(sp, "\n", model_years))
-    dir.create(paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/p10/'), recursive=T, showWarnings=F)
-    output.filename.CV = paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_monthly_CV.tif')
-    output.filename.CA = paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_monthly_CA.tif')
+    dir.create(paste0('data_5km/4_maxent_outputs/monthly/', sp, '/lowFilter/p10/'), recursive=T, showWarnings=F)
+    output.filename.CV = paste0('data_5km/4_maxent_outputs/monthly/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_monthly_CV.tif')
+    output.filename.CA = paste0('data_5km/4_maxent_outputs/monthly/', sp, '/lowFilter/p10/', '/p10_', sp, '_', model_years, '_monthly_CA.tif')
     
     #Read in training data and model
-    training.filename = paste0('data/3_swd/monthly/selective/training_', sp, '_soil200cm_lowFilter_monthly_selective.csv')
-    testing.filename = paste0('data/3_swd/monthly/selective/testing_', sp, '_soil200cm_lowFilter_monthly_selective.csv')
-    model.filename = paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/model/", sp, "_final_sdm.rds")
+    training.filename = paste0('data_5km/3_swd/monthly/monthly/training_', sp, '_soil200cm_lowFilter_monthly.csv')
+    testing.filename = paste0('data_5km/3_swd/monthly/monthly/testing_', sp, '_soil200cm_lowFilter_monthly.csv')
+    model.filename = paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/model/", sp, "_final_sdm.rds")
     
     training = read_csv(training.filename)
     testing = read_csv(testing.filename)
@@ -144,7 +150,7 @@ getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099",
         str_to_sentence()
     
     input.filenames = list.files(
-        paste0('data/4_maxent_outputs/selective/', sp, '/lowFilter/', monthly_dist_str),
+        paste0('data_5km/4_maxent_outputs/monthly/', sp, '/lowFilter/', monthly_dist_str),
         full.names = T
     )
     map(
@@ -161,7 +167,7 @@ getThresholdRasts = function(sp, model_years=c("2000_2023", "MIROC45_2070_2099",
     )
     
     thresh.filenames = list.files(
-        paste0("data/4_maxent_outputs/selective/", sp, "/lowFilter/p10/"),
+        paste0("data_5km/4_maxent_outputs/monthly/", sp, "/lowFilter/p10/"),
         pattern = paste0(model_years, ".tif"),
         recursive=T,
         full.names = T
