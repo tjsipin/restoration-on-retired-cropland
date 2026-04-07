@@ -28,7 +28,7 @@ get_raster_safe <- function(path, pattern) {
 wy_pred_fxn <- function(model, sp, model_years, bcmPath, soilPath, salinityPath, pathOut) {
     message(paste0(sp, model_years, collapse = " | "))
     out.filename = paste0(pathOut, sp, '_', model_years, '_wy.tif')
-    if(file.exists(out.filename)) return(NULL)
+    # if(file.exists(out.filename)) return(NULL)
     ## Read each variable
     aet <- terra::rast(
         list.files(

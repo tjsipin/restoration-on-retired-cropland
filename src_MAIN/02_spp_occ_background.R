@@ -219,18 +219,27 @@ derived_datasets = map(
     function(sp){
         in.filename = paste0('data/1_occ/gbif_downloads_122625/', sp, '/', sp, '_gbif_lowFilter.csv')
         in.file = read_csv(in.filename) %>% 
-            count(datasetkey)
+            select(datasetkey)
         return(in.file)
     }
 ) %>% 
-    bind_rows()
+    bind_rows() %>% 
+    count(datasetkey)
 title = paste0(
     'Climate-resilient native plant restoration on retired croplands in California'
 )
 description = "The filtering of this data set is outlined in the manuscript \"Climate-resilient native plant restoration on retired croplands in California\" by Sipin et al."
-source_url = ''
+source_url = 'https://zenodo.org/records/19458425?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjQwOGM4NmQ4LTc1NDYtNGU0Zi05ODAzLTVlMDRhNTRkMGI5NiIsImRhdGEiOnt9LCJyYW5kb20iOiI1NmIyMWFjNGEwY2ViNTI1NzBjNmQ5M2RhMjBlMGQyOCJ9.55D5bI6_c41DC4X2ktb9sSVCgLk_FI5SbQCoyEa1MrHddqMYdS0WEYRBMPT0IdTikTUfw4g9dWd2qT4afVcgUQ'
 #Create derived data set
 derived_dataset_prep(
+    citation_data = derived_datasets,
+    title = title,
+    description = description,
+    source_url = source_url,
+    user = 'tjsipin@ucsb.edu',
+    pwd = 'RKh4pXLx'
+)
+derived_dataset(
     citation_data = derived_datasets,
     title = title,
     description = description,

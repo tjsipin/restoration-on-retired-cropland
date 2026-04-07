@@ -16,7 +16,7 @@ library(scico)
 library(RColorBrewer)
 library(tidyterra)
 library(ggnewscale) #citation("ggnewscale")
-library(cowplot)
+library(cowplot) 
 library(ggspatial)
 library(ggpubr)
 library(kableExtra) #tables
